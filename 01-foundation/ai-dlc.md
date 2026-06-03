@@ -95,6 +95,17 @@ Sem especificacao centralizada, os riscos aumentam:
 
 Com especificacao centralizada, o objetivo e que qualquer novo repositorio siga o mesmo comportamento sem reinterpretacao local.
 
+## Objetivo adicional desta base
+
+Esta base nao existe apenas para descrever o ecossistema atual.
+
+Ela tambem precisa permitir:
+
+- recriar a organizacao do zero
+- reprovisionar ambientes sem depender de memoria tribal
+- bootstrapar novos repositorios sem divergencia estrutural
+- validar rapidamente se um ambiente novo respeita naming, branch flow e runtime esperado
+
 ## Convencao de commit
 
 Os commits da organizacao devem ser escritos em portugues.

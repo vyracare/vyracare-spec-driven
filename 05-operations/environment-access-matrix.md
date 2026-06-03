@@ -18,6 +18,42 @@ Esta matriz consolida os principais acessos, identificadores e recursos por ambi
 | HML | `https://d2ukbrzje889m2.cloudfront.net` |
 | Prod | `https://d13ugmrrfi5a31.cloudfront.net` |
 
+## Design system publicado
+
+| Recurso | URL |
+| --- | --- |
+| Playground publicado | `https://dvgk2zjit84dn.cloudfront.net` |
+| Storybook publicado | `https://d2pws2zjq41jau.cloudfront.net` |
+
+## Remote entries do shell
+
+### Dev
+
+| MFE | Remote Entry |
+| --- | --- |
+| Dashboard | `https://d2injcyipyvtvj.cloudfront.net/remoteEntry.js` |
+| User | `https://d1qmra1m75dpb9.cloudfront.net/remoteEntry.js` |
+| Profile | `https://dof426tafo2g9.cloudfront.net/remoteEntry.js` |
+| Proceedings | `https://d2k3jf7r93hruy.cloudfront.net/remoteEntry.js` |
+
+### HML
+
+| MFE | Remote Entry |
+| --- | --- |
+| Dashboard | `https://d3dtvolcohpeqn.cloudfront.net/remoteEntry.js` |
+| User | `https://d2r6ze9ogurvf9.cloudfront.net/remoteEntry.js` |
+| Profile | `https://d3ko4u9he32ku6.cloudfront.net/remoteEntry.js` |
+| Proceedings | `https://d2k3jf7r93hruy.cloudfront.net/remoteEntry.js` |
+
+### Prod
+
+| MFE | Remote Entry |
+| --- | --- |
+| Dashboard | `https://d3dtvolcohpeqn.cloudfront.net/remoteEntry.js` |
+| User | `https://d2r6ze9ogurvf9.cloudfront.net/remoteEntry.js` |
+| Profile | `https://d3ko4u9he32ku6.cloudfront.net/remoteEntry.js` |
+| Proceedings | `https://d358sdfw6lk7th.cloudfront.net/remoteEntry.js` |
+
 ## APIs por ambiente
 
 ### Authentication
@@ -44,7 +80,7 @@ Esta matriz consolida os principais acessos, identificadores e recursos por ambi
 | HML | `vyracare-api-proceedings-hml` | `lsh2vmjq8k` | `https://lsh2vmjq8k.execute-api.us-east-1.amazonaws.com/api/proceedings` | `https://lsh2vmjq8k.execute-api.us-east-1.amazonaws.com/swagger/index.html` | `https://lsh2vmjq8k.execute-api.us-east-1.amazonaws.com/swagger/v1/swagger.json` | `vyracare-api-proceedings-hml` | `vyracare_db_hml` | `vyracare/shared/mongo-hml` | `vyracare/shared/jwt-signing-hml` |
 | Prod | `vyracare-api-proceedings` | `ya4lnham1d` | `https://ya4lnham1d.execute-api.us-east-1.amazonaws.com/api/proceedings` | `https://ya4lnham1d.execute-api.us-east-1.amazonaws.com/swagger/index.html` | `https://ya4lnham1d.execute-api.us-east-1.amazonaws.com/swagger/v1/swagger.json` | `vyracare-api-proceedings` | `vyracare_db` | `vyracare/shared/mongo-prod` | `vyracare/shared/jwt-signing-prod` |
 
-## Convenções operacionais
+## Convencoes operacionais
 
 ### Branch para ambiente
 
@@ -63,9 +99,9 @@ Esta matriz consolida os principais acessos, identificadores e recursos por ambi
 | HML | `src/environments/environments.hml.ts` |
 | Prod | `src/environments/environments.prod.ts` |
 
-### Convenção de commit
+### Convencao de commit
 
-As mensagens de commit da organização devem ser escritas em português.
+As mensagens de commit da organizacao devem ser escritas em portugues.
 
 Exemplos:
 

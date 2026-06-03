@@ -68,3 +68,24 @@ Pipelines reutilizaveis de CI/CD para APIs .NET.
 - as APIs rodam em Lambda e persistem em MongoDB
 - os templates geram novos repositorios com o mesmo padrao
 - as pipes encapsulam build, deploy, promocao e sincronizacao entre repositorios
+
+## Ordem recomendada de criacao do ecossistema
+
+Para reconstruir a plataforma do zero, a ordem mais segura e:
+
+1. `.github`
+2. `vyracare-spec-driven`
+3. `vyracare-infra-pipes-angular`
+4. `vyracare-infra-pipes-dot-net`
+5. `templates-angular`
+6. `template-dot-net-api`
+7. `vyracare-design-system`
+8. `vyracare-app-shell`
+9. MFEs Angular
+10. APIs .NET
+
+Motivo:
+
+- templates dependem das reusable workflows
+- projetos de produto dependem de templates, environment strategy e naming ja estabilizados
+- shell e APIs viram ponto de integracao para os demais repositorios
