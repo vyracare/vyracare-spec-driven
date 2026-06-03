@@ -32,6 +32,7 @@ O objetivo nao e substituir o codigo-fonte nem os READMEs dos repositorios. O ob
 
 ### Operacao
 - [Runbooks e Diagnostico](./05-operations/runbooks.md)
+- [Matriz de Ambientes e Acessos](./05-operations/environment-access-matrix.md)
 
 ## Escopo atual
 
@@ -58,7 +59,8 @@ Esta base reflete o que esta implementado ate o momento nos seguintes grupos:
 3. Ler [Estrategia de Ambientes](./02-architecture/environment-strategy.md)
 4. Ler [Esteiras Angular](./03-delivery/angular-pipelines.md)
 5. Ler [Esteiras .NET](./03-delivery/dotnet-pipelines.md)
-6. Consultar [Runbooks e Diagnostico](./05-operations/runbooks.md) durante incidentes
+6. Ler [Matriz de Ambientes e Acessos](./05-operations/environment-access-matrix.md)
+7. Consultar [Runbooks e Diagnostico](./05-operations/runbooks.md) durante incidentes
 
 ## Principios desta pasta
 
@@ -66,3 +68,4 @@ Esta base reflete o que esta implementado ate o momento nos seguintes grupos:
 - manter nomes, fluxos e recursos como estao implementados
 - documentar tradeoffs quando a solucao atual nao for a mais elegante
 - separar claramente arquitetura, processo e operacao
+- manter a convencao de commits em portugues nos repositorios da organizacao

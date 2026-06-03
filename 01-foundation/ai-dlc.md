@@ -43,6 +43,7 @@ Os templates ja embutem:
 - workflows
 - wiring com reusable workflows
 - estrutura de codigo esperada
+- convencao de commits em portugues
 
 ### 3. Verification
 A promocao entre ambientes passa por CI antes de CD.
@@ -93,3 +94,19 @@ Sem especificacao centralizada, os riscos aumentam:
 - contratos quebrados entre APIs e MFEs
 
 Com especificacao centralizada, o objetivo e que qualquer novo repositorio siga o mesmo comportamento sem reinterpretacao local.
+
+## Convencao de commit
+
+Os commits da organizacao devem ser escritos em portugues.
+
+Objetivo:
+
+- manter consistencia de historico
+- facilitar leitura operacional pelo time
+- reduzir variacao semantica entre repositorios
+
+Exemplos esperados:
+
+- `feat: adiciona environment dev ao shell`
+- `fix: corrige rotas de swagger da autenticacao`
+- `docs: atualiza matriz de ambientes e acessos`

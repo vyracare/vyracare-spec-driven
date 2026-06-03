@@ -54,6 +54,7 @@ Esses scripts precisam manter coerencia com:
 - nome dos projetos
 - caminhos dos `.csproj`
 - referencias de testes
+- convencao de commits em portugues
 
 ## Regras que o template deve preservar
 
@@ -70,3 +71,4 @@ Esses scripts precisam manter coerencia com:
 - gerar projeto sem arquivo `environments.hml.ts`
 - gerar .NET sem `test-project-path`
 - gerar pipelines com credenciais padrao do `github-actions[bot]` em vez de `PAT_TOKEN`
+- gerar repositorio novo sem padrao de commits em portugues
