@@ -30,6 +30,8 @@ O objetivo nao e substituir o codigo-fonte nem os READMEs dos repositorios. O ob
 ### Seguranca
 - [Secrets e Configuracao](./04-security/secrets-and-config.md)
 - [Runtime, IAM e Integracoes](./04-security/runtime-and-access.md)
+- [Naming de Recursos AWS](./04-security/aws-resource-naming.md)
+- [Catalogo de Variaveis e Secrets por Repositorio](./04-security/repository-config-catalog.md)
 
 ### Operacao
 - [Runbooks e Diagnostico](./05-operations/runbooks.md)
