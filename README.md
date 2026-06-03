@@ -15,6 +15,7 @@ O objetivo nao e substituir o codigo-fonte nem os READMEs dos repositorios. O ob
 ### Fundacao
 - [AI-DLC](./01-foundation/ai-dlc.md)
 - [Panorama de Repositorios](./01-foundation/repository-landscape.md)
+- [Matriz de Dependencias entre Repositorios](./01-foundation/repository-dependencies.md)
 
 ### Arquitetura
 - [Arquitetura Frontend](./02-architecture/frontend-architecture.md)
@@ -33,6 +34,7 @@ O objetivo nao e substituir o codigo-fonte nem os READMEs dos repositorios. O ob
 ### Operacao
 - [Runbooks e Diagnostico](./05-operations/runbooks.md)
 - [Matriz de Ambientes e Acessos](./05-operations/environment-access-matrix.md)
+- [Runbook de Recriacao por Ambiente](./05-operations/environment-rebuild-runbook.md)
 
 ### Reconstrucao
 - [Visao Zero to Platform](./06-rebuild/zero-to-platform.md)
@@ -63,15 +65,17 @@ Esta base reflete o que esta implementado ate o momento nos seguintes grupos:
 
 1. Comecar por [AI-DLC](./01-foundation/ai-dlc.md)
 2. Ler [Panorama de Repositorios](./01-foundation/repository-landscape.md)
-3. Ler [Estrategia de Ambientes](./02-architecture/environment-strategy.md)
-4. Ler [Visao Zero to Platform](./06-rebuild/zero-to-platform.md)
-5. Ler [Baseline de GitHub](./06-rebuild/github-baseline.md)
-6. Ler [Baseline de AWS e Dados](./06-rebuild/aws-baseline.md)
-7. Ler [Esteiras Angular](./03-delivery/angular-pipelines.md)
-8. Ler [Esteiras .NET](./03-delivery/dotnet-pipelines.md)
-9. Ler [Matriz de Ambientes e Acessos](./05-operations/environment-access-matrix.md)
-10. Consultar [Checklists de Validacao](./06-rebuild/validation-checklists.md)
-11. Consultar [Runbooks e Diagnostico](./05-operations/runbooks.md) durante incidentes
+3. Ler [Matriz de Dependencias entre Repositorios](./01-foundation/repository-dependencies.md)
+4. Ler [Estrategia de Ambientes](./02-architecture/environment-strategy.md)
+5. Ler [Visao Zero to Platform](./06-rebuild/zero-to-platform.md)
+6. Ler [Baseline de GitHub](./06-rebuild/github-baseline.md)
+7. Ler [Baseline de AWS e Dados](./06-rebuild/aws-baseline.md)
+8. Ler [Esteiras Angular](./03-delivery/angular-pipelines.md)
+9. Ler [Esteiras .NET](./03-delivery/dotnet-pipelines.md)
+10. Ler [Matriz de Ambientes e Acessos](./05-operations/environment-access-matrix.md)
+11. Consultar [Runbook de Recriacao por Ambiente](./05-operations/environment-rebuild-runbook.md)
+12. Consultar [Checklists de Validacao](./06-rebuild/validation-checklists.md)
+13. Consultar [Runbooks e Diagnostico](./05-operations/runbooks.md) durante incidentes
 
 ## Principios desta pasta
 
