@@ -43,6 +43,7 @@ O objetivo nao e substituir o codigo-fonte nem os READMEs dos repositorios. O ob
 - [Baseline de GitHub](./06-rebuild/github-baseline.md)
 - [Baseline de AWS e Dados](./06-rebuild/aws-baseline.md)
 - [Checklists de Validacao](./06-rebuild/validation-checklists.md)
+- [Golden Path para Novo Dominio](./06-rebuild/golden-path-new-domain.md)
 
 ## Escopo atual
 
@@ -76,8 +77,9 @@ Esta base reflete o que esta implementado ate o momento nos seguintes grupos:
 9. Ler [Esteiras .NET](./03-delivery/dotnet-pipelines.md)
 10. Ler [Matriz de Ambientes e Acessos](./05-operations/environment-access-matrix.md)
 11. Consultar [Runbook de Recriacao por Ambiente](./05-operations/environment-rebuild-runbook.md)
-12. Consultar [Checklists de Validacao](./06-rebuild/validation-checklists.md)
-13. Consultar [Runbooks e Diagnostico](./05-operations/runbooks.md) durante incidentes
+12. Ler [Golden Path para Novo Dominio](./06-rebuild/golden-path-new-domain.md)
+13. Consultar [Checklists de Validacao](./06-rebuild/validation-checklists.md)
+14. Consultar [Runbooks e Diagnostico](./05-operations/runbooks.md) durante incidentes
 
 ## Principios desta pasta
 
