@@ -6,7 +6,7 @@ Esta matriz consolida os principais acessos, identificadores e recursos por ambi
 
 - URLs podem mudar se recursos forem recriados.
 - IDs de API Gateway podem mudar em reprovisionamento.
-- nomes de secrets sao documentados, mas valores nao sao exibidos.
+- nomes de parametros do SSM sao documentados, mas valores nao sao exibidos.
 - o shell e o ponto principal de entrada da plataforma.
 
 ## Shell por ambiente

@@ -1,15 +1,15 @@
-# Catalogo de Variaveis e Secrets por Repositorio
+# Catalogo de Variaveis e Parametros por Repositorio
 
-Este documento consolida os nomes de variaveis, secrets e referencias operacionais esperadas por repositorio.
+Este documento consolida os nomes de variaveis, parametros e referencias operacionais esperadas por repositorio.
 
 Valores sensiveis nao sao exibidos aqui. Apenas nomes, contratos e finalidade.
 
 ## Regras gerais
 
 - secrets do GitHub ficam no nivel do repositorio ou da organizacao
-- secrets do AWS Secrets Manager ficam nomeados por ambiente
+- parametros do AWS Systems Manager Parameter Store ficam nomeados por ambiente
 - frontends nao devem versionar credenciais
-- backends podem versionar apenas nomes de secret e configuracao estrutural
+- backends podem versionar apenas nomes de parametro e configuracao estrutural
 
 ## Repositorios Angular de produto
 
@@ -134,17 +134,17 @@ GitHub:
 Runtime de Lambda:
 
 - `Mongo__Database`
-- `MONGO_SECRET_NAME`
-- `JWT_SECRET_NAME`
+- `MONGO_PARAMETER_NAME`
+- `JWT_PARAMETER_NAME`
 
-Secrets Manager por ambiente:
+Parameter Store por ambiente:
 
-- `vyracare/shared/mongo-dev`
-- `vyracare/shared/mongo-hml`
-- `vyracare/shared/mongo-prod`
-- `vyracare/shared/jwt-signing-dev`
-- `vyracare/shared/jwt-signing-hml`
-- `vyracare/shared/jwt-signing-prod`
+- `/vyracare/shared/mongo-dev`
+- `/vyracare/shared/mongo-hml`
+- `/vyracare/shared/mongo-prod`
+- `/vyracare/shared/jwt-signing-dev`
+- `/vyracare/shared/jwt-signing-hml`
+- `/vyracare/shared/jwt-signing-prod`
 
 Fallback ainda suportado:
 
@@ -198,7 +198,7 @@ Deve gerar projetos com:
 
 Deve gerar projetos com:
 
-- nomes de secrets configuraveis por ambiente
+- nomes de parametros configuraveis por ambiente
 - wiring com `PAT_TOKEN`
 - suporte a `.vyracare/mfe-consumer.json` quando houver consumidor
 
@@ -220,4 +220,4 @@ Nao depende de runtime sensivel, mas deve refletir:
 
 ## Regra operacional
 
-Se um repositorio exigir uma variavel ou secret fora deste catalogo, o novo contrato deve ser documentado aqui antes de virar dependencia invisivel.
+Se um repositorio exigir uma variavel, parametro ou secret de GitHub fora deste catalogo, o novo contrato deve ser documentado aqui antes de virar dependencia invisivel.

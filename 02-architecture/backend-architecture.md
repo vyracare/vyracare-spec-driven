@@ -8,7 +8,7 @@ As APIs .NET seguem estes principios:
 - deploy serverless em AWS Lambda
 - exposicao por API Gateway HTTP
 - persistencia em MongoDB
-- configuracao via appsettings + environment variables + Secrets Manager
+- configuracao via appsettings + environment variables + Systems Manager Parameter Store
 
 ## Topologia atual
 
@@ -40,7 +40,7 @@ Na pratica isso significa:
 
 - features organizadas por caso de uso
 - `Common` para configuracao, resultados e utilitarios compartilhados
-- `Infrastructure` para persistence, secrets, DI e seguranca
+- `Infrastructure` para persistence, parametros, DI e seguranca
 - testes unitarios em projeto separado
 
 ## Configuracao
@@ -49,7 +49,7 @@ As APIs usam:
 
 - `appsettings.json` com configuracao nao sensivel
 - environment variables para override por ambiente
-- AWS Secrets Manager para valores sensiveis
+- AWS Systems Manager Parameter Store para valores sensiveis
 
 ## Documentacao de API
 
@@ -69,21 +69,21 @@ No caso da auth, o suporte a Swagger depende de rotas explicitas no Terraform de
 - Lambda com sufixo `-dev`
 - API Gateway com sufixo `-dev`
 - database `vyracare_db_dev`
-- secrets `mongo-dev` e `jwt-signing-dev`
+- parametros `/vyracare/shared/mongo-dev` e `/vyracare/shared/jwt-signing-dev`
 
 ### HML
 
 - Lambda com sufixo `-hml`
 - API Gateway com sufixo `-hml`
 - database `vyracare_db_hml`
-- secrets `mongo-hml` e `jwt-signing-hml`
+- parametros `/vyracare/shared/mongo-hml` e `/vyracare/shared/jwt-signing-hml`
 
 ### Prod
 
 - Lambda sem sufixo adicional
 - API Gateway sem sufixo adicional
 - database `vyracare_db`
-- secrets `mongo-prod` e `jwt-signing-prod`
+- parametros `/vyracare/shared/mongo-prod` e `/vyracare/shared/jwt-signing-prod`
 
 ## Auth como caso especial
 
@@ -96,10 +96,10 @@ No caso da auth, o suporte a Swagger depende de rotas explicitas no Terraform de
 
 ## Ponto de atencao
 
-As pipes e o bootstrap esperam que secrets JSON estejam gravados em formato valido e sem BOM, por exemplo:
+As pipes e o bootstrap esperam que os parametros JSON estejam gravados em formato valido e sem BOM, por exemplo:
 
 ```json
 {"ConnectionString":"mongodb+srv://..."}
 ```
 
-Se o secret for salvo como string mal serializada ou com BOM, a aplicacao pode tentar usar o JSON inteiro como connection string e responder `500`.
+Se o parametro for salvo como string mal serializada ou com BOM, a aplicacao pode tentar usar o JSON inteiro como connection string e responder `500`.

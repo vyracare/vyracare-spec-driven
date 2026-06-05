@@ -8,8 +8,8 @@
 2. Confirmar Lambda correta por ambiente
 3. Confirmar alias `live`
 4. Ler CloudWatch da Lambda
-5. Conferir `MONGO_SECRET_NAME` e `JWT_SECRET_NAME`
-6. Conferir o formato real do secret no Secrets Manager
+5. Conferir `MONGO_PARAMETER_NAME` e `JWT_PARAMETER_NAME`
+6. Conferir o formato real do parametro no Systems Manager Parameter Store
 
 ### Comandos uteis
 
@@ -19,7 +19,7 @@
 - `aws lambda get-function-configuration --function-name <name>`
 - `aws lambda get-alias --function-name <name> --name live`
 - `aws logs tail /aws/lambda/<name> --since 30m --format short`
-- `aws secretsmanager get-secret-value --secret-id <name>`
+- `aws ssm get-parameter --name <name> --with-decryption`
 
 ### Causa recorrente ja observada
 

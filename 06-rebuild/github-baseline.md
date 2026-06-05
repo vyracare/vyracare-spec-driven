@@ -46,7 +46,7 @@ Templates e reusable workflows devem nascer alinhados com esse fluxo.
 
 ## Secrets e variables do GitHub
 
-Cada repositorio que publica na AWS precisa de secrets para:
+Cada repositorio que publica na AWS precisa de configuracoes e secrets de GitHub para:
 
 - credenciais AWS
 - `PAT_TOKEN` para branch creation, PR opening e update cross-repo

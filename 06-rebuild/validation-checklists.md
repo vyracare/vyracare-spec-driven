@@ -34,14 +34,14 @@ Este documento consolida as validacoes minimas para afirmar que a reconstrucao d
 - Swagger UI acessivel nas APIs publicadas
 - `PayloadFormatVersion` das integrations em `2.0`
 
-## Checklist de dados e secrets
+## Checklist de dados e parametros
 
 - `vyracare_db_dev` existente
 - `vyracare_db_hml` existente
 - `vyracare_db` existente
-- secrets `mongo-*` existentes
-- secrets `jwt-signing-*` existentes
-- JSON dos secrets valido e sem BOM
+- parametros `/vyracare/shared/mongo-*` existentes
+- parametros `/vyracare/shared/jwt-signing-*` existentes
+- JSON dos parametros valido e sem BOM
 
 ## Checklist de pipelines
 

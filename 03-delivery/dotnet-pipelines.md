@@ -107,19 +107,19 @@ Os workflows de CD fazem:
 
 - suffix `-dev`
 - database `vyracare_db_dev`
-- secrets `mongo-dev` e `jwt-signing-dev`
+- parametros `/vyracare/shared/mongo-dev` e `/vyracare/shared/jwt-signing-dev`
 
 ### `release/*`
 
 - suffix `-hml`
 - database `vyracare_db_hml`
-- secrets `mongo-hml` e `jwt-signing-hml`
+- parametros `/vyracare/shared/mongo-hml` e `/vyracare/shared/jwt-signing-hml`
 
 ### `main`
 
 - sem suffix
 - database `vyracare_db`
-- secrets `mongo-prod` e `jwt-signing-prod`
+- parametros `/vyracare/shared/mongo-prod` e `/vyracare/shared/jwt-signing-prod`
 
 ## Atualizacao de frontends consumidores
 
@@ -135,11 +135,11 @@ Quando uma API publica, a esteira pode:
 
 ## Ponto sensivel
 
-Os secrets precisam estar serializados corretamente em JSON e sem BOM.
+Os parametros precisam estar serializados corretamente em JSON e sem BOM.
 
 Problemas ja observados:
 
-- secret salvo como `{ConnectionString:...}`
-- secret salvo com BOM no inicio
+- parametro salvo como `{ConnectionString:...}`
+- parametro salvo com BOM no inicio
 
 Ambos levam a `500` em runtime se o bootstrap tentar usar o texto bruto como connection string.

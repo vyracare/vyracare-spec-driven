@@ -17,7 +17,7 @@ Ao final da reconstrucao, o ecossistema esperado deve conter:
 - MFEs publicados em `dev`, `hml` e `prod`
 - APIs .NET publicadas em `dev`, `hml` e `prod`
 - Mongo segregado por ambiente
-- secrets segregados por ambiente
+- parametros segregados por ambiente
 - Swagger exposto nas APIs publicadas
 
 ## Pre-requisitos minimos
@@ -35,7 +35,7 @@ Antes de criar qualquer repositorio, a organizacao precisa ter:
   - API Gateway
   - IAM
   - Cognito
-  - Secrets Manager
+  - Systems Manager Parameter Store
 
 ## Ordem recomendada
 
@@ -87,8 +87,8 @@ Antes de criar qualquer repositorio, a organizacao precisa ter:
   - `vyracare_db_dev`
   - `vyracare_db_hml`
   - `vyracare_db`
-22. criar secrets por ambiente
-23. aplicar rotacao quando houver secrets legados
+22. criar parametros por ambiente
+23. remover configuracoes legadas quando houver migracao de provider
 
 ### Fase 8. Validacao de plataforma
 

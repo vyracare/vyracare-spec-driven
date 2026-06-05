@@ -98,19 +98,19 @@ Padrao:
 - hml: `vyracare_db_hml`
 - prod: `vyracare_db`
 
-## Secrets Manager
+## Systems Manager Parameter Store
 
 ### Mongo
 
-- `vyracare/shared/mongo-dev`
-- `vyracare/shared/mongo-hml`
-- `vyracare/shared/mongo-prod`
+- `/vyracare/shared/mongo-dev`
+- `/vyracare/shared/mongo-hml`
+- `/vyracare/shared/mongo-prod`
 
 ### JWT
 
-- `vyracare/shared/jwt-signing-dev`
-- `vyracare/shared/jwt-signing-hml`
-- `vyracare/shared/jwt-signing-prod`
+- `/vyracare/shared/jwt-signing-dev`
+- `/vyracare/shared/jwt-signing-hml`
+- `/vyracare/shared/jwt-signing-prod`
 
 ## CloudWatch Log Groups
 

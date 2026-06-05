@@ -10,7 +10,7 @@ Garantir que um ambiente possa ser refeito preservando:
 - branch flow
 - URLs publicadas
 - Lambda, Gateway e CloudFront coerentes
-- banco e secrets corretos por ambiente
+- banco e parametros corretos por ambiente
 
 ## Regra base
 
@@ -29,7 +29,7 @@ Antes de recriar um ambiente, confirme:
 - MFEs em `develop`
 - APIs em `develop`
 - banco `vyracare_db_dev`
-- secrets `*-dev`
+- parametros `*-dev`
 
 ### Ordem recomendada
 
@@ -57,7 +57,7 @@ Antes de recriar um ambiente, confirme:
 - MFEs em `release/*`
 - APIs em `release/*`
 - banco `vyracare_db_hml`
-- secrets `*-hml`
+- parametros `*-hml`
 
 ### Ordem recomendada
 
@@ -84,7 +84,7 @@ Antes de recriar um ambiente, confirme:
 - MFEs em `main`
 - APIs em `main`
 - banco `vyracare_db`
-- secrets `*-prod`
+- parametros `*-prod`
 
 ### Ordem recomendada
 
@@ -127,12 +127,12 @@ Use quando o problema estiver em:
 - Lambda
 - API Gateway
 - Swagger
-- secrets
+- parametros
 - banco
 
 Sequencia:
 
-1. secrets
+1. parametros
 2. banco
 3. Lambdas
 4. APIs
@@ -157,12 +157,12 @@ Sequencia:
 
 - auth cadastra e autentica
 - APIs leem banco correto
-- ambiente nao aponta para secret errado
+- ambiente nao aponta para parametro errado
 
 ## Erros recorrentes a vigiar
 
-- secret com JSON invalido
-- secret com BOM
+- parametro com JSON invalido
+- parametro com BOM
 - integration do API Gateway com `PayloadFormatVersion` errado
 - rota de Swagger ausente
 - consumer Angular atualizado no arquivo de environment errado
@@ -175,5 +175,5 @@ Sequencia:
 - `aws lambda get-function-configuration --function-name <name>`
 - `aws lambda get-alias --function-name <name> --name live`
 - `aws logs tail /aws/lambda/<name> --since 30m --format short`
-- `aws secretsmanager get-secret-value --secret-id <name>`
+- `aws ssm get-parameter --name <name> --with-decryption`
 - `curl -i https://<api-id>.execute-api.us-east-1.amazonaws.com/swagger/index.html`

@@ -6,7 +6,7 @@ O objetivo nao e substituir o codigo-fonte nem os READMEs dos repositorios. O ob
 
 - alinhar arquitetura e operacao entre frontend, backend, templates e infra
 - documentar o fluxo real de ambientes `dev`, `hml` e `prod`
-- registrar convencoes de naming, secrets, buckets, lambdas, gateways e branches
+- registrar convencoes de naming, Parameter Store, buckets, lambdas, gateways e branches
 - registrar padroes de exposicao de Swagger e observabilidade operacional
 - servir como baseline para agentes, automacoes, revisoes tecnicas e onboarding
 

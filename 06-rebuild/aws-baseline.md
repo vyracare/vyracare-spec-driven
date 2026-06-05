@@ -1,6 +1,6 @@
 # Baseline de AWS e Dados
 
-Este documento descreve o baseline minimo de AWS, dados e secrets para reerguer o ecossistema.
+Este documento descreve o baseline minimo de AWS, dados e parametros para reerguer o ecossistema.
 
 ## Servicos usados
 
@@ -9,7 +9,7 @@ Este documento descreve o baseline minimo de AWS, dados e secrets para reerguer 
 - Lambda
 - API Gateway HTTP
 - IAM
-- Secrets Manager
+- Systems Manager Parameter Store
 - Cognito
 - CloudWatch
 - CodeArtifact
@@ -48,7 +48,7 @@ Separacao atual:
 - ambientes compartilham cluster
 - o isolamento principal esta no nome do banco
 
-## Secrets Manager
+## Systems Manager Parameter Store
 
 Secrets esperados:
 
@@ -81,8 +81,8 @@ Formato:
 As Lambdas devem receber:
 
 - `Mongo__Database`
-- `MONGO_SECRET_NAME`
-- `JWT_SECRET_NAME`
+- `MONGO_PARAMETER_NAME`
+- `JWT_PARAMETER_NAME`
 
 ## Swagger
 

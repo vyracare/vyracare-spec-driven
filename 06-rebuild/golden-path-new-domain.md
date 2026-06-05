@@ -89,13 +89,13 @@ O projeto novo deve nascer com:
 - Lambda `prod`: `<repo-normalizado>`
 - API Gateway segue o mesmo padrao da Lambda
 
-### Dados e secrets
+### Dados e parametros
 
 - `vyracare_db_dev`
 - `vyracare_db_hml`
 - `vyracare_db`
 
-Se o dominio precisar de novos secrets, nomeie por ambiente.
+Se o dominio precisar de novos parametros, nomeie por ambiente.
 
 ## Etapa 4. Criar o repositorio
 
@@ -216,7 +216,7 @@ Entrega minima recomendada:
 
 - `environment.hml.ts` correto
 - banco `hml` correto
-- secrets `hml` corretos
+- parametros `hml` corretos
 - Swagger acessivel no caso de APIs
 
 ## Etapa 11. Promover para prod
@@ -232,7 +232,7 @@ Entrega minima recomendada:
 - `remoteEntry.js` correto
 - API correta
 - banco `prod`
-- secrets `prod`
+- parametros `prod`
 
 ## Etapa 12. Atualizar documentacao
 
@@ -248,7 +248,7 @@ Depois da primeira publicacao funcional:
 - pipeline divergente
 - ambiente `dev` usando arquivo local
 - frontend consumindo API do ambiente errado
-- secret sem padrao por ambiente
+- parametro sem padrao por ambiente
 - novo dominio sem README
 - naming AWS inconsistente
 
@@ -259,6 +259,6 @@ Um novo dominio so deve ser considerado alinhado ao ecossistema quando:
 - usa o template correto
 - usa as reusable workflows corretas
 - publica em `dev`, `hml` e `prod`
-- respeita naming e secrets por ambiente
+- respeita naming e parametros por ambiente
 - tem README minimamente util
 - tem commits em portugues

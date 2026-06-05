@@ -39,24 +39,24 @@ Representa `prod`.
 - Lambda: `<repo-normalizado>-dev`
 - API Gateway: `<repo-normalizado>-dev`
 - Mongo DB: `vyracare_db_dev`
-- Mongo secret: `vyracare/shared/mongo-dev`
-- JWT secret: `vyracare/shared/jwt-signing-dev`
+- Mongo parameter: `/vyracare/shared/mongo-dev`
+- JWT parameter: `/vyracare/shared/jwt-signing-dev`
 
 ### HML
 
 - Lambda: `<repo-normalizado>-hml`
 - API Gateway: `<repo-normalizado>-hml`
 - Mongo DB: `vyracare_db_hml`
-- Mongo secret: `vyracare/shared/mongo-hml`
-- JWT secret: `vyracare/shared/jwt-signing-hml`
+- Mongo parameter: `/vyracare/shared/mongo-hml`
+- JWT parameter: `/vyracare/shared/jwt-signing-hml`
 
 ### Prod
 
 - Lambda: `<repo-normalizado>`
 - API Gateway: `<repo-normalizado>`
 - Mongo DB: `vyracare_db`
-- Mongo secret: `vyracare/shared/mongo-prod`
-- JWT secret: `vyracare/shared/jwt-signing-prod`
+- Mongo parameter: `/vyracare/shared/mongo-prod`
+- JWT parameter: `/vyracare/shared/jwt-signing-prod`
 
 ## Arquivos de ambiente Angular
 

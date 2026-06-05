@@ -1,4 +1,4 @@
-# Secrets e Configuracao
+# Parameter Store e Configuracao
 
 ## Principio
 
@@ -11,23 +11,23 @@ Repositorio publico pode conter estrutura de configuracao. Nao pode conter segre
 `appsettings.json` deve conter:
 
 - valores nao sensiveis
-- nomes de secret
+- nomes de parametros
 - configuracao estrutural
 
-### Segredos reais
+### Parametros reais
 
-Segredos ficam em:
+Valores sensiveis ficam em:
 
-- AWS Secrets Manager
-- variaveis de ambiente da Lambda apontando para o nome do secret
+- AWS Systems Manager Parameter Store
+- variaveis de ambiente da Lambda apontando para o nome do parametro
 
-## Secrets padrao atuais
+## Parametros padrao atuais
 
 ### Mongo
 
-- `vyracare/shared/mongo-dev`
-- `vyracare/shared/mongo-hml`
-- `vyracare/shared/mongo-prod`
+- `/vyracare/shared/mongo-dev`
+- `/vyracare/shared/mongo-hml`
+- `/vyracare/shared/mongo-prod`
 
 Formato esperado:
 
@@ -37,9 +37,9 @@ Formato esperado:
 
 ### JWT
 
-- `vyracare/shared/jwt-signing-dev`
-- `vyracare/shared/jwt-signing-hml`
-- `vyracare/shared/jwt-signing-prod`
+- `/vyracare/shared/jwt-signing-dev`
+- `/vyracare/shared/jwt-signing-hml`
+- `/vyracare/shared/jwt-signing-prod`
 
 Formato esperado:
 
@@ -54,7 +54,7 @@ Formato esperado:
 - sem chaves sem aspas
 - sem multiline desnecessario
 
-## Fall back ainda suportado
+## Fallback ainda suportado
 
 Os projetos mantem fallback para:
 
@@ -63,8 +63,18 @@ Os projetos mantem fallback para:
 
 Mas o caminho preferencial atual e:
 
+- `MONGO_PARAMETER_NAME`
+- `JWT_PARAMETER_NAME`
+
+## Compatibilidade de migracao
+
+Por compatibilidade temporaria, os backends ainda aceitam:
+
+- chaves antigas `Secrets:*` em configuracao
 - `MONGO_SECRET_NAME`
 - `JWT_SECRET_NAME`
+
+O bootstrap normaliza nomes como `vyracare/shared/...` para `/vyracare/shared/...` antes de consultar o SSM.
 
 ## Frontend
 

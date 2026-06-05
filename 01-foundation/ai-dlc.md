@@ -17,7 +17,7 @@ No Vyracare, isso significa que a evolucao do ecossistema nao depende apenas de 
 - evitar configuracoes ad hoc
 - permitir que agentes e desenvolvedores trabalhem com o mesmo contrato tecnico
 - manter frontend, backend e infra promovidos por fluxo previsivel
-- tornar falhas investigaveis com base em naming, secrets e conventions
+- tornar falhas investigaveis com base em naming, parametros e conventions
 
 ## Ciclo adotado
 
@@ -27,7 +27,7 @@ A mudanca comeca por contrato, nao por codigo solto. Isso inclui:
 - nome do repositorio
 - nome do ambiente
 - nome de bucket, lambda, gateway e cloudfront
-- estrategia de secrets
+- estrategia de parametros
 - estrategia de banco por ambiente
 - estrategia de branch e promocao
 
@@ -79,7 +79,7 @@ O ciclo fecha com observabilidade e diagnostico operacional:
 - CloudWatch para Lambdas
 - resposta do API Gateway
 - recursos provisionados na AWS
-- ambiente e secret corretos por branch
+- ambiente e parametro corretos por branch
 
 ## Papel da especificacao
 
@@ -89,7 +89,7 @@ Sem especificacao centralizada, os riscos aumentam:
 
 - drift entre repositorios
 - naming inconsistente
-- secrets de ambiente errados
+- parametros de ambiente errados
 - pipelines divergentes
 - contratos quebrados entre APIs e MFEs
 

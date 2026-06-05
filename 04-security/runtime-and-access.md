@@ -8,7 +8,7 @@ O ecossistema atual usa:
 - CloudFront
 - Lambda
 - API Gateway HTTP
-- Secrets Manager
+- Systems Manager Parameter Store
 - Cognito
 - IAM
 
@@ -19,8 +19,8 @@ Cada API roda em Lambda `dotnet8`.
 As Lambdas recebem via environment variables:
 
 - `Mongo__Database`
-- `MONGO_SECRET_NAME`
-- `JWT_SECRET_NAME`
+- `MONGO_PARAMETER_NAME`
+- `JWT_PARAMETER_NAME`
 - outros valores de runtime conforme a API
 
 ## IAM
@@ -28,7 +28,7 @@ As Lambdas recebem via environment variables:
 As roles de Lambda precisam de:
 
 - `AWSLambdaBasicExecutionRole`
-- leitura dos secrets usados pelo ambiente
+- leitura dos parametros usados pelo ambiente
 
 Usuarios locais usados para operacao manual precisam de permissao explicita para:
 
