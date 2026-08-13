@@ -20,7 +20,7 @@ As APIs .NET seguem estes principios:
 
 ### Runtime
 
-- `dotnet8`
+- `dotnet10`
 - Lambda
 - API Gateway HTTP API
 

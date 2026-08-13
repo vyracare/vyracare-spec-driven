@@ -14,7 +14,7 @@ O ecossistema atual usa:
 
 ## Lambdas
 
-Cada API roda em Lambda `dotnet8`.
+Cada API roda em Lambda `dotnet10`.
 
 As Lambdas recebem via environment variables:
 
@@ -32,11 +32,11 @@ As roles de Lambda precisam de:
 
 Usuarios locais usados para operacao manual precisam de permissao explicita para:
 
-- `GetSecretValue`
-- `PutSecretValue`
-- `DescribeSecret`
-- `DeleteSecret` quando houver limpeza
-- `ListSecrets` com `Resource: "*"` se a listagem for necessaria
+- `ssm:GetParameter`
+- `ssm:GetParameters`
+- `ssm:PutParameter` quando houver manutencao manual
+- `ssm:DeleteParameter` quando houver limpeza
+- `ssm:DescribeParameters` quando a operacao exigir descoberta por nome
 
 ## API Gateway
 

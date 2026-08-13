@@ -13,6 +13,12 @@ Workflows principais:
 - `cd-auth-dot-net.yml`
 - `cd-generic-dot-net.yml`
 
+Versao atual padrao do stack:
+
+- SDK do pipeline: `.NET 10`
+- `TargetFramework` esperado nas APIs: `net10.0`
+- runtime de publicacao em Lambda: `dotnet10`
+
 ## Especializacao
 
 ### Auth
@@ -70,7 +76,7 @@ Os workflows de CI foram segregados em dois jobs:
 ### `test-dotnet`
 
 - checkout
-- setup .NET
+- setup `.NET 10`
 - restore do projeto de testes
 - `dotnet test`
 
@@ -92,7 +98,7 @@ Os workflows de CD fazem:
 
 - checkout de infra
 - checkout do backend
-- setup .NET
+- setup `.NET 10`
 - restore/build/publish para `linux-x64`
 - resolucao de contexto por branch
 - export de variaveis Terraform
@@ -100,6 +106,8 @@ Os workflows de CD fazem:
 - import de recursos existentes quando necessario
 - export de `API_GATEWAY_URL`
 - sincronizacao opcional com MFE consumidor
+
+No Terraform compartilhado, a funcao Lambda e criada com runtime `dotnet10`.
 
 ## Branch -> recursos
 
