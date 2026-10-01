@@ -56,6 +56,18 @@ Esta matriz consolida os principais acessos, identificadores e recursos por ambi
 
 ## APIs por ambiente
 
+### Runtime local
+
+| Servico | URL local |
+| --- | --- |
+| Authentication | `http://localhost:5000` |
+| Client | `http://localhost:5001` |
+| Proceedings | `http://localhost:5002` |
+| Appointments | `http://localhost:5003` |
+| Finance | `http://localhost:5004` |
+
+As APIs de appointments e finance ainda nao possuem URLs publicadas registradas para `dev`, `hml` e `prod`. Ate o deploy das respectivas esteiras, somente o contrato local deve ser considerado ativo.
+
 ### Authentication
 
 | Ambiente | API Gateway | API ID | Base URL | Swagger UI | Swagger JSON | Lambda | Database | Mongo Secret | JWT Secret |

@@ -45,6 +45,12 @@ API de clientes.
 ### `vyracare-api-proceedings`
 API de procedimentos.
 
+### `vyracare-api-appointments`
+API de agenda clinica e dos indicadores operacionais exibidos no dashboard.
+
+### `vyracare-api-finance`
+API de lancamentos, boletos e dos indicadores mensais de saude financeira exibidos no dashboard.
+
 ## Templates
 
 ### `templates-angular`

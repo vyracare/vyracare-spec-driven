@@ -86,6 +86,11 @@ Arquivos de ambiente:
 - `environments.hml.ts`
 - `environments.prod.ts`
 
+Configuracoes publicas esperadas:
+
+- `appointmentsApiUrl`
+- `financeApiUrl`
+
 ### `vyracare-app-proceedings-mfe`
 
 GitHub:
@@ -182,6 +187,22 @@ Configuracao adicional:
 Arquivo de metadata relevante:
 
 - `.vyracare/mfe-consumer.json`
+
+### `vyracare-api-appointments`
+
+Configuracao adicional:
+
+- `Appointments__TimeZone`
+- `Appointments__WeeklyAvailableMinutes`
+- `Appointments__FollowUpWindowDays`
+- sincroniza `appointmentsApiUrl` no dashboard por `.vyracare/mfe-consumer.json`
+
+### `vyracare-api-finance`
+
+Configuracao adicional:
+
+- `Finance__TimeZone`
+- sincroniza `financeApiUrl` no dashboard por `.vyracare/mfe-consumer.json`
 
 ## Templates
 

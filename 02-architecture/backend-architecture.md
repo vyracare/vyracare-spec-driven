@@ -17,6 +17,8 @@ As APIs .NET seguem estes principios:
 - `vyracare-api-authentication`
 - `vyracare-api-client`
 - `vyracare-api-proceedings`
+- `vyracare-api-appointments`
+- `vyracare-api-finance`
 
 ### Runtime
 
@@ -93,6 +95,15 @@ No caso da auth, o suporte a Swagger depende de rotas explicitas no Terraform de
 - integracao com `vyracare-app-shell`
 - integracao explicita com `vyracare-app-user-mfe`
 - workflow dedicado `cd-auth-dot-net.yml`
+
+## APIs de indicadores do dashboard
+
+- `vyracare-api-appointments` agrega agenda diaria, confirmacoes recentes, retornos pendentes e ocupacao semanal;
+- `vyracare-api-finance` agrega receitas e despesas confirmadas do mes, variacao contra o mes anterior e boletos pendentes;
+- ambas persistem datas em UTC e calculam janelas no fuso `America/Sao_Paulo`;
+- os endpoints de resumo exigem o mesmo JWT emitido pela API de autenticacao.
+
+O contrato detalhado esta em [Indicadores do Dashboard](./dashboard-indicators.md).
 
 ## Ponto de atencao
 

@@ -1,5 +1,21 @@
 # Runbooks e Diagnostico
 
+## 0. Subir a plataforma local
+
+Usar os parametros de desenvolvimento, nunca os de producao:
+
+- `MONGO_PARAMETER_NAME=vyracare/shared/mongo-dev`
+- `JWT_PARAMETER_NAME=vyracare/shared/jwt-signing-dev`
+- `Mongo__Database=vyracare_db_dev`
+- `AWS_REGION=us-east-1`
+
+Portas esperadas:
+
+- frontends: shell `4200`, dashboard `4201`, user `4202`, profile `4203`, proceedings `4204`;
+- backends: auth `5000`, client `5001`, proceedings `5002`, appointments `5003`, finance `5004`.
+
+Validar a subida por HTTP. Para appointments e finance, usar `GET /health`; para os demais, validar o Swagger ou uma rota conhecida. Logs locais devem ficar sob `.vyracare-runtime/<timestamp>` fora dos repositorios de produto.
+
 ## 1. Erro `500` em API de auth
 
 ### Verificacoes

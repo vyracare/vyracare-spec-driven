@@ -95,6 +95,20 @@ Sem especificacao centralizada, os riscos aumentam:
 
 Com especificacao centralizada, o objetivo e que qualquer novo repositorio siga o mesmo comportamento sem reinterpretacao local.
 
+## Rastreabilidade obrigatoria de mudancas
+
+Toda mudanca funcional, tecnica ou operacional no ecossistema deve atualizar o `vyracare-spec-driven` na mesma entrega.
+
+O registro precisa apontar, conforme o impacto:
+
+- contrato funcional e regras de calculo;
+- repositorios e dependencias envolvidos;
+- endpoints, configuracoes e ambientes afetados;
+- procedimento de execucao, validacao ou recuperacao;
+- diferencas entre o estado local e o estado publicado.
+
+Uma mudanca de codigo sem reflexo na especificacao e considerada incompleta. Quando nao houver alteracao de contrato, a especificacao deve ao menos registrar a decisao, restricao ou evidencia operacional relevante.
+
 ## Objetivo adicional desta base
 
 Esta base nao existe apenas para descrever o ecossistema atual.

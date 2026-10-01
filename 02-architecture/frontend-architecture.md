@@ -80,6 +80,15 @@ Isso vale para:
 - shell consumidor de auth
 - MFEs consumidores de APIs especificas
 
+### Dashboard
+
+O `vyracare-app-dashboard-mfe` nao mantem valores demonstrativos nos cards integrados. Ele consulta:
+
+- `appointmentsApiUrl` para os indicadores operacionais;
+- `financeApiUrl` para os indicadores de saude financeira.
+
+As duas chamadas enviam o JWT do usuario. O ambiente local aponta para as portas `5003` e `5004`; os arquivos de `dev`, `hml` e `prod` devem receber as URLs publicadas pelas esteiras das APIs.
+
 ## Risco conhecido
 
 Quando automacoes alteram arquivos de environment, o maior risco e gerar:

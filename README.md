@@ -20,6 +20,7 @@ O objetivo nao e substituir o codigo-fonte nem os READMEs dos repositorios. O ob
 ### Arquitetura
 - [Arquitetura Frontend](./02-architecture/frontend-architecture.md)
 - [Arquitetura Backend](./02-architecture/backend-architecture.md)
+- [Indicadores do Dashboard](./02-architecture/dashboard-indicators.md)
 - [Estrategia de Ambientes](./02-architecture/environment-strategy.md)
 
 ### Entrega
@@ -57,6 +58,8 @@ Esta base reflete o que esta implementado ate o momento nos seguintes grupos:
 - `vyracare-api-authentication`
 - `vyracare-api-client`
 - `vyracare-api-proceedings`
+- `vyracare-api-appointments`
+- `vyracare-api-finance`
 - `templates-angular`
 - `template-dot-net-api`
 - `vyracare-infra-pipes-angular`

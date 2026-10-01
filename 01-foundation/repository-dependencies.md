@@ -40,6 +40,8 @@ O objetivo e evitar reconstrucoes ou evolucoes fora de ordem.
 | `vyracare-api-authentication` | `template-dot-net-api`, `vyracare-infra-pipes-dot-net`, AWS, MongoDB Atlas | auth publica Lambda, Gateway e Cognito |
 | `vyracare-api-client` | `template-dot-net-api`, `vyracare-infra-pipes-dot-net`, AWS, MongoDB Atlas | API de clientes |
 | `vyracare-api-proceedings` | `template-dot-net-api`, `vyracare-infra-pipes-dot-net`, AWS, MongoDB Atlas | API de procedimentos |
+| `vyracare-api-appointments` | `template-dot-net-api`, `vyracare-infra-pipes-dot-net`, AWS, MongoDB Atlas | API de agenda e indicadores operacionais |
+| `vyracare-api-finance` | `template-dot-net-api`, `vyracare-infra-pipes-dot-net`, AWS, MongoDB Atlas | API financeira e indicadores mensais |
 
 ## Dependencias cruzadas entre produto
 
@@ -59,6 +61,7 @@ O objetivo e evitar reconstrucoes ou evolucoes fora de ordem.
 - `vyracare-app-user-mfe` depende das URLs de auth e client
 - `vyracare-app-profile-mfe` pode depender de auth e de backend proprio conforme evolucao
 - `vyracare-app-proceedings-mfe` depende da API de proceedings quando o fluxo remoto esta ativo
+- `vyracare-app-dashboard-mfe` depende das APIs de appointments e finance para compor seus indicadores
 
 ### APIs e consumers
 
