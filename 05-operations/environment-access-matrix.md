@@ -66,7 +66,21 @@ Esta matriz consolida os principais acessos, identificadores e recursos por ambi
 | Appointments | `http://localhost:5003` |
 | Finance | `http://localhost:5004` |
 
-As APIs de appointments e finance ainda nao possuem URLs publicadas registradas para `dev`, `hml` e `prod`. Ate o deploy das respectivas esteiras, somente o contrato local deve ser considerado ativo.
+### Appointments
+
+| Ambiente | API Gateway | API ID | Base URL | Health | Swagger UI |
+| --- | --- | --- | --- | --- | --- |
+| Dev | `vyracare-api-appointments-dev` | `b7bbqimau6` | `https://b7bbqimau6.execute-api.us-east-1.amazonaws.com/api/appointments` | `https://b7bbqimau6.execute-api.us-east-1.amazonaws.com/health` | `https://b7bbqimau6.execute-api.us-east-1.amazonaws.com/swagger/index.html` |
+| HML | `vyracare-api-appointments-hml` | `dvlrcs8lg0` | `https://dvlrcs8lg0.execute-api.us-east-1.amazonaws.com/api/appointments` | `https://dvlrcs8lg0.execute-api.us-east-1.amazonaws.com/health` | `https://dvlrcs8lg0.execute-api.us-east-1.amazonaws.com/swagger/index.html` |
+| Prod | `vyracare-api-appointments` | `clsyv1me94` | `https://clsyv1me94.execute-api.us-east-1.amazonaws.com/api/appointments` | `https://clsyv1me94.execute-api.us-east-1.amazonaws.com/health` | `https://clsyv1me94.execute-api.us-east-1.amazonaws.com/swagger/index.html` |
+
+### Finance
+
+| Ambiente | API Gateway | API ID | Base URL | Health | Swagger UI |
+| --- | --- | --- | --- | --- | --- |
+| Dev | `vyracare-api-finance-dev` | `mspd7uj8ne` | `https://mspd7uj8ne.execute-api.us-east-1.amazonaws.com/api/finance` | `https://mspd7uj8ne.execute-api.us-east-1.amazonaws.com/health` | `https://mspd7uj8ne.execute-api.us-east-1.amazonaws.com/swagger/index.html` |
+| HML | `vyracare-api-finance-hml` | `u93rhr9p30` | `https://u93rhr9p30.execute-api.us-east-1.amazonaws.com/api/finance` | `https://u93rhr9p30.execute-api.us-east-1.amazonaws.com/health` | `https://u93rhr9p30.execute-api.us-east-1.amazonaws.com/swagger/index.html` |
+| Prod | `vyracare-api-finance` | `e60pd8ki1b` | `https://e60pd8ki1b.execute-api.us-east-1.amazonaws.com/api/finance` | `https://e60pd8ki1b.execute-api.us-east-1.amazonaws.com/health` | `https://e60pd8ki1b.execute-api.us-east-1.amazonaws.com/swagger/index.html` |
 
 ### Authentication
 
