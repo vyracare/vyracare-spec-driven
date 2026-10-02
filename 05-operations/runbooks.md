@@ -138,3 +138,14 @@ No caso da auth, o Terraform dedicado nao provisionava as rotas de Swagger inici
 - `aws apigatewayv2 get-integrations --api-id <id>`
 - `curl -i https://<api-id>.execute-api.us-east-1.amazonaws.com/swagger/index.html`
 - `curl -i https://<api-id>.execute-api.us-east-1.amazonaws.com/swagger/v1/swagger.json`
+
+## 9. Notificacao de atendimento nao aparece
+
+### Verificacoes
+
+1. Confirmar que o agendamento possui `reminderAt` anterior ao horario atual e `notificationSentAt` vazio.
+2. Confirmar que o atendimento ainda nao iniciou e nao esta concluido ou cancelado.
+3. Testar `GET /api/appointments/notifications/due` com JWT valido.
+4. Confirmar que o navegador concedeu permissao de notificacao ao dominio do shell.
+5. Manter uma rota do dashboard carregada para que a consulta periodica esteja ativa.
+6. Depois da exibicao, confirmar que `POST /api/appointments/{id}/notifications/acknowledge` responde `204`.

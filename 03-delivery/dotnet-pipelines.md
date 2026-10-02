@@ -29,7 +29,7 @@ Versao atual padrao do stack:
 - atualiza shell e `app-user-mfe`
 
 ### Generic
-`vyracare-api-client` e `vyracare-api-proceedings` usam a esteira generica.
+`vyracare-api-client`, `vyracare-api-proceedings`, `vyracare-api-appointments` e `vyracare-api-finance` usam a esteira generica.
 
 ## Fluxo por repositorio .NET
 
@@ -140,6 +140,10 @@ Quando uma API publica, a esteira pode:
   - `environments.ts` apenas como fallback para repositorios que ainda nao receberam o arquivo `dev`
   - `environments.hml.ts`
   - `environments.prod.ts`
+
+As APIs de appointments e finance atualizam, respectivamente, `appointmentsApiUrl` e `financeApiUrl` no `vyracare-app-dashboard-mfe`.
+
+Para sincronizacao em `hml`, o backend e o MFE consumidor precisam possuir a mesma branch `release/*`; caso contrario, a esteira preserva o frontend e registra que a atualizacao foi ignorada.
 
 ## Ponto sensivel
 

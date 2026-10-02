@@ -75,3 +75,37 @@ Regras:
 | Prod | preenchido pela esteira apos deploy | preenchido pela esteira apos deploy |
 
 Enquanto nao houver dados cadastrados, os cards exibem zero. Falhas de rede ou autenticacao sao tratadas pelo dashboard sem restaurar valores ficticios.
+
+## Agenda de atendimentos
+
+Rota no shell:
+
+- `/dashboard/agenda/novo`
+
+A tela pertence ao `vyracare-app-dashboard-mfe` e permite:
+
+- informar nome e telefone do paciente;
+- informar o profissional e o procedimento;
+- definir inicio e termino do atendimento;
+- configurar antecedencia em horas ou dias por modal;
+- listar todos os agendamentos com estado de proximidade.
+
+O backend devolve um `scheduleStatus` calculado:
+
+- `Today`: atendimento no dia corrente;
+- `Approaching`: atendimento nas proximas 24 horas;
+- `Scheduled`: atendimento futuro fora da janela de 24 horas;
+- `Overdue`: horario encerrado sem conclusao;
+- `Completed`, `Cancelled` e `NoShow`: estados finais do atendimento.
+
+## Contrato de notificacao
+
+Ao criar o agendamento, a API transforma a antecedencia em `reminderAt` UTC. O dashboard consulta a cada minuto:
+
+- `GET /api/appointments/notifications/due`
+
+Quando o navegador concedeu permissao, o frontend exibe uma notificacao nativa e confirma a entrega em:
+
+- `POST /api/appointments/{id}/notifications/acknowledge`
+
+A confirmacao grava `notificationSentAt` e impede repeticao. Agendamentos cancelados, concluidos ou ja iniciados nao sao retornados. Esta fase cobre notificacao interna/nativa do navegador; SMS, WhatsApp e e-mail exigem integracao futura com provedor externo.
