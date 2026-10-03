@@ -56,6 +56,16 @@ Rotas atualmente adotadas para Swagger:
 
 `vyracare-api-authentication` tambem provisiona recursos de Cognito no fluxo de auth.
 
+## Autorizacao por nivel de acesso
+
+O JWT emitido pela autenticacao carrega o `AccessLevel` como role e como claim `access_level`. O cargo funcional permanece separado em `job_role`.
+
+As APIs devem aplicar autorizacao no backend para operacoes privilegiadas. A ocultacao ou desabilitacao de controles no frontend nao substitui essa validacao. Na gestao de pacientes:
+
+- leitura e notas exigem usuario autenticado;
+- atualizacao integral da ficha exige role `Administrador`;
+- tokens emitidos antes da inclusao das claims precisam ser renovados por novo login.
+
 ## Logging
 
 Diagnostico principal de backend fica em:

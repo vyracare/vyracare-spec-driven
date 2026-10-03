@@ -58,7 +58,7 @@ O objetivo e evitar reconstrucoes ou evolucoes fora de ordem.
 
 ### MFEs e APIs
 
-- `vyracare-app-user-mfe` depende das URLs de auth e client
+- `vyracare-app-user-mfe` depende da API client para pacientes e das claims emitidas pela auth para controlar o modo administrador
 - `vyracare-app-profile-mfe` pode depender de auth e de backend proprio conforme evolucao
 - `vyracare-app-proceedings-mfe` depende da API de proceedings quando o fluxo remoto esta ativo
 - `vyracare-app-dashboard-mfe` depende das APIs de appointments e finance para compor seus indicadores
