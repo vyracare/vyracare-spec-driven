@@ -50,7 +50,7 @@ Em larguras menores, o cabecalho e as barras de acao devem ser empilhados para e
 
 ## Componentes de formulario compartilhados
 
-O pacote `@vyracare/design-system` a partir da versao `0.3.1` e a fonte dos seguintes controles:
+O pacote `@vyracare/design-system` a partir da versao `0.4.0` e a fonte dos seguintes controles:
 
 - `vc-autocomplete`: ControlValueAccessor com label, hint, erro, carregamento, vazio, navegacao por teclado, lista acessivel e eventos de pesquisa/selecao. Os resultados sao exibidos em um painel flutuante sobre o conteudo, ancorado na largura do campo e sem alterar a altura ou o fluxo do formulario;
 - `vc-checkbox`: checkbox visual padronizado com label, descricao, erro e integracao com Angular Forms;

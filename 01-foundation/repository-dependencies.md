@@ -63,7 +63,7 @@ O objetivo e evitar reconstrucoes ou evolucoes fora de ordem.
 - `vyracare-app-proceedings-mfe` depende da API de proceedings quando o fluxo remoto esta ativo
 - `vyracare-app-dashboard-mfe` depende das APIs de appointments e finance para compor seus indicadores
 - `vyracare-app-dashboard-mfe` depende tambem de authentication e proceedings para pesquisar e selecionar funcionarios e procedimentos no cadastro de atendimento
-- `vyracare-app-dashboard-mfe` e `vyracare-app-user-mfe` exigem `@vyracare/design-system` `^0.3.1` para autocomplete flutuante, checkbox, select customizado e mascaras de CPF/CEP
+- `vyracare-app-dashboard-mfe` e `vyracare-app-user-mfe` exigem `@vyracare/design-system` `^0.4.0` para autocomplete flutuante, checkbox, select customizado e mascaras de CPF/CEP
 
 ### APIs e consumers
 
