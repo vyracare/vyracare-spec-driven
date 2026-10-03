@@ -38,7 +38,7 @@ O objetivo e evitar reconstrucoes ou evolucoes fora de ordem.
 | Repositorio | Depende de | Motivo |
 | --- | --- | --- |
 | `vyracare-api-authentication` | `template-dot-net-api`, `vyracare-infra-pipes-dot-net`, AWS, MongoDB Atlas | auth publica Lambda, Gateway e Cognito |
-| `vyracare-api-client` | `template-dot-net-api`, `vyracare-infra-pipes-dot-net`, AWS, MongoDB Atlas | API de clientes |
+| `vyracare-api-client` | `template-dot-net-api`, `vyracare-infra-pipes-dot-net`, AWS, MongoDB Atlas, API Busca CEP dos Correios | API de clientes e fachada de consulta de CEP |
 | `vyracare-api-proceedings` | `template-dot-net-api`, `vyracare-infra-pipes-dot-net`, AWS, MongoDB Atlas | API de procedimentos |
 | `vyracare-api-appointments` | `template-dot-net-api`, `vyracare-infra-pipes-dot-net`, AWS, MongoDB Atlas | API de agenda e indicadores operacionais |
 | `vyracare-api-finance` | `template-dot-net-api`, `vyracare-infra-pipes-dot-net`, AWS, MongoDB Atlas | API financeira e indicadores mensais |
@@ -63,6 +63,7 @@ O objetivo e evitar reconstrucoes ou evolucoes fora de ordem.
 - `vyracare-app-proceedings-mfe` depende da API de proceedings quando o fluxo remoto esta ativo
 - `vyracare-app-dashboard-mfe` depende das APIs de appointments e finance para compor seus indicadores
 - `vyracare-app-dashboard-mfe` depende tambem de authentication e proceedings para pesquisar e selecionar funcionarios e procedimentos no cadastro de atendimento
+- `vyracare-app-dashboard-mfe` e `vyracare-app-user-mfe` exigem `@vyracare/design-system` `^0.3.0` para autocomplete, checkbox, select customizado e mascaras de CPF/CEP
 
 ### APIs e consumers
 

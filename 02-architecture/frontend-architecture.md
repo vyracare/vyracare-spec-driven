@@ -41,13 +41,23 @@ As telas funcionais autenticadas, com excecao da pagina inicial do Dashboard, se
 - bloco de apresentacao com fundo em gradiente suave, borda e cantos arredondados;
 - selo superior em caixa alta para identificar o dominio da tela;
 - titulo e descricao objetiva da atividade;
-- card branco lateral com uma mensagem curta de contexto, seguranca ou operacao.
 
 A pagina inicial do Dashboard permanece com o hero e os indicadores proprios. A regra do cabecalho comum se aplica atualmente a Funcionarios, Procedimentos, Pacientes, Cadastro de paciente, Ficha do paciente e Atendimentos.
 
-Acoes primarias de negocio, como `Cadastrar paciente` e `Cadastrar atendimento`, ficam na barra da secao de conteudo logo abaixo do cabecalho. Isso preserva o card lateral do cabecalho e mantem a acao proxima da tabela ou formulario que ela controla.
+Acoes primarias de negocio, como `Cadastrar paciente` e `Cadastrar atendimento`, ficam na barra da secao de conteudo logo abaixo do cabecalho. O bloco branco lateral de mensagem foi removido dos cabecalhos padronizados para reduzir ruido visual e deixar a apresentacao concentrada no titulo e na descricao.
 
-Em larguras menores, o cabecalho, o card lateral e as barras de acao devem ser empilhados para evitar rolagem horizontal e preservar a legibilidade.
+Em larguras menores, o cabecalho e as barras de acao devem ser empilhados para evitar rolagem horizontal e preservar a legibilidade.
+
+## Componentes de formulario compartilhados
+
+O pacote `@vyracare/design-system` a partir da versao `0.3.0` e a fonte dos seguintes controles:
+
+- `vc-autocomplete`: ControlValueAccessor com label, hint, erro, carregamento, vazio, navegacao por teclado, lista acessivel e eventos de pesquisa/selecao;
+- `vc-checkbox`: checkbox visual padronizado com label, descricao, erro e integracao com Angular Forms;
+- `vc-select`: listbox customizado, sem depender da aparencia nativa diferente entre navegadores;
+- `vc-input`: inclui mascaras de telefone, e-mail, data, CPF e CEP e emite o valor mascarado no desfoque.
+
+Os MFEs nao devem recriar paineis ou estilos de autocomplete localmente. O `vyracare-app-dashboard-mfe` usa `vc-autocomplete` nos seletores de funcionario e procedimento, mantendo debounce e consultas de dominio no MFE. O `vyracare-app-user-mfe` usa os controles compartilhados no cadastro e na edicao de pacientes.
 
 ## Ambientes frontend
 

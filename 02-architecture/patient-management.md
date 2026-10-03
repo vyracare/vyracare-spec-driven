@@ -14,7 +14,29 @@ O `vyracare-app-shell` monta o `vyracare-app-user-mfe` em `/pacientes`.
 
 A rota anterior `/cadastro/pacientes` redireciona para `/pacientes/cadastro` para preservar links existentes. O menu lateral aponta para `/pacientes`.
 
-As tres telas do dominio usam o cabecalho visual comum das telas internas: breadcrumb, hero em gradiente, selo de contexto, titulo, descricao e card lateral. Na consulta, o botao `Cadastrar paciente` fica na barra da tabela. Na ficha, as acoes `Historico` e `Adicionar nota` ficam logo abaixo do cabecalho, mantendo o card lateral dedicado ao nivel de acesso do usuario.
+As tres telas do dominio usam o cabecalho visual comum das telas internas: breadcrumb, hero em gradiente, selo de contexto, titulo e descricao. O antigo card branco lateral de contexto foi removido de todos os cabecalhos padronizados. Na consulta, o botao `Cadastrar paciente` fica na barra da tabela. Na ficha, as acoes `Historico` e `Adicionar nota` ficam logo abaixo do cabecalho.
+
+## Formulario cadastral
+
+O contrato da ficha nao possui mais os campos `rg` e `whatsapp`. O telefone principal tambem e o contato usado para WhatsApp. Documentos antigos do MongoDB podem continuar contendo esses atributos durante a transicao, mas eles sao ignorados na leitura e nao voltam a ser persistidos nas atualizacoes.
+
+Regras de interface:
+
+- CPF usa a mascara `000.000.000-00` e validacao do formato;
+- e-mail remove espacos, normaliza para minusculas e usa validacao de e-mail;
+- telefone usa a mascara nacional de dez ou onze digitos;
+- CEP e o primeiro campo do endereco e usa a mascara `00000-000`;
+- condicoes medicas, alergias, medicamentos em uso, cirurgias anteriores e procedimentos esteticos anteriores sao campos multilinha;
+- genero, estado, tipo de pele e exposicao solar usam o select customizado do Design System;
+- habitos e consentimento usam o checkbox do Design System.
+
+Ao desfocar um CEP completo, o MFE consulta somente a API interna:
+
+- `GET /api/client/addresses/postal-code/{cep}`
+
+A API normaliza o CEP para oito digitos, consulta a API Busca CEP oficial dos Correios e devolve `postalCode`, `street`, `complement`, `neighborhood`, `city` e `state`. Rua, bairro, cidade e estado sao preenchidos automaticamente; o complemento digitado pelo usuario tem precedencia.
+
+A integracao oficial exige contrato com os Correios e token Bearer. A configuracao e feita apenas no backend por `Correios__BaseUrl`, `Correios__AddressPathTemplate` e `Correios__BearerToken`. Sem token ou quando o fornecedor estiver indisponivel, a rota responde `503`; CEP invalido responde `400` e CEP inexistente responde `404`.
 
 ## Consulta
 

@@ -116,6 +116,18 @@ As APIs expõem consultas autenticadas e limitadas para os autocompletes de agen
 
 Os projetos principais de Authentication e Proceedings excluem a arvore dos respectivos projetos de testes dos itens de conteudo do Web SDK. Essa separacao evita que artefatos aninhados de teste ou publicacao sejam copiados para o build das APIs.
 
+## Consulta de CEP
+
+O `vyracare-api-client` atua como fachada autenticada para a API Busca CEP dos Correios:
+
+- rota interna: `GET /api/client/addresses/postal-code/{cep}`;
+- CEP normalizado para oito digitos antes da chamada externa;
+- credencial Bearer mantida exclusivamente no backend;
+- `400` para formato invalido, `404` para CEP inexistente e `503` para configuracao ausente, timeout ou falha do fornecedor;
+- configuracoes sensiveis fornecidas por variaveis de ambiente/Parameter Store, nunca pelo MFE.
+
+O documento MongoDB de pacientes ignora campos desconhecidos para manter compatibilidade de leitura com registros antigos que ainda contenham `rg` ou `whatsapp`.
+
 ## Ponto de atencao
 
 As pipes e o bootstrap esperam que os parametros JSON estejam gravados em formato valido e sem BOM, por exemplo:
