@@ -99,6 +99,8 @@ Os campos `Funcionario responsavel` e `Procedimento` nao aceitam texto livre com
 
 A lista de resultados usa o `vc-autocomplete` do Design System e deve abrir como uma camada flutuante sobre as linhas seguintes do formulario. O painel acompanha a largura do campo, preserva a altura do grid, possui destaque de hover/foco e mantem navegacao por teclado e atributos de acessibilidade.
 
+No modal de cadastro, o bloco de notificacao deve manter espacamento vertical proprio antes da barra de acoes, evitando contato visual entre o card de lembrete e os botoes `Cancelar` e `Salvar atendimento`.
+
 Contratos consumidos:
 
 - `GET /api/auth/employees?search={texto}&limit=20`: retorna funcionarios ativos cujo nome, e-mail ou telefone corresponde ao texto. A resposta contem somente `id`, `fullName`, `email`, `phone` e `role`, sem credenciais ou hash de senha;
