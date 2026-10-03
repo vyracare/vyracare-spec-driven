@@ -50,14 +50,14 @@ Em larguras menores, o cabecalho e as barras de acao devem ser empilhados para e
 
 ## Componentes de formulario compartilhados
 
-O pacote `@vyracare/design-system` a partir da versao `0.3.0` e a fonte dos seguintes controles:
+O pacote `@vyracare/design-system` a partir da versao `0.3.1` e a fonte dos seguintes controles:
 
-- `vc-autocomplete`: ControlValueAccessor com label, hint, erro, carregamento, vazio, navegacao por teclado, lista acessivel e eventos de pesquisa/selecao;
+- `vc-autocomplete`: ControlValueAccessor com label, hint, erro, carregamento, vazio, navegacao por teclado, lista acessivel e eventos de pesquisa/selecao. Os resultados sao exibidos em um painel flutuante sobre o conteudo, ancorado na largura do campo e sem alterar a altura ou o fluxo do formulario;
 - `vc-checkbox`: checkbox visual padronizado com label, descricao, erro e integracao com Angular Forms;
 - `vc-select`: listbox customizado, sem depender da aparencia nativa diferente entre navegadores;
 - `vc-input`: inclui mascaras de telefone, e-mail, data, CPF e CEP e emite o valor mascarado no desfoque.
 
-Os MFEs nao devem recriar paineis ou estilos de autocomplete localmente. O `vyracare-app-dashboard-mfe` usa `vc-autocomplete` nos seletores de funcionario e procedimento, mantendo debounce e consultas de dominio no MFE. O `vyracare-app-user-mfe` usa os controles compartilhados no cadastro e na edicao de pacientes.
+Os MFEs nao devem recriar paineis ou estilos de autocomplete localmente. Empilhamento, sombra, estados interativos, truncamento de textos extensos e responsividade pertencem ao componente compartilhado. O `vyracare-app-dashboard-mfe` usa `vc-autocomplete` nos seletores de funcionario e procedimento, mantendo debounce e consultas de dominio no MFE. O `vyracare-app-user-mfe` usa os controles compartilhados no cadastro e na edicao de pacientes.
 
 ## Ambientes frontend
 

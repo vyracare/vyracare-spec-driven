@@ -91,11 +91,13 @@ A tela pertence ao `vyracare-app-dashboard-mfe` e permite:
 - configurar antecedencia em horas ou dias por modal;
 - listar todos os agendamentos com estado de proximidade.
 
-O conteudo principal segue o mesmo padrao visual das demais telas internas: breadcrumb `Dashboard / Atendimentos`, cabecalho em gradiente com selo e card contextual, e tabela. O formulario nao fica mais aberto na pagina; o botao `Cadastrar atendimento`, localizado na barra da tabela, abre um modal com todos os campos e a configuracao de notificacao. O shell apresenta o item lateral `Atendimentos`, que aponta para esta rota.
+O conteudo principal segue o mesmo padrao visual das demais telas internas: breadcrumb `Dashboard / Atendimentos`, cabecalho em gradiente sem selo ou card contextual auxiliar, e tabela. O formulario nao fica mais aberto na pagina; o botao `Cadastrar atendimento`, localizado na barra da tabela, abre um modal com todos os campos e a configuracao de notificacao. O shell apresenta o item lateral `Atendimentos`, que aponta para esta rota.
 
 ### Autocomplete de funcionario e procedimento
 
 Os campos `Funcionario responsavel` e `Procedimento` nao aceitam texto livre como referencia final. A interface inicia a pesquisa apos dois caracteres, aplica debounce de 250 ms e exige que o usuario selecione uma opcao retornada pelas APIs.
+
+A lista de resultados usa o `vc-autocomplete` do Design System e deve abrir como uma camada flutuante sobre as linhas seguintes do formulario. O painel acompanha a largura do campo, preserva a altura do grid, possui destaque de hover/foco e mantem navegacao por teclado e atributos de acessibilidade.
 
 Contratos consumidos:
 
