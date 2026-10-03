@@ -62,6 +62,7 @@ O objetivo e evitar reconstrucoes ou evolucoes fora de ordem.
 - `vyracare-app-profile-mfe` pode depender de auth e de backend proprio conforme evolucao
 - `vyracare-app-proceedings-mfe` depende da API de proceedings quando o fluxo remoto esta ativo
 - `vyracare-app-dashboard-mfe` depende das APIs de appointments e finance para compor seus indicadores
+- `vyracare-app-dashboard-mfe` depende tambem de authentication e proceedings para pesquisar e selecionar funcionarios e procedimentos no cadastro de atendimento
 
 ### APIs e consumers
 

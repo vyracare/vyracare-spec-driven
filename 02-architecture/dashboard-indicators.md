@@ -85,12 +85,26 @@ Rota no shell:
 A tela pertence ao `vyracare-app-dashboard-mfe` e permite:
 
 - informar nome e telefone do paciente;
-- informar o profissional e o procedimento;
+- pesquisar e selecionar o profissional cadastrado por nome, e-mail ou telefone;
+- pesquisar e selecionar o procedimento ativo por nome ou codigo;
 - definir inicio e termino do atendimento;
 - configurar antecedencia em horas ou dias por modal;
 - listar todos os agendamentos com estado de proximidade.
 
 O conteudo principal segue o mesmo padrao visual das demais telas internas: breadcrumb `Dashboard / Atendimentos`, cabecalho em gradiente com selo e card contextual, e tabela. O formulario nao fica mais aberto na pagina; o botao `Cadastrar atendimento`, localizado na barra da tabela, abre um modal com todos os campos e a configuracao de notificacao. O shell apresenta o item lateral `Atendimentos`, que aponta para esta rota.
+
+### Autocomplete de funcionario e procedimento
+
+Os campos `Funcionario responsavel` e `Procedimento` nao aceitam texto livre como referencia final. A interface inicia a pesquisa apos dois caracteres, aplica debounce de 250 ms e exige que o usuario selecione uma opcao retornada pelas APIs.
+
+Contratos consumidos:
+
+- `GET /api/auth/employees?search={texto}&limit=20`: retorna funcionarios ativos cujo nome, e-mail ou telefone corresponde ao texto. A resposta contem somente `id`, `fullName`, `email`, `phone` e `role`, sem credenciais ou hash de senha;
+- `GET /api/proceedings?search={texto}&activeOnly=true&limit=20`: retorna procedimentos ativos cujo nome ou codigo corresponde ao texto.
+
+Ao salvar, o agendamento persiste o identificador e o nome da opcao selecionada em `employeeId`/`employeeName` e `proceedingId`/`proceedingName`. Alterar o texto depois de uma selecao invalida a referencia anterior e obriga uma nova selecao.
+
+O `vyracare-app-dashboard-mfe` possui URLs separadas para Authentication e Proceedings em `local`, `dev`, `hml` e `prod`, alem das URLs de Appointments e Finance ja utilizadas.
 
 O backend devolve um `scheduleStatus` calculado:
 

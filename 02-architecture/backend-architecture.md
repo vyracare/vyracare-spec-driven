@@ -105,6 +105,17 @@ No caso da auth, o suporte a Swagger depende de rotas explicitas no Terraform de
 
 O contrato detalhado esta em [Indicadores do Dashboard](./dashboard-indicators.md).
 
+## Consultas para seletores operacionais
+
+As APIs expõem consultas autenticadas e limitadas para os autocompletes de agendamento:
+
+- Authentication pesquisa somente funcionarios ativos por nome, e-mail ou telefone e projeta uma resposta sem dados de credencial;
+- Proceedings aceita filtros opcionais `search`, `activeOnly` e `limit`; `search` compara nome e codigo sem diferenciar maiusculas de minusculas;
+- os termos usados em expressoes regulares sao escapados antes de chegar ao MongoDB;
+- os limites sao normalizados no backend para evitar consultas abertas pelo autocomplete.
+
+Os projetos principais de Authentication e Proceedings excluem a arvore dos respectivos projetos de testes dos itens de conteudo do Web SDK. Essa separacao evita que artefatos aninhados de teste ou publicacao sejam copiados para o build das APIs.
+
 ## Ponto de atencao
 
 As pipes e o bootstrap esperam que os parametros JSON estejam gravados em formato valido e sem BOM, por exemplo:
