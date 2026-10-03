@@ -33,6 +33,22 @@ Cada projeto segue o mesmo principio:
 - `environments.hml.ts` para `hml`
 - `environments.prod.ts` para `prod`
 
+## Cabecalho das telas internas
+
+As telas funcionais autenticadas, com excecao da pagina inicial do Dashboard, seguem um cabecalho visual comum:
+
+- breadcrumb iniciado por `Dashboard` para indicar o contexto de navegacao;
+- bloco de apresentacao com fundo em gradiente suave, borda e cantos arredondados;
+- selo superior em caixa alta para identificar o dominio da tela;
+- titulo e descricao objetiva da atividade;
+- card branco lateral com uma mensagem curta de contexto, seguranca ou operacao.
+
+A pagina inicial do Dashboard permanece com o hero e os indicadores proprios. A regra do cabecalho comum se aplica atualmente a Funcionarios, Procedimentos, Pacientes, Cadastro de paciente, Ficha do paciente e Atendimentos.
+
+Acoes primarias de negocio, como `Cadastrar paciente` e `Cadastrar atendimento`, ficam na barra da secao de conteudo logo abaixo do cabecalho. Isso preserva o card lateral do cabecalho e mantem a acao proxima da tabela ou formulario que ela controla.
+
+Em larguras menores, o cabecalho, o card lateral e as barras de acao devem ser empilhados para evitar rolagem horizontal e preservar a legibilidade.
+
 ## Ambientes frontend
 
 ### Dev

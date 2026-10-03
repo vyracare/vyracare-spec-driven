@@ -14,6 +14,8 @@ O `vyracare-app-shell` monta o `vyracare-app-user-mfe` em `/pacientes`.
 
 A rota anterior `/cadastro/pacientes` redireciona para `/pacientes/cadastro` para preservar links existentes. O menu lateral aponta para `/pacientes`.
 
+As tres telas do dominio usam o cabecalho visual comum das telas internas: breadcrumb, hero em gradiente, selo de contexto, titulo, descricao e card lateral. Na consulta, o botao `Cadastrar paciente` fica na barra da tabela. Na ficha, as acoes `Historico` e `Adicionar nota` ficam logo abaixo do cabecalho, mantendo o card lateral dedicado ao nivel de acesso do usuario.
+
 ## Consulta
 
 A tela principal exibe nome, CPF, telefone, e-mail, ultima atualizacao e acoes. A busca usa um unico termo, sem diferenciar maiusculas e minusculas, sobre:

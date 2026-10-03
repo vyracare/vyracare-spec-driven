@@ -90,7 +90,7 @@ A tela pertence ao `vyracare-app-dashboard-mfe` e permite:
 - configurar antecedencia em horas ou dias por modal;
 - listar todos os agendamentos com estado de proximidade.
 
-O conteudo principal segue o mesmo padrao visual das demais telas: breadcrumb `Dashboard / Atendimentos`, cabecalho e tabela. O formulario nao fica mais aberto na pagina; o botao `Cadastrar atendimento` abre um modal com todos os campos e a configuracao de notificacao. O shell apresenta o item lateral `Atendimentos`, que aponta para esta rota.
+O conteudo principal segue o mesmo padrao visual das demais telas internas: breadcrumb `Dashboard / Atendimentos`, cabecalho em gradiente com selo e card contextual, e tabela. O formulario nao fica mais aberto na pagina; o botao `Cadastrar atendimento`, localizado na barra da tabela, abre um modal com todos os campos e a configuracao de notificacao. O shell apresenta o item lateral `Atendimentos`, que aponta para esta rota.
 
 O backend devolve um `scheduleStatus` calculado:
 
