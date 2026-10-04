@@ -29,7 +29,8 @@ Regras de interface:
 - rua, numero, complemento, bairro, cidade e estado iniciam desabilitados em um novo cadastro;
 - uma consulta de CEP bem-sucedida preenche rua, bairro, cidade e estado e libera os campos do endereco para revisao e complemento manual;
 - o numero permanece vazio e deve ser informado pelo usuario, pois nao faz parte do retorno de um CEP;
-- CEP invalido, inexistente ou com falha de consulta mantem os campos do endereco bloqueados e impede o envio da ficha;
+- CEP incompleto ou com formato invalido mantem os campos do endereco bloqueados ate que os oito digitos sejam informados;
+- CEP inexistente ou falha da integracao libera rua, numero, complemento, bairro, cidade e estado para preenchimento manual, preservando uma mensagem que explica a indisponibilidade;
 - ao editar uma ficha que ja possui endereco valido, os campos iniciam liberados para usuarios com permissao de edicao;
 - condicoes medicas, alergias, medicamentos em uso, cirurgias anteriores e procedimentos esteticos anteriores sao campos multilinha;
 - genero, estado, tipo de pele e exposicao solar usam o select customizado do Design System;
@@ -40,6 +41,8 @@ Ao desfocar um CEP completo, o MFE consulta somente a API interna:
 - `GET /api/client/addresses/postal-code/{cep}`
 
 A API normaliza o CEP para oito digitos, consulta a API Busca CEP oficial dos Correios e devolve `postalCode`, `street`, `complement`, `neighborhood`, `city` e `state`. Rua, bairro, cidade e estado sao preenchidos automaticamente; o complemento retornado e apresentado quando existir e pode ser alterado pelo usuario. O numero do imovel nao integra o contrato da consulta e sempre depende de preenchimento manual.
+
+Os campos dependentes usam o estado visual desabilitado do Design System enquanto aguardam um CEP completo ou o resultado da consulta. Esse estado deve ter fundo e borda acinzentados, texto atenuado e cursor de indisponibilidade para nao ser confundido com um campo editavel.
 
 A integracao oficial exige contrato com os Correios e token Bearer. A configuracao e feita apenas no backend por `Correios__BaseUrl`, `Correios__AddressPathTemplate` e `Correios__BearerToken`. Sem token ou quando o fornecedor estiver indisponivel, a rota responde `503`; CEP invalido responde `400` e CEP inexistente responde `404`.
 
