@@ -50,14 +50,18 @@ Em larguras menores, o cabecalho e as barras de acao devem ser empilhados para e
 
 ## Componentes de formulario compartilhados
 
-O pacote `@vyracare/design-system` a partir da versao `0.4.0` e a fonte dos seguintes controles:
+O pacote `@vyracare/design-system` e a fonte dos controles compartilhados. A partir da versao `0.5.0`, alem dos controles base, ele fornece campos semanticos para os dados recorrentes dos dominios:
 
 - `vc-autocomplete`: ControlValueAccessor com label, hint, erro, carregamento, vazio, navegacao por teclado, lista acessivel e eventos de pesquisa/selecao. Os resultados sao exibidos em um painel flutuante sobre o conteudo, ancorado na largura do campo e sem alterar a altura ou o fluxo do formulario;
 - `vc-checkbox`: checkbox visual padronizado com label, descricao, erro e integracao com Angular Forms;
 - `vc-select`: listbox customizado, sem depender da aparencia nativa diferente entre navegadores;
 - `vc-input`: inclui mascaras de telefone, e-mail, data, CPF e CEP e emite o valor mascarado no desfoque.
+- `vc-phone-input`: fixa tipo telefonico, teclado adequado, placeholder nacional e mascara para dez ou onze digitos;
+- `vc-email-input`: fixa tipo e teclado de e-mail e normaliza o valor sem espacos e em minusculas;
+- `vc-date-time-input`: usa o controle nativo `datetime-local` dentro do mesmo layout, estados e contrato de Angular Forms;
+- `vc-postal-code-input`: fixa teclado numerico, placeholder e mascara brasileira `00000-000`, preservando o evento de desfoque para consultas de endereco.
 
-Os MFEs nao devem recriar paineis ou estilos de autocomplete localmente. Empilhamento, sombra, estados interativos, truncamento de textos extensos e responsividade pertencem ao componente compartilhado. O `vyracare-app-dashboard-mfe` usa `vc-autocomplete` nos seletores de funcionario e procedimento, mantendo debounce e consultas de dominio no MFE. O `vyracare-app-user-mfe` usa os controles compartilhados no cadastro e na edicao de pacientes.
+Os MFEs devem preferir os campos semanticos quando o dado corresponder a telefone, e-mail, data/hora ou CEP, deixando validacoes de negocio no formulario consumidor. Eles nao devem recriar mascaras, tipos nativos ou placeholders para esses casos. Tambem nao devem recriar paineis ou estilos de autocomplete localmente. Empilhamento, sombra, estados interativos, truncamento de textos extensos e responsividade pertencem ao componente compartilhado. O `vyracare-app-dashboard-mfe` usa `vc-autocomplete` nos seletores de funcionario e procedimento e os campos semanticos no telefone e nos horarios do atendimento, mantendo debounce e consultas de dominio no MFE. O `vyracare-app-user-mfe` usa os controles compartilhados no cadastro e na edicao de pacientes.
 
 ## Ambientes frontend
 
