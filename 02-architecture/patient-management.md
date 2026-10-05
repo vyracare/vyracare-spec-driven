@@ -110,6 +110,10 @@ Entrada de criacao:
 
 A API acrescenta `id`, `authorId`, `authorName` e `createdAt` em UTC a partir do usuario autenticado e do relogio do backend. O historico e devolvido do mais recente para o mais antigo. Notas sao anexadas e nao substituem registros anteriores.
 
+O primeiro item cronologico do historico representa a abertura do prontuario. Em novos cadastros, a API persiste automaticamente uma nota com `kind: record_opened`, data de criacao e identidade do funcionario autenticado que realizou o cadastro. As notas manuais usam `kind: professional_note`.
+
+Para prontuarios anteriores a essa regra, `GET /api/client/patients/{id}/notes` inclui em leitura um evento de abertura derivado de `Patient.CreatedAt`, identificado por `record_opened` e atribuido ao `Sistema Vyracare`. A derivacao ocorre somente quando nao existe uma abertura persistida, evitando duplicidade e dispensando migracao destrutiva dos documentos antigos. As telas de consulta e edicao devem consumir esse endpoint para exibir o mesmo historico consolidado.
+
 ## Responsabilidades por repositorio
 
 - `vyracare-app-user-mfe`: tabela, busca, cadastro, ficha, modal de nota e historico;
