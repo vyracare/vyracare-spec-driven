@@ -16,6 +16,15 @@ Portas esperadas:
 
 Validar a subida por HTTP. Para appointments e finance, usar `GET /health`; para os demais, validar o Swagger ou uma rota conhecida. Logs locais devem ficar sob `.vyracare-runtime/<timestamp>` fora dos repositorios de produto.
 
+Quando a politica de Controle de Aplicativo do Windows bloquear os assemblies `.NET` locais com `0x800711C7`, executar as APIs em containers Docker. Os containers devem:
+
+- montar o codigo-fonte somente para leitura e compilar em um diretorio interno;
+- usar os parametros `mongo-dev` e `jwt-signing-dev` pelo perfil AWS local, sem copiar segredos para o repositorio;
+- publicar somente em `127.0.0.1`, nas portas definidas acima;
+- usar a politica de reinicio `unless-stopped` para permanecerem disponiveis durante os testes.
+
+Os arquivos `environments.ts` usados pelo `ng serve` devem apontar para as APIs locais: shell e profile para auth `5000`, user para client `5001`, proceedings para `5002` e dashboard para appointments `5003` e finance `5004`. Arquivos de `dev`, `hml` e `prod` continuam apontando para seus respectivos gateways publicados.
+
 ## 1. Erro `500` em API de auth
 
 ### Verificacoes
