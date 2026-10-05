@@ -14,7 +14,7 @@ O `vyracare-app-shell` monta o `vyracare-app-user-mfe` em `/pacientes`.
 
 A rota anterior `/cadastro/pacientes` redireciona para `/pacientes/cadastro` para preservar links existentes. O menu lateral aponta para `/pacientes`.
 
-As tres telas do dominio usam o cabecalho visual comum das telas internas: breadcrumb, hero em gradiente, selo de contexto, titulo e descricao. O antigo card branco lateral de contexto foi removido de todos os cabecalhos padronizados. Na consulta, o botao `Cadastrar paciente` fica na barra da tabela. Na ficha, as acoes `Historico` e `Adicionar nota` ficam logo abaixo do cabecalho.
+As tres telas do dominio usam o cabecalho visual comum das telas internas: breadcrumb, hero em gradiente, selo de contexto, titulo e descricao. O antigo card branco lateral de contexto foi removido de todos os cabecalhos padronizados. Na consulta, o botao `Cadastrar paciente` fica na barra da tabela. No prontuario, as acoes `Historico` e `Adicionar nota` ficam logo abaixo do cabecalho. O ultimo nivel do breadcrumb dessa tela usa a nomenclatura `Prontuario do paciente`.
 
 ## Formulario cadastral
 
@@ -61,6 +61,14 @@ Contrato:
 - `GET /api/client/patients?search={termo}`
 
 Sem `search`, a API devolve todos os pacientes ordenados por nome.
+
+As acoes de cada linha sao apresentadas pelos componentes `vc-icon-button` e `vc-tooltip` do Design System:
+
+- lapis para editar o prontuario;
+- caderno com adicao para registrar uma nota profissional;
+- relogio com historico para consultar as notas anteriores.
+
+Cada botao possui `ariaLabel` equivalente ao texto do tooltip para preservar a compreensao por teclado e tecnologias assistivas.
 
 ## Ficha e autorizacao
 
