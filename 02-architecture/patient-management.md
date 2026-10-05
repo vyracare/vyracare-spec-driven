@@ -40,11 +40,13 @@ Ao desfocar um CEP completo, o MFE consulta somente a API interna:
 
 - `GET /api/client/addresses/postal-code/{cep}`
 
-A API normaliza o CEP para oito digitos, consulta a API Busca CEP oficial dos Correios e devolve `postalCode`, `street`, `complement`, `neighborhood`, `city` e `state`. Rua, bairro, cidade e estado sao preenchidos automaticamente; o complemento retornado e apresentado quando existir e pode ser alterado pelo usuario. O numero do imovel nao integra o contrato da consulta e sempre depende de preenchimento manual.
+A API normaliza o CEP para oito digitos, consulta prioritariamente a API Busca CEP oficial dos Correios e devolve `postalCode`, `street`, `complement`, `neighborhood`, `city` e `state`. Quando o token dos Correios nao estiver configurado, for rejeitado ou o provedor estiver indisponivel, o backend consulta o ViaCEP como contingencia. Rua, bairro, cidade e estado sao preenchidos automaticamente; o complemento retornado e apresentado quando existir e pode ser alterado pelo usuario. O numero do imovel nao integra o contrato da consulta e sempre depende de preenchimento manual.
 
 Os campos dependentes usam o estado visual desabilitado do Design System enquanto aguardam um CEP completo ou o resultado da consulta. Esse estado deve ter fundo e borda acinzentados, texto atenuado e cursor de indisponibilidade para nao ser confundido com um campo editavel.
 
-A integracao oficial exige contrato com os Correios e token Bearer. A configuracao e feita apenas no backend por `Correios__BaseUrl`, `Correios__AddressPathTemplate` e `Correios__BearerToken`. Sem token ou quando o fornecedor estiver indisponivel, a rota responde `503`; CEP invalido responde `400` e CEP inexistente responde `404`.
+A integracao oficial exige contrato com os Correios e token Bearer. A configuracao e feita apenas no backend por `Correios__BaseUrl`, `Correios__AddressPathTemplate` e `Correios__BearerToken`. A contingencia usa `Correios__FallbackBaseUrl` e `Correios__FallbackAddressPathTemplate`, sem armazenar credenciais no frontend. A rota responde `503` somente quando nenhum provedor estiver disponivel; CEP invalido responde `400` e CEP inexistente responde `404`.
+
+Depois que `POST /api/client/patients` responder com sucesso, o MFE publica um toast de confirmacao e navega para `/pacientes`. Falhas permanecem na ficha, preservam os dados preenchidos e usam toast de erro; conflito de CPF recebe mensagem especifica.
 
 ## Consulta
 

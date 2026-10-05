@@ -67,6 +67,14 @@ Os MFEs devem preferir os campos semanticos quando o dado corresponder a telefon
 
 Inputs e selects desabilitados recebem fundo e borda acinzentados, texto atenuado e cursor `not-allowed` diretamente pelo estilo-base do Design System. Assim, o mesmo estado visual e aplicado aos controles base e aos campos semanticos em todos os MFEs.
 
+## Feedback global por toast
+
+O Design System fornece `VcToastService` e `vc-toast-container` para mensagens transitorias de sucesso, erro, alerta e informacao. O shell mantem uma unica viewport flutuante montada acima das rotas. MFEs publicam feedback pelo servico e nao devem criar banners locais para o mesmo resultado.
+
+O estado usa Angular Signals e um evento de navegador namespaced para sincronizar o shell e remotos mesmo quando mais de uma instancia fisica do pacote tiver sido carregada. Cada mensagem possui identificador, variante semantica, titulo, descricao e duracao; mensagens podem ser fechadas manualmente e sao removidas automaticamente por padrao. Erros usam live region assertiva e os demais estados usam live region educada.
+
+O pacote `@vyracare/design-system` deve ser compartilhado como singleton na configuracao de Module Federation. Isso evita instancias duplicadas dos componentes, elimina colisoes `NG0912` e garante um contrato visual unico entre shell e MFEs.
+
 ## Documentacao do codigo TypeScript
 
 Componentes TypeScript devem usar comentarios JSDoc objetivos para explicar a responsabilidade da classe e de seus metodos. A documentacao deve registrar a intencao e a regra coordenada pelo metodo, evitando apenas repetir seu nome ou descrever detalhes obvios de sintaxe. Metodos publicos, protegidos e privados criados ou alterados em uma entrega devem ser revisados como parte da mesma mudanca.
