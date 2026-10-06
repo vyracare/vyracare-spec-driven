@@ -69,7 +69,7 @@ Inputs e selects desabilitados recebem fundo e borda acinzentados, texto atenuad
 
 ## Acoes por icone e tooltip
 
-O Design System fornece `vc-icon-button` para acoes compactas e `vc-tooltip` para sua descricao flutuante. O tooltip aceita posicionamento superior, inferior, esquerdo ou direito, abre por hover ou foco de teclado e fecha na saida, perda de foco ou tecla Escape. O texto visivel do tooltip complementa o `ariaLabel` obrigatorio do botao de icone.
+O Design System fornece `vc-icon-button` para acoes compactas e `vc-tooltip` para sua descricao flutuante. O tooltip aceita posicionamento superior, inferior, esquerdo ou direito, abre por hover ou foco de teclado e fecha na saida, perda de foco, tecla Escape ou movimentacao da viewport. Sua superficie usa coordenadas fixas calculadas a partir do gatilho, ficando acima de containers com `overflow` sem aumentar a largura de tabelas ou criar barras de rolagem. O texto visivel do tooltip complementa o `ariaLabel` obrigatorio do botao de icone.
 
 Tabelas com varias acoes por registro devem preferir essa combinacao para reduzir largura e ruido visual, mantendo nomes objetivos para leitores de tela. Os MFEs nao devem depender apenas do atributo nativo `title` nem recriar a superficie flutuante localmente.
 
