@@ -96,6 +96,8 @@ Na pagina de cadastro, telefone usa `vc-phone-input`, com a mesma mascara nacion
 
 O conteudo principal segue o mesmo padrao visual das demais telas internas. A listagem apresenta breadcrumb `Dashboard / Atendimentos`, cabecalho em gradiente e tabela. O botao `Cadastrar atendimento`, localizado na barra da tabela, navega para `/dashboard/agenda/novo`. A pagina de cadastro usa breadcrumb `Dashboard / Atendimentos / Cadastrar`, hero em gradiente e formulario em card branco; ao salvar, retorna para a listagem. Somente a configuracao da antecedencia da notificacao permanece em modal. O item lateral `Atendimentos` aponta para `/dashboard/agenda`.
 
+O breadcrumb e o hero da listagem de atendimentos reutilizam os mesmos tokens globais, dimensoes, tipografia, bordas, gradiente e comportamento responsivo das paginas de Pacientes, Funcionarios e Procedimentos. O MFE nao deve sobrescrever localmente as cores de texto, destaque ou descricao desse cabecalho.
+
 ### Autocomplete de funcionario e procedimento
 
 Os campos `Funcionario responsavel` e `Procedimento` nao aceitam texto livre como referencia final. A interface inicia a pesquisa apos dois caracteres, aplica debounce de 250 ms e exige que o usuario selecione uma opcao retornada pelas APIs.
