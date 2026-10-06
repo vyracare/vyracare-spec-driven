@@ -22,6 +22,7 @@ O objetivo nao e substituir o codigo-fonte nem os READMEs dos repositorios. O ob
 - [Arquitetura Backend](./02-architecture/backend-architecture.md)
 - [Indicadores do Dashboard](./02-architecture/dashboard-indicators.md)
 - [Gestao de Pacientes](./02-architecture/patient-management.md)
+- [Gestao de Funcionarios e Procedimentos](./02-architecture/clinical-catalog-management.md)
 - [Estrategia de Ambientes](./02-architecture/environment-strategy.md)
 
 ### Entrega

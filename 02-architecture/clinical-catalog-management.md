@@ -64,3 +64,20 @@ Antes de publicar alteracoes nesses MFEs, a revisao deve confirmar que:
 - somente a projecao operacional de funcionarios e renderizada;
 - artefatos temporarios, respostas de API e arquivos locais nao estao no conjunto de arquivos versionados;
 - o diff staged foi inspecionado antes do commit e do push.
+
+## Criterios de conformidade da gestao de funcionarios
+
+A entrega de gestao de funcionarios somente esta completa quando os seguintes criterios forem atendidos em conjunto:
+
+- o frontend reutiliza os componentes de botao, icone, tooltip, formulario, select, checkbox e toast do Design System quando houver equivalente compartilhado;
+- a listagem segue a hierarquia visual de Pacientes, mantem busca, estados de carregamento e vazio, tabela responsiva e acoes acessiveis por teclado;
+- toda alteracao de status e toda edicao definitiva exigem confirmacao explicita do administrador;
+- componentes e servicos TypeScript documentam as responsabilidades das classes e dos metodos de producao adicionados ou alterados;
+- controllers, handlers, contratos e portas do backend mantem documentacao coerente com a responsabilidade publica de cada operacao;
+- autorizacao e regras de seguranca sao aplicadas pela API, independentemente da visibilidade dos controles no MFE;
+- respostas administrativas usam `EmployeeManagementResponse` e nunca serializam senha, hash ou token;
+- cadastro publico nao aceita perfil privilegiado e a autoinativacao administrativa permanece bloqueada;
+- testes automatizados cobrem carregamento, busca, cadastro, edicao, confirmacao, ativacao, inativacao, falhas HTTP e regras de seguranca;
+- build, testes, inspecao do diff e varredura de segredos precisam estar aprovados antes do push.
+
+Arquivos gerados por build, publicacao ou diagnostico local, como `bin`, `obj`, `publish-*` e respostas temporarias, nao fazem parte da especificacao nem devem ser incluidos em commits. Mudancas mecanicas de lockfile sem alteracao intencional de dependencias tambem devem permanecer fora da entrega.
