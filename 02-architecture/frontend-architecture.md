@@ -81,6 +81,8 @@ O estado usa Angular Signals e um evento de navegador namespaced para sincroniza
 
 O pacote `@vyracare/design-system` deve ser compartilhado como singleton na configuracao de Module Federation. Isso evita instancias duplicadas dos componentes, elimina colisoes `NG0912` e garante um contrato visual unico entre shell e MFEs.
 
+Como o shell fornece a instancia singleton em tempo de execucao, sua versao do Design System deve ser igual ou superior a versao exigida por todos os MFEs carregados. Uma entrega de MFE que utilize uma nova exportacao somente pode ser promovida depois que o shell estiver alinhado com essa versao. Em ambiente local, depois da atualizacao do pacote, o processo do shell deve ser reiniciado para descartar a instancia anterior mantida em memoria. A ausencia desse alinhamento pode deixar um componente remoto indefinido e causar erros Angular como acesso a `ɵcmp` durante a ativacao da rota.
+
 ## Documentacao do codigo TypeScript
 
 Componentes TypeScript devem usar comentarios JSDoc objetivos para explicar a responsabilidade da classe e de seus metodos. A documentacao deve registrar a intencao e a regra coordenada pelo metodo, evitando apenas repetir seu nome ou descrever detalhes obvios de sintaxe. Metodos publicos, protegidos e privados criados ou alterados em uma entrega devem ser revisados como parte da mesma mudanca.
