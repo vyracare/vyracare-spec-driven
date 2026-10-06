@@ -80,6 +80,17 @@ O Design System fornece `VcToastService` e `vc-toast-container` para mensagens t
 
 O estado usa Angular Signals e um evento de navegador namespaced para sincronizar o shell e remotos mesmo quando mais de uma instancia fisica do pacote tiver sido carregada. Cada mensagem possui identificador, variante semantica, titulo, descricao e duracao; mensagens podem ser fechadas manualmente e sao removidas automaticamente por padrao. Erros usam live region assertiva e os demais estados usam live region educada.
 
+O toast e o contrato obrigatorio de retorno para operacoes assincronas da interface:
+
+- toda criacao, edicao, ativacao, inativacao, exclusao ou inclusao de nota confirmada pela API publica uma mensagem de sucesso;
+- toda falha HTTP percebida pelo usuario publica uma mensagem de erro com titulo orientado a acao e descricao segura, sem detalhes internos, stack traces ou conteudo bruto inesperado do backend;
+- a navegacao posterior a uma gravacao ocorre somente depois da publicacao do sucesso, permitindo que o container global preserve o feedback na tela de destino;
+- mensagens inline podem permanecer quando ajudam a localizar o problema ou preservar o contexto da pagina, mas nao substituem o toast em falhas de requisicao;
+- validacoes locais, como campo obrigatorio, formato invalido ou horario inconsistente, continuam proximas ao formulario e nao geram toast antes de existir uma requisicao;
+- processos silenciosos recorrentes devem evitar repeticao ilimitada da mesma mensagem e podem aplicar deduplicacao ou retentativa antes de notificar.
+
+Titulos devem identificar o resultado, como `Paciente atualizado` ou `Nao foi possivel cadastrar o atendimento`. A descricao informa a consequencia ou a proxima acao. O frontend deve preferir mensagens conhecidas por status e nunca apresentar diretamente objetos de erro, respostas HTML ou informacoes de infraestrutura.
+
 O pacote `@vyracare/design-system` deve ser compartilhado como singleton na configuracao de Module Federation. Isso evita instancias duplicadas dos componentes, elimina colisoes `NG0912` e garante um contrato visual unico entre shell e MFEs.
 
 Como o shell fornece a instancia singleton em tempo de execucao, sua versao do Design System deve ser igual ou superior a versao exigida por todos os MFEs carregados. Uma entrega de MFE que utilize uma nova exportacao somente pode ser promovida depois que o shell estiver alinhado com essa versao. Em ambiente local, depois da atualizacao do pacote, o processo do shell deve ser reiniciado para descartar a instancia anterior mantida em memoria. A ausencia desse alinhamento pode deixar um componente remoto indefinido e causar erros Angular como acesso a `ɵcmp` durante a ativacao da rota.

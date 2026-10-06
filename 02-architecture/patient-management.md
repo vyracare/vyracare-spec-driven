@@ -48,6 +48,8 @@ A integracao oficial exige contrato com os Correios e token Bearer. A configurac
 
 Depois que `POST /api/client/patients` responder com sucesso, o MFE publica um toast de confirmacao e navega para `/pacientes`. Falhas permanecem na ficha, preservam os dados preenchidos e usam toast de erro; conflito de CPF recebe mensagem especifica.
 
+A mesma regra se aplica a edicao da ficha e ao registro de notas profissionais: sucesso usa toast positivo e falha HTTP usa toast de erro. Falhas de consulta de paciente, historico, listagem ou CEP tambem publicam o retorno global, mantendo a mensagem inline quando ela orienta o preenchimento manual ou explica o estado vazio da pagina.
+
 ## Consulta
 
 A tela principal exibe nome, CPF, telefone, e-mail, ultima atualizacao e acoes. A busca usa um unico termo, sem diferenciar maiusculas e minusculas, sobre:
