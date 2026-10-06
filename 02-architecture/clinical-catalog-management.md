@@ -42,6 +42,8 @@ A tabela apresenta somente dados operacionais retornados pela projecao segura da
 
 A edicao usa a rota `/cadastro/funcionarios/editar/{id}` e reutiliza o formulario compartilhado. O formulario e preenchido pela API e solicita confirmacao antes de salvar. Senha, hash e demais dados de credencial nao fazem parte do contrato, nao sao exibidos e sao preservados pelo backend. Alteracoes de nivel de acesso passam a valer quando o funcionario entrar novamente.
 
+Apos a API confirmar a criacao ou a edicao de um funcionario, o MFE exibe o feedback de sucesso e retorna para a grade em `/cadastro/funcionarios`. Em caso de erro, a navegacao nao ocorre e os dados permanecem disponiveis para correcao.
+
 O cadastro usa a rota `/cadastro/funcionarios/novo`. A listagem continua em `/cadastro/funcionarios`, e sua acao primaria apenas navega para a pagina de cadastro, sem manter estado de modal.
 
 A acao rapida de status tambem exige confirmacao. O backend impede que o administrador inative o proprio usuario, evitando bloqueio acidental. Um funcionario inativo nao aparece nos autocompletes e nao consegue realizar novos logins. Como a autenticacao usa JWT sem lista de revogacao, uma sessao emitida antes da inativacao permanece valida somente ate a expiracao normal do token.
@@ -63,6 +65,8 @@ O `vyracare-app-proceedings-mfe` carrega o catalogo pelo servico de procedimento
 - categoria.
 
 A tabela apresenta nome, codigo, categoria, duracao, valor por sessao e status. O cadastro usa a rota `/cadastro/procedimentos/novo`, reutiliza o formulario existente e retorna ao catalogo em `/cadastro/procedimentos` depois da gravacao.
+
+O retorno para a grade de procedimentos ocorre somente depois da confirmacao de sucesso da API. Falhas de gravacao preservam a pagina e os valores preenchidos para nova tentativa.
 
 O formulario de procedimentos organiza o preenchimento em tres grupos visuais: identificacao, operacao e cobranca, e apresentacao comercial. A grade ocupa toda a largura disponivel, mantendo campos relacionados lado a lado em telas amplas e empilhados em telas estreitas. Campos obrigatorios sao identificados de forma consistente, o preco explicita a moeda brasileira e o codigo interno apresenta orientacao para facilitar buscas. A disponibilidade para agendamento usa o `vc-checkbox` do Design System, com uma descricao clara do efeito operacional do estado ativo.
 
