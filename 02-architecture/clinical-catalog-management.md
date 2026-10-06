@@ -52,6 +52,8 @@ A exclusao e uma acao permanente apresentada por icone e tooltip na tabela. Ela 
 
 Os modais de confirmacao de status e exclusao usam superficie branca, cantos arredondados, sombra e largura limitada a viewport. O conteudo nao pode ficar transparente sobre a tabela nem gerar rolagem horizontal; quando a altura disponivel for insuficiente, somente o eixo vertical do card pode rolar, e as acoes sao empilhadas em telas estreitas.
 
+Novos modais e migracoes de modais existentes devem usar o `vc-modal` do Design System. As regioes `vcModalHeader`, `vcModalBody` e `vcModalFooter` preservam a separacao visual entre titulo, mensagem e acoes; paginas consumidoras mantem apenas regras realmente especificas do dominio. A confirmacao de edicao de funcionario segue esse padrao e bloqueia o fechamento enquanto a gravacao estiver em andamento.
+
 No formulario compartilhado de funcionarios, o bloco `Status ativo` mantem espacamento vertical proprio em relacao ao grid de dados e a barra de acoes, preservando a separacao visual no cadastro e na edicao.
 
 A resposta administrativa inclui nivel de acesso apenas porque a rota e exclusiva de administradores e esse campo precisa ser editado. Ela nao inclui senha, hash, token, segredo ou qualquer outro dado de autenticacao. Novas colunas nao devem ser adicionadas sem revisar o principio de minimizacao de dados e o contrato do backend.

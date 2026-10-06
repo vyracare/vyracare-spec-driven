@@ -55,6 +55,7 @@ Em larguras menores, o cabecalho e as barras de acao devem ser empilhados para e
 O pacote `@vyracare/design-system` e a fonte dos controles compartilhados. A partir da versao `0.5.0`, alem dos controles base, ele fornece campos semanticos para os dados recorrentes dos dominios:
 
 - `vc-autocomplete`: ControlValueAccessor com label, hint, erro, carregamento, vazio, navegacao por teclado, lista acessivel e eventos de pesquisa/selecao. Os resultados sao exibidos em um painel flutuante sobre o conteudo, ancorado na largura do campo e sem alterar a altura ou o fluxo do formulario;
+- `vc-modal`: superficie acessivel e responsiva com regioes projetadas de cabecalho, corpo e rodape. O componente centraliza backdrop, limite de viewport, rolagem vertical, espacamento entre titulo e conteudo, organizacao das acoes, fechamento por backdrop ou Escape e restauracao de foco;
 - `vc-checkbox`: checkbox visual padronizado com label, descricao, erro e integracao com Angular Forms;
 - `vc-select`: listbox customizado, sem depender da aparencia nativa diferente entre navegadores;
 - `vc-input`: inclui mascaras de telefone, e-mail, data, CPF e CEP e emite o valor mascarado no desfoque.
