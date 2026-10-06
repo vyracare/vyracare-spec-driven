@@ -68,6 +68,10 @@ As APIs devem aplicar autorizacao no backend para operacoes privilegiadas. A ocu
 - atualizacao integral da ficha exige role `Administrador`;
 - tokens emitidos antes da inclusao das claims precisam ser renovados por novo login.
 
+Na gestao de funcionarios, listagem administrativa, consulta individual, edicao e alteracao de status exigem role `Administrador`. A API nunca devolve senha ou hash. A inativacao bloqueia novos logins e remove o funcionario das consultas operacionais; a autoinativacao e rejeitada. Tokens ja emitidos continuam sujeitos ao tempo de expiracao configurado, pois nao existe revogacao central de sessao nesta etapa.
+
+O registro publico nao pode definir role funcional, departamento, telefone, status ou nivel administrativo. Esses valores sao neutralizados pela API e o acesso inicial fica restrito a `Leitura`. Somente `POST /api/auth/employees`, protegido por `Administrador`, cria perfis completos de funcionarios.
+
 ## Logging
 
 Diagnostico principal de backend fica em:

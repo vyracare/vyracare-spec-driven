@@ -17,7 +17,17 @@ Os formularios de cadastro sao abertos em modal a partir das acoes `Cadastrar fu
 
 ## Funcionarios
 
-O `vyracare-app-profile-mfe` consulta `GET /api/auth/employees`, enviando `search` quando houver texto e limitando a resposta a 100 registros. A busca aceita nome, e-mail ou telefone.
+O `vyracare-app-profile-mfe` usa uma projecao administrativa protegida por role `Administrador`:
+
+- `GET /api/auth/employees/manage?search={termo}&limit=100`: lista ativos e inativos;
+- `POST /api/auth/employees`: cadastra um funcionario com cargo, nivel e status definidos pelo administrador;
+- `GET /api/auth/employees/{id}`: carrega os dados editaveis;
+- `PUT /api/auth/employees/{id}`: atualiza nome, e-mail, telefone, cargo, departamento, nivel de acesso e status;
+- `PATCH /api/auth/employees/{id}/status`: ativa ou inativa rapidamente.
+
+A busca aceita nome, e-mail ou telefone. O endpoint operacional `GET /api/auth/employees`, consumido por autocompletes de atendimento, permanece separado e continua retornando somente funcionarios ativos.
+
+O cadastro publico `POST /api/auth/register` nao aceita elevacao de privilegio: cargo, departamento, telefone e status enviados diretamente sao ignorados, e o novo usuario recebe somente o nivel `Leitura`. O cadastro completo de funcionario e exclusivo da rota administrativa autenticada.
 
 A tabela apresenta somente dados operacionais retornados pela projecao segura da API:
 
@@ -26,9 +36,14 @@ A tabela apresenta somente dados operacionais retornados pela projecao segura da
 - telefone;
 - e-mail;
 - cargo;
-- indicacao de ativo, pois o endpoint retorna exclusivamente funcionarios ativos.
+- indicacao de ativo ou inativo;
+- acoes por icones do Design System para editar e alterar rapidamente o status, com tooltip flutuante e `ariaLabel` equivalente.
 
-A resposta nao inclui senha, hash, token, segredo, nivel interno de credencial ou qualquer outro dado de autenticacao. Novas colunas nao devem ser adicionadas sem revisar o principio de minimizacao de dados e o contrato do backend.
+A edicao usa a rota `/cadastro/funcionarios/editar/{id}` e reutiliza o formulario compartilhado. O formulario e preenchido pela API e solicita confirmacao antes de salvar. Senha, hash e demais dados de credencial nao fazem parte do contrato, nao sao exibidos e sao preservados pelo backend. Alteracoes de nivel de acesso passam a valer quando o funcionario entrar novamente.
+
+A acao rapida de status tambem exige confirmacao. O backend impede que o administrador inative o proprio usuario, evitando bloqueio acidental. Um funcionario inativo nao aparece nos autocompletes e nao consegue realizar novos logins. Como a autenticacao usa JWT sem lista de revogacao, uma sessao emitida antes da inativacao permanece valida somente ate a expiracao normal do token.
+
+A resposta administrativa inclui nivel de acesso apenas porque a rota e exclusiva de administradores e esse campo precisa ser editado. Ela nao inclui senha, hash, token, segredo ou qualquer outro dado de autenticacao. Novas colunas nao devem ser adicionadas sem revisar o principio de minimizacao de dados e o contrato do backend.
 
 ## Procedimentos
 
