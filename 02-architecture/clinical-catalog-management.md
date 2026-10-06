@@ -13,7 +13,7 @@ As telas principais dos dois dominios seguem a mesma hierarquia visual da consul
 - estados explicitos de carregamento, lista vazia, sucesso e falha;
 - tabela responsiva com rolagem horizontal em larguras reduzidas.
 
-Os formularios de cadastro sao abertos em modal a partir das acoes `Cadastrar funcionario` e `Cadastrar procedimento`. Depois de uma gravacao bem-sucedida, o modal fecha e a listagem e recarregada. Enquanto uma gravacao estiver em andamento, o modal nao pode ser fechado pelo backdrop.
+As acoes `Cadastrar funcionario` e `Cadastrar procedimento` navegam para paginas dedicadas, seguindo o mesmo modelo do cadastro de pacientes. Essas paginas possuem breadcrumb com o nivel `Cadastrar`, hero em gradiente e card branco contendo o formulario reutilizavel. Depois de uma gravacao bem-sucedida, o usuario retorna para a listagem correspondente; em caso de falha, permanece na pagina com os dados preenchidos e feedback de erro.
 
 ## Funcionarios
 
@@ -41,6 +41,8 @@ A tabela apresenta somente dados operacionais retornados pela projecao segura da
 
 A edicao usa a rota `/cadastro/funcionarios/editar/{id}` e reutiliza o formulario compartilhado. O formulario e preenchido pela API e solicita confirmacao antes de salvar. Senha, hash e demais dados de credencial nao fazem parte do contrato, nao sao exibidos e sao preservados pelo backend. Alteracoes de nivel de acesso passam a valer quando o funcionario entrar novamente.
 
+O cadastro usa a rota `/cadastro/funcionarios/novo`. A listagem continua em `/cadastro/funcionarios`, e sua acao primaria apenas navega para a pagina de cadastro, sem manter estado de modal.
+
 A acao rapida de status tambem exige confirmacao. O backend impede que o administrador inative o proprio usuario, evitando bloqueio acidental. Um funcionario inativo nao aparece nos autocompletes e nao consegue realizar novos logins. Como a autenticacao usa JWT sem lista de revogacao, uma sessao emitida antes da inativacao permanece valida somente ate a expiracao normal do token.
 
 A resposta administrativa inclui nivel de acesso apenas porque a rota e exclusiva de administradores e esse campo precisa ser editado. Ela nao inclui senha, hash, token, segredo ou qualquer outro dado de autenticacao. Novas colunas nao devem ser adicionadas sem revisar o principio de minimizacao de dados e o contrato do backend.
@@ -53,7 +55,7 @@ O `vyracare-app-proceedings-mfe` carrega o catalogo pelo servico de procedimento
 - codigo;
 - categoria.
 
-A tabela apresenta nome, codigo, categoria, duracao, valor por sessao e status. O cadastro reutiliza o formulario existente e, ao concluir, recarrega o catalogo para refletir o novo procedimento.
+A tabela apresenta nome, codigo, categoria, duracao, valor por sessao e status. O cadastro usa a rota `/cadastro/procedimentos/novo`, reutiliza o formulario existente e retorna ao catalogo em `/cadastro/procedimentos` depois da gravacao.
 
 ## Seguranca de entrega
 

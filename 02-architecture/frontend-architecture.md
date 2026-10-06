@@ -46,7 +46,7 @@ A pagina inicial do Dashboard permanece com o hero e os indicadores proprios. A 
 
 Acoes primarias de negocio, como `Cadastrar paciente` e `Cadastrar atendimento`, ficam na barra da secao de conteudo logo abaixo do cabecalho. O bloco branco lateral de mensagem foi removido dos cabecalhos padronizados para reduzir ruido visual e deixar a apresentacao concentrada no titulo e na descricao.
 
-As paginas principais de Funcionarios e Procedimentos seguem tambem o padrao de gestao de Pacientes: card de listagem, busca, tabela e acao primaria na barra do card. Os formularios de cadastro sao exibidos em modal, preservando o contexto da consulta. Os contratos, campos exibidos e cuidados de minimizacao de dados estao detalhados em `clinical-catalog-management.md`.
+As paginas principais de Funcionarios, Procedimentos e Atendimentos seguem tambem o padrao de gestao de Pacientes: card de listagem, busca quando aplicavel, tabela e acao primaria na barra do card. As acoes de cadastro navegam para paginas dedicadas com breadcrumb, hero e formulario em card branco. Esse fluxo evita formularios principais em modal e reserva modais para tarefas auxiliares ou confirmacoes, como configurar uma notificacao. Os contratos, campos exibidos e cuidados de minimizacao de dados estao detalhados em `clinical-catalog-management.md` e `dashboard-indicators.md`.
 
 Em larguras menores, o cabecalho e as barras de acao devem ser empilhados para evitar rolagem horizontal e preservar a legibilidade.
 

@@ -78,9 +78,10 @@ Enquanto nao houver dados cadastrados, os cards exibem zero. Falhas de rede ou a
 
 ## Agenda de atendimentos
 
-Rota no shell:
+Rotas no shell:
 
-- `/dashboard/agenda/novo`
+- `/dashboard/agenda`: listagem de atendimentos e entrada do menu lateral;
+- `/dashboard/agenda/novo`: pagina dedicada ao cadastro.
 
 A tela pertence ao `vyracare-app-dashboard-mfe` e permite:
 
@@ -91,9 +92,9 @@ A tela pertence ao `vyracare-app-dashboard-mfe` e permite:
 - configurar antecedencia em horas ou dias por modal;
 - listar todos os agendamentos com estado de proximidade.
 
-No modal, telefone usa `vc-phone-input`, com a mesma mascara nacional aplicada ao cadastro de pacientes. Inicio e termino usam `vc-date-time-input`. Ambos pertencem ao Design System e integram o formulario reativo por `ControlValueAccessor`, evitando configuracoes e estilos divergentes entre MFEs.
+Na pagina de cadastro, telefone usa `vc-phone-input`, com a mesma mascara nacional aplicada ao cadastro de pacientes. Inicio e termino usam `vc-date-time-input`. Ambos pertencem ao Design System e integram o formulario reativo por `ControlValueAccessor`, evitando configuracoes e estilos divergentes entre MFEs.
 
-O conteudo principal segue o mesmo padrao visual das demais telas internas: breadcrumb `Dashboard / Atendimentos`, cabecalho em gradiente sem selo ou card contextual auxiliar, e tabela. O formulario nao fica mais aberto na pagina; o botao `Cadastrar atendimento`, localizado na barra da tabela, abre um modal com todos os campos e a configuracao de notificacao. O shell apresenta o item lateral `Atendimentos`, que aponta para esta rota.
+O conteudo principal segue o mesmo padrao visual das demais telas internas. A listagem apresenta breadcrumb `Dashboard / Atendimentos`, cabecalho em gradiente e tabela. O botao `Cadastrar atendimento`, localizado na barra da tabela, navega para `/dashboard/agenda/novo`. A pagina de cadastro usa breadcrumb `Dashboard / Atendimentos / Cadastrar`, hero em gradiente e formulario em card branco; ao salvar, retorna para a listagem. Somente a configuracao da antecedencia da notificacao permanece em modal. O item lateral `Atendimentos` aponta para `/dashboard/agenda`.
 
 ### Autocomplete de funcionario e procedimento
 
@@ -101,7 +102,7 @@ Os campos `Funcionario responsavel` e `Procedimento` nao aceitam texto livre com
 
 A lista de resultados usa o `vc-autocomplete` do Design System e deve abrir como uma camada flutuante sobre as linhas seguintes do formulario. O painel acompanha a largura do campo, preserva a altura do grid, possui destaque de hover/foco e mantem navegacao por teclado e atributos de acessibilidade.
 
-No modal de cadastro, o bloco de notificacao deve manter espacamento vertical proprio antes da barra de acoes, evitando contato visual entre o card de lembrete e os botoes `Cancelar` e `Salvar atendimento`.
+Na pagina de cadastro, o bloco de notificacao deve manter espacamento vertical proprio antes da barra de acoes, evitando contato visual entre o card de lembrete e os botoes `Cancelar` e `Salvar atendimento`.
 
 Contratos consumidos:
 
