@@ -70,7 +70,7 @@ As APIs devem aplicar autorizacao no backend para operacoes privilegiadas. A ocu
 - atualizacao integral da ficha exige role `Administrador`;
 - tokens emitidos antes da inclusao das claims precisam ser renovados por novo login.
 
-Na gestao de funcionarios, listagem administrativa, consulta individual, edicao e alteracao de status exigem role `Administrador`. A API nunca devolve senha ou hash. A inativacao bloqueia novos logins e remove o funcionario das consultas operacionais; a autoinativacao e rejeitada. Tokens ja emitidos continuam sujeitos ao tempo de expiracao configurado, pois nao existe revogacao central de sessao nesta etapa.
+Na gestao de funcionarios, listagem administrativa, consulta individual, edicao, alteracao de status e exclusao exigem role `Administrador`. A API nunca devolve senha ou hash. A inativacao bloqueia novos logins e remove o funcionario das consultas operacionais; a autoinativacao e rejeitada. A exclusao remove definitivamente o documento, exige confirmacao explicita na interface e rejeita a autoexclusao. Tokens ja emitidos continuam sujeitos ao tempo de expiracao configurado, pois nao existe revogacao central de sessao nesta etapa.
 
 Quando a gestao de funcionarios responder `403`, o MFE deve informar que o perfil atual nao possui permissao administrativa e orientar novo login apenas quando o nivel de acesso tiver sido alterado recentemente. Erros de autorizacao nao devem ser apresentados como indisponibilidade generica da API.
 

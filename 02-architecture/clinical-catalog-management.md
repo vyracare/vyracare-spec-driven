@@ -24,6 +24,7 @@ O `vyracare-app-profile-mfe` usa uma projecao administrativa protegida por role 
 - `GET /api/auth/employees/{id}`: carrega os dados editaveis;
 - `PUT /api/auth/employees/{id}`: atualiza nome, e-mail, telefone, cargo, departamento, nivel de acesso e status;
 - `PATCH /api/auth/employees/{id}/status`: ativa ou inativa rapidamente.
+- `DELETE /api/auth/employees/{id}`: exclui definitivamente um funcionario, somente por administrador.
 
 A busca aceita nome, e-mail ou telefone. O endpoint operacional `GET /api/auth/employees`, consumido por autocompletes de atendimento, permanece separado e continua retornando somente funcionarios ativos.
 
@@ -44,6 +45,8 @@ A edicao usa a rota `/cadastro/funcionarios/editar/{id}` e reutiliza o formulari
 O cadastro usa a rota `/cadastro/funcionarios/novo`. A listagem continua em `/cadastro/funcionarios`, e sua acao primaria apenas navega para a pagina de cadastro, sem manter estado de modal.
 
 A acao rapida de status tambem exige confirmacao. O backend impede que o administrador inative o proprio usuario, evitando bloqueio acidental. Um funcionario inativo nao aparece nos autocompletes e nao consegue realizar novos logins. Como a autenticacao usa JWT sem lista de revogacao, uma sessao emitida antes da inativacao permanece valida somente ate a expiracao normal do token.
+
+A exclusao e uma acao permanente apresentada por icone e tooltip na tabela. Ela exige um modal de confirmacao que informa a remocao do cadastro e da credencial. A API aplica novamente a autorizacao `Administrador`, valida a existencia do funcionario e impede a autoexclusao; a interface remove a linha somente depois de receber sucesso do `DELETE`. Tokens previamente emitidos para um usuario excluido permanecem validos ate a expiracao enquanto nao houver revogacao central, portanto a inativacao deve ser preferida quando for necessario bloquear o acesso antes da remocao definitiva.
 
 A resposta administrativa inclui nivel de acesso apenas porque a rota e exclusiva de administradores e esse campo precisa ser editado. Ela nao inclui senha, hash, token, segredo ou qualquer outro dado de autenticacao. Novas colunas nao devem ser adicionadas sem revisar o principio de minimizacao de dados e o contrato do backend.
 
@@ -73,12 +76,12 @@ A entrega de gestao de funcionarios somente esta completa quando os seguintes cr
 
 - o frontend reutiliza os componentes de botao, icone, tooltip, formulario, select, checkbox e toast do Design System quando houver equivalente compartilhado;
 - a listagem segue a hierarquia visual de Pacientes, mantem busca, estados de carregamento e vazio, tabela responsiva e acoes acessiveis por teclado;
-- toda alteracao de status e toda edicao definitiva exigem confirmacao explicita do administrador;
+- toda alteracao de status, edicao definitiva e exclusao exigem confirmacao explicita do administrador;
 - componentes e servicos TypeScript documentam as responsabilidades das classes e dos metodos de producao adicionados ou alterados;
 - controllers, handlers, contratos e portas do backend mantem documentacao coerente com a responsabilidade publica de cada operacao;
 - autorizacao e regras de seguranca sao aplicadas pela API, independentemente da visibilidade dos controles no MFE;
 - respostas administrativas usam `EmployeeManagementResponse` e nunca serializam senha, hash ou token;
-- cadastro publico nao aceita perfil privilegiado e a autoinativacao administrativa permanece bloqueada;
+- cadastro publico nao aceita perfil privilegiado, e a autoinativacao e a autoexclusao administrativas permanecem bloqueadas;
 - testes automatizados cobrem carregamento, busca, cadastro, edicao, confirmacao, ativacao, inativacao, falhas HTTP e regras de seguranca;
 - build, testes, inspecao do diff e varredura de segredos precisam estar aprovados antes do push.
 
