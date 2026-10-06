@@ -84,6 +84,8 @@ Contrato de atualizacao administrativa dos campos permitidos:
 
 Somente tokens com role `Administrador` podem executar o `PUT`. A interface desabilita os campos para os demais niveis, mas a API e a autoridade final e responde `403` para tentativa nao autorizada.
 
+O MFE decide o estado editavel a partir da mesma claim `access_level` emitida no JWT. O perfil apresentado no cabecalho do shell tambem deve refletir a claim real, evitando indicar `Administrador` para uma sessao sem permissao. Contas antigas sem `AccessLevel` precisam ter o cadastro regularizado no ambiente correspondente e entrar novamente; a interface nao deve promover o usuario por nome, cargo ou valor visual de fallback.
+
 Mesmo para administradores, CPF, tipo de pele, consentimento do paciente e notas do profissional fazem parte do registro original e nao podem ser alterados por esse fluxo. Esses controles permanecem visiveis e desabilitados no formulario de edicao. O DTO `UpdatePatientRequest` nao recebe esses campos e o handler preserva os valores existentes, assim como a colecao `ProfessionalNotes`, mesmo diante de propriedades extras enviadas diretamente ao endpoint.
 
 Ao submeter um formulario valido, o MFE ainda nao executa o `PUT`: ele remove os campos imutaveis do payload e abre um modal de confirmacao. O modal informa quais dados serao preservados e oferece `Cancelar` ou `Confirmar e salvar`. A chamada de atualizacao ocorre somente depois da confirmacao explicita; cancelar descarta o payload pendente sem modificar o prontuario.

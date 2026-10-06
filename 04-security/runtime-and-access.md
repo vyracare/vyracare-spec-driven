@@ -60,6 +60,8 @@ Rotas atualmente adotadas para Swagger:
 
 O JWT emitido pela autenticacao carrega o `AccessLevel` como role e como claim `access_level`. O cargo funcional permanece separado em `job_role`.
 
+O nome do nivel de acesso exibido pelo shell deve ser lido dessas claims; ele nao pode ser um texto estatico nem servir como fonte de autorizacao. Quando a claim estiver ausente, o shell informa que o perfil nao foi definido e as operacoes administrativas permanecem bloqueadas. Depois de atribuir ou alterar `AccessLevel` no cadastro do usuario, e necessario realizar um novo login para emitir outro JWT.
+
 As APIs devem aplicar autorizacao no backend para operacoes privilegiadas. A ocultacao ou desabilitacao de controles no frontend nao substitui essa validacao. Na gestao de pacientes:
 
 - leitura e notas exigem usuario autenticado;
