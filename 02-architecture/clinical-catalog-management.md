@@ -48,6 +48,8 @@ A acao rapida de status tambem exige confirmacao. O backend impede que o adminis
 
 A exclusao e uma acao permanente apresentada por icone e tooltip na tabela. Ela exige um modal de confirmacao que informa a remocao do cadastro e da credencial. A API aplica novamente a autorizacao `Administrador`, valida a existencia do funcionario e impede a autoexclusao; a interface remove a linha somente depois de receber sucesso do `DELETE`. Tokens previamente emitidos para um usuario excluido permanecem validos ate a expiracao enquanto nao houver revogacao central, portanto a inativacao deve ser preferida quando for necessario bloquear o acesso antes da remocao definitiva.
 
+Os modais de confirmacao de status e exclusao usam superficie branca, cantos arredondados, sombra e largura limitada a viewport. O conteudo nao pode ficar transparente sobre a tabela nem gerar rolagem horizontal; quando a altura disponivel for insuficiente, somente o eixo vertical do card pode rolar, e as acoes sao empilhadas em telas estreitas.
+
 A resposta administrativa inclui nivel de acesso apenas porque a rota e exclusiva de administradores e esse campo precisa ser editado. Ela nao inclui senha, hash, token, segredo ou qualquer outro dado de autenticacao. Novas colunas nao devem ser adicionadas sem revisar o principio de minimizacao de dados e o contrato do backend.
 
 ## Procedimentos
