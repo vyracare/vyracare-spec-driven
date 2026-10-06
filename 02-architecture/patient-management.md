@@ -114,9 +114,9 @@ Entrada de criacao:
 
 A API acrescenta `id`, `authorId`, `authorName` e `createdAt` em UTC a partir do usuario autenticado e do relogio do backend. O historico e devolvido do mais recente para o mais antigo. Notas sao anexadas e nao substituem registros anteriores.
 
-O primeiro item cronologico do historico representa a abertura do prontuario. Em novos cadastros, a API persiste automaticamente uma nota com `kind: record_opened`, data de criacao e identidade do funcionario autenticado que realizou o cadastro. As notas manuais usam `kind: professional_note`.
+O primeiro item cronologico do historico representa a abertura do prontuario. Em novos cadastros, a API persiste automaticamente uma nota com `kind: record_opened`, data de criacao, identidade do funcionario autenticado e, como descricao, o conteudo do campo de notas profissionais informado na ficha inicial. Quando esse campo estiver vazio, a descricao deve informar que nenhuma nota foi registrada na abertura. As notas manuais usam `kind: professional_note`.
 
-Para prontuarios anteriores a essa regra, `GET /api/client/patients/{id}/notes` inclui em leitura um evento de abertura derivado de `Patient.CreatedAt`, identificado por `record_opened` e atribuido ao `Sistema Vyracare`. A derivacao ocorre somente quando nao existe uma abertura persistida, evitando duplicidade e dispensando migracao destrutiva dos documentos antigos. As telas de consulta e edicao devem consumir esse endpoint para exibir o mesmo historico consolidado.
+Para prontuarios anteriores a essa regra, `GET /api/client/patients/{id}/notes` inclui em leitura um evento de abertura derivado de `Patient.CreatedAt`, identificado por `record_opened`, atribuido ao `Sistema Vyracare` e preenchido com `Patient.Notes`. Quando ja existir uma abertura persistida com a antiga mensagem generica, a resposta tambem substitui sua descricao pela nota inicial disponivel. Essa compatibilidade em leitura evita duplicidade e dispensa migracao destrutiva dos documentos antigos. As telas de consulta e edicao devem consumir esse endpoint para exibir o mesmo historico consolidado.
 
 ## Responsabilidades por repositorio
 
