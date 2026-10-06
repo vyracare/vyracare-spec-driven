@@ -60,6 +60,8 @@ Rotas atualmente adotadas para Swagger:
 
 O JWT emitido pela autenticacao carrega o `AccessLevel` como role e como claim `access_level`. O cargo funcional permanece separado em `job_role`.
 
+A validacao JWT configura explicitamente `access_level` como `RoleClaimType`. Assim, `[Authorize(Roles = "Administrador")]` usa a mesma claim consumida pelo shell e permanece compativel com sessoes validas emitidas antes da duplicacao de `AccessLevel` em `ClaimTypes.Role`. Essa compatibilidade nao amplia privilegios: a claim continua assinada pela API, o token passa por validacao de emissor, audiencia, expiracao e assinatura, e o valor precisa corresponder exatamente a `Administrador`.
+
 O nome do nivel de acesso exibido pelo shell deve ser lido dessas claims; ele nao pode ser um texto estatico nem servir como fonte de autorizacao. Quando a claim estiver ausente, o shell informa que o perfil nao foi definido e as operacoes administrativas permanecem bloqueadas. Depois de atribuir ou alterar `AccessLevel` no cadastro do usuario, e necessario realizar um novo login para emitir outro JWT.
 
 As APIs devem aplicar autorizacao no backend para operacoes privilegiadas. A ocultacao ou desabilitacao de controles no frontend nao substitui essa validacao. Na gestao de pacientes:
@@ -69,6 +71,8 @@ As APIs devem aplicar autorizacao no backend para operacoes privilegiadas. A ocu
 - tokens emitidos antes da inclusao das claims precisam ser renovados por novo login.
 
 Na gestao de funcionarios, listagem administrativa, consulta individual, edicao e alteracao de status exigem role `Administrador`. A API nunca devolve senha ou hash. A inativacao bloqueia novos logins e remove o funcionario das consultas operacionais; a autoinativacao e rejeitada. Tokens ja emitidos continuam sujeitos ao tempo de expiracao configurado, pois nao existe revogacao central de sessao nesta etapa.
+
+Quando a gestao de funcionarios responder `403`, o MFE deve informar que o perfil atual nao possui permissao administrativa e orientar novo login apenas quando o nivel de acesso tiver sido alterado recentemente. Erros de autorizacao nao devem ser apresentados como indisponibilidade generica da API.
 
 O registro publico nao pode definir role funcional, departamento, telefone, status ou nivel administrativo. Esses valores sao neutralizados pela API e o acesso inicial fica restrito a `Leitura`. Somente `POST /api/auth/employees`, protegido por `Administrador`, cria perfis completos de funcionarios.
 
