@@ -64,6 +64,8 @@ O `vyracare-app-proceedings-mfe` carrega o catalogo pelo servico de procedimento
 
 A tabela apresenta nome, codigo, categoria, duracao, valor por sessao e status. O cadastro usa a rota `/cadastro/procedimentos/novo`, reutiliza o formulario existente e retorna ao catalogo em `/cadastro/procedimentos` depois da gravacao.
 
+O formulario de procedimentos organiza o preenchimento em tres grupos visuais: identificacao, operacao e cobranca, e apresentacao comercial. A grade ocupa toda a largura disponivel, mantendo campos relacionados lado a lado em telas amplas e empilhados em telas estreitas. Campos obrigatorios sao identificados de forma consistente, o preco explicita a moeda brasileira e o codigo interno apresenta orientacao para facilitar buscas. A disponibilidade para agendamento usa o `vc-checkbox` do Design System, com uma descricao clara do efeito operacional do estado ativo.
+
 ## Seguranca de entrega
 
 Antes de publicar alteracoes nesses MFEs, a revisao deve confirmar que:
