@@ -70,6 +70,8 @@ As acoes de cada linha sao apresentadas pelos componentes `vc-icon-button` e `vc
 
 Cada botao possui `ariaLabel` equivalente ao texto do tooltip para preservar a compreensao por teclado e tecnologias assistivas.
 
+Os modais de nota e historico permanecem centralizados, limitados a largura e altura disponiveis da viewport. Seus campos usam `border-box`, o conteudo nao pode produzir rolagem horizontal e, quando a altura disponivel for insuficiente, somente o eixo vertical do modal deve rolar. Em telas estreitas, as acoes sao empilhadas para preservar a area util dos formularios.
+
 ## Ficha e autorizacao
 
 Contrato de leitura:
