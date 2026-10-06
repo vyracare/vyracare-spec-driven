@@ -50,6 +50,32 @@ As paginas principais de Funcionarios, Procedimentos e Atendimentos seguem tambe
 
 Em larguras menores, o cabecalho e as barras de acao devem ser empilhados para evitar rolagem horizontal e preservar a legibilidade.
 
+## Experiencia mobile-first
+
+O breakpoint de referencia para a navegacao compacta e `720px`. Abaixo dele, a aplicacao deve se comportar como uma experiencia de app, sem reduzir a pagina desktop dentro da viewport:
+
+- o navbar permanece fixo no topo, mostra marca, notificacoes e acesso ao perfil na primeira linha e dedica a segunda linha a busca global;
+- o subtitulo da marca e os textos extensos do perfil sao ocultados, mas nome, papel e acoes continuam acessiveis pelo menu;
+- o sidebar deixa de reservar largura lateral e passa a ser uma barra de navegacao fixa no rodape, respeitando `env(safe-area-inset-bottom)`;
+- o conteudo recebe espacamento inferior suficiente para nao ficar encoberto pela navegacao e usa `100%` da largura disponivel;
+- listas tabulares de Pacientes, Funcionarios, Procedimentos e Atendimentos viram cartoes rotulados, eliminando a rolagem horizontal como interacao principal;
+- formularios usam uma coluna, controles com altura minima de `44px` e fonte de `1rem`, evitando zoom automatico e melhorando o toque;
+- modais operacionais sao apresentados como bottom sheets, limitados a `88dvh`, com rolagem interna e acoes empilhadas;
+- titulos, cards, paineis e gaps sao reduzidos de forma consistente, sem remover hierarquia visual ou informacao funcional.
+
+Entre `721px` e `1024px`, o navbar usa uma grade compacta com busca na segunda linha, enquanto o sidebar continua lateral. Acima desse intervalo, permanece o layout desktop. Novas telas devem implementar primeiro a largura pequena e adicionar complexidade somente nos breakpoints maiores.
+
+As regras estruturais de navbar, notificacoes, campos e sidebar pertencem ao `@vyracare/design-system`. O posicionamento do menu inferior e a reserva da area util pertencem ao shell. Os MFEs sao responsaveis apenas pela adaptacao semantica de seu conteudo, como transformar tabelas em cartoes e reorganizar formularios.
+
+### Criterios de aceite mobile
+
+- nenhuma pagina gera rolagem horizontal em `320px`, `375px` ou `430px`;
+- nenhuma acao essencial fica sob a barra inferior ou fora da viewport;
+- busca, notificacoes, perfil e cinco destinos principais continuam acessiveis;
+- campos, botoes e acoes por icone preservam foco visivel, rotulo acessivel e area de toque adequada;
+- mudancas de orientacao e areas seguras do dispositivo nao encobrem conteudo;
+- o layout desktop continua funcional sem alteracao de contrato dos componentes.
+
 ## Componentes de formulario compartilhados
 
 O pacote `@vyracare/design-system` e a fonte dos controles compartilhados. A partir da versao `0.5.0`, alem dos controles base, ele fornece campos semanticos para os dados recorrentes dos dominios:
