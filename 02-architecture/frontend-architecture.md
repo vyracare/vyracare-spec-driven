@@ -50,7 +50,7 @@ As paginas principais de Funcionarios, Procedimentos e Atendimentos seguem tambe
 
 Em larguras menores, o cabecalho e as barras de acao devem ser empilhados para evitar rolagem horizontal e preservar a legibilidade.
 
-As buscas das listagens de Pacientes, Funcionarios e Procedimentos usam uma unica linha formada pelo campo flexivel e pelo `vc-icon-button` de busca. A acao usa somente o icone branco de alto contraste sobre a variante solida, nome acessivel e `vc-tooltip`; esse arranjo deve ser preservado no desktop e no mobile para reduzir altura sem perder contexto.
+As buscas das listagens de Pacientes, Funcionarios e Procedimentos usam uma unica linha formada pelo campo flexivel e pelo `vc-icon-button` de busca. A acao usa somente o icone branco de alto contraste sobre a variante solida, nome acessivel e `vc-tooltip`; a cor e fornecida pelo token interno `--vc-icon-color` do Design System, sem sobrescritas locais nos MFEs. Esse arranjo deve ser preservado no desktop e no mobile para reduzir altura sem perder contexto.
 
 ## Experiencia mobile-first
 
