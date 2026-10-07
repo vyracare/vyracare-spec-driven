@@ -100,6 +100,8 @@ Inputs e selects desabilitados recebem fundo e borda acinzentados, texto atenuad
 
 O Design System fornece `vc-icon-button` para acoes compactas e `vc-tooltip` para sua descricao flutuante. O tooltip aceita posicionamento superior, inferior, esquerdo ou direito, abre por hover ou foco de teclado e fecha na saida, perda de foco, tecla Escape ou movimentacao da viewport. Sua superficie usa coordenadas fixas calculadas a partir do gatilho, ficando acima de containers com `overflow` sem aumentar a largura de tabelas ou criar barras de rolagem. O texto visivel do tooltip complementa o `ariaLabel` obrigatorio do botao de icone.
 
+Em viewports de ate `720px`, o `vc-select` usa gatilho com altura minima de `3.5rem` e opcoes com altura minima de `3.25rem`. Essas dimensoes ampliam a area de toque sem alterar a densidade dos formularios no desktop.
+
 Tabelas com varias acoes por registro devem preferir essa combinacao para reduzir largura e ruido visual, mantendo nomes objetivos para leitores de tela. Os MFEs nao devem depender apenas do atributo nativo `title` nem recriar a superficie flutuante localmente.
 
 ## Feedback global por toast
