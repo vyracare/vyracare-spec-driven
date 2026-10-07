@@ -6,7 +6,7 @@ Este documento define os contratos que substituem os valores estaticos do `vyrac
 
 No dashboard mobile, os botoes `Novo atendimento` e `Novo paciente` ocupam toda a largura disponivel e possuem altura minima de toque. Em telas maiores, permanecem compactos e lado a lado para preservar a hierarquia do hero.
 
-Os indicadores `Atendimentos hoje`, `Retornos pendentes` e `Taxa de ocupacao` tambem ocupam a largura disponivel no mobile. Eles sao empilhados e mantêm a mesma altura para facilitar a leitura e o toque sem criar hierarquias visuais acidentais entre os indicadores.
+Os indicadores `Atendimentos hoje`, `Retornos pendentes` e `Taxa de ocupacao` tambem ocupam a largura disponivel no mobile. Eles sao empilhados e mantêm a mesma altura natural, sem altura minima adicional, preservando a densidade visual do desktop e evitando hierarquias acidentais entre os indicadores.
 
 ## Indicadores operacionais
 
