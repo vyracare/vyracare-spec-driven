@@ -26,7 +26,7 @@ O `vyracare-app-profile-mfe` usa uma projecao administrativa protegida por role 
 - `PATCH /api/auth/employees/{id}/status`: ativa ou inativa rapidamente.
 - `DELETE /api/auth/employees/{id}`: exclui definitivamente um funcionario, somente por administrador.
 
-A busca aceita nome, e-mail ou telefone. O endpoint operacional `GET /api/auth/employees`, consumido por autocompletes de atendimento, permanece separado e continua retornando somente funcionarios ativos.
+A busca aceita nome, e-mail ou telefone e usa `vc-search` no modo de acao, com Enter e botao lateral compartilhando o mesmo evento. O endpoint operacional `GET /api/auth/employees`, consumido por autocompletes de atendimento, permanece separado e continua retornando somente funcionarios ativos.
 
 O cadastro publico `POST /api/auth/register` nao aceita elevacao de privilegio: cargo, departamento, telefone e status enviados diretamente sao ignorados, e o novo usuario recebe somente o nivel `Leitura`. O cadastro completo de funcionario e exclusivo da rota administrativa autenticada.
 
@@ -72,7 +72,7 @@ O retorno para a grade de procedimentos ocorre somente depois da confirmacao de 
 
 O formulario de procedimentos usa o padrao de editor de protocolo dentro de uma unica superficie. Em telas amplas, identificacao e apresentacao ocupam a coluna principal, enquanto `Agenda e cobranca` forma um painel lateral de consulta rapida com duracao, numero de sessoes, preco e disponibilidade. Marcadores visuais distinguem os contextos sem criar uma pilha de cards independentes ou impor uma ordem artificial entre as colunas. Em tablets, os dados operacionais formam uma faixa de tres colunas abaixo do conteudo; em telas estreitas, todos os campos sao empilhados, enquanto `Limpar` permanece como acao secundaria azul a esquerda e `Salvar procedimento` como acao primaria a direita.
 
-Os campos de identificacao usam uma grade propria do componente, sem depender de classes utilitarias globais: nome ocupa a linha completa, categoria e codigo formam um par, e area principal e recuperacao formam outro. A descricao comercial permanece ampla, mas com altura inicial controlada. Campos obrigatorios sao identificados de forma consistente, o preco explicita a moeda brasileira e o codigo interno apresenta orientacao para facilitar buscas. A disponibilidade para agendamento usa o `vc-checkbox` do Design System, com uma descricao clara do efeito operacional do estado ativo. O rodape reúne a orientacao de revisao e as acoes `Limpar` e `Salvar procedimento`, preservando hierarquia e responsividade.
+Os campos de identificacao usam uma grade propria do componente, sem depender de classes utilitarias globais: nome ocupa a linha completa, categoria e codigo formam um par, e area principal e recuperacao formam outro. A descricao comercial usa `vc-textarea`, permanece ampla e possui altura inicial controlada. Campos obrigatorios sao identificados de forma consistente, o preco explicita a moeda brasileira e o codigo interno apresenta orientacao para facilitar buscas. A disponibilidade para agendamento usa o `vc-checkbox` do Design System, com uma descricao clara do efeito operacional do estado ativo. O rodape reúne a orientacao de revisao e as acoes `Limpar` e `Salvar procedimento`, preservando hierarquia e responsividade. A busca da listagem usa `vc-search` no modo de acao e nao replica controles nativos no MFE.
 
 ## Seguranca de entrega
 

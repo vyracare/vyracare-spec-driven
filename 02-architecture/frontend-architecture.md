@@ -50,7 +50,7 @@ As paginas principais de Funcionarios, Procedimentos e Atendimentos seguem tambe
 
 Em larguras menores, o cabecalho e as barras de acao devem ser empilhados para evitar rolagem horizontal e preservar a legibilidade.
 
-As buscas das listagens de Pacientes, Funcionarios e Procedimentos usam uma unica linha formada pelo campo flexivel e pelo `vc-icon-button` de busca. A acao usa somente o icone branco de alto contraste sobre a variante solida, nome acessivel e `vc-tooltip`; a cor e fornecida pelo token interno `--vc-icon-color` do Design System, sem sobrescritas locais nos MFEs. Esse arranjo deve ser preservado no desktop e no mobile para reduzir altura sem perder contexto.
+As buscas das listagens de Pacientes, Funcionarios e Procedimentos usam `vc-search` com o modo de acao habilitado. O componente organiza em uma unica linha o campo flexivel e o botao de busca, que usa somente o icone branco de alto contraste, nome acessivel e tokens do Design System. Enter e clique emitem o termo normalizado pelo mesmo contrato. Os MFEs fornecem apenas o rotulo, placeholder e tratamento da pesquisa, sem recriar input, botao, tooltip ou estilos locais.
 
 ## Experiencia mobile-first
 
@@ -88,13 +88,17 @@ O pacote `@vyracare/design-system` e a fonte dos controles compartilhados. A par
 - `vc-modal`: superficie acessivel e responsiva com regioes projetadas de cabecalho, corpo e rodape. O componente centraliza backdrop, limite de viewport, rolagem vertical, espacamento entre titulo e conteudo, organizacao das acoes, fechamento por backdrop ou Escape e restauracao de foco;
 - `vc-checkbox`: checkbox visual padronizado com label, descricao, erro e integracao com Angular Forms;
 - `vc-select`: listbox customizado, sem depender da aparencia nativa diferente entre navegadores;
-- `vc-input`: inclui mascaras de telefone, e-mail, data, CPF e CEP e emite o valor mascarado no desfoque.
+- `vc-input`: inclui mascaras de telefone, e-mail, data, CPF e CEP e emite o valor mascarado no desfoque;
+- `vc-textarea`: campo multilinha reutilizavel com label, hint, erro, obrigatoriedade, limite de caracteres, estado desabilitado e integracao `ControlValueAccessor`;
+- `vc-search`: campo de busca com integracao `ControlValueAccessor`; no modo de acao, inclui o botao lateral acessivel e emite o termo normalizado por clique ou Enter;
 - `vc-phone-input`: fixa tipo telefonico, teclado adequado, placeholder nacional e mascara para dez ou onze digitos;
 - `vc-email-input`: fixa tipo e teclado de e-mail e normaliza o valor sem espacos e em minusculas;
 - `vc-date-time-input`: usa o controle nativo `datetime-local` dentro do mesmo layout, estados e contrato de Angular Forms;
 - `vc-postal-code-input`: fixa teclado numerico, placeholder e mascara brasileira `00000-000`, preservando o evento de desfoque para consultas de endereco.
 
-Os MFEs devem preferir os campos semanticos quando o dado corresponder a telefone, e-mail, data/hora ou CEP, deixando validacoes de negocio no formulario consumidor. Eles nao devem recriar mascaras, tipos nativos ou placeholders para esses casos. Tambem nao devem recriar paineis ou estilos de autocomplete localmente. Empilhamento, sombra, estados interativos, truncamento de textos extensos e responsividade pertencem ao componente compartilhado. O `vyracare-app-dashboard-mfe` usa `vc-autocomplete` nos seletores de funcionario e procedimento e os campos semanticos no telefone e nos horarios do atendimento, mantendo debounce e consultas de dominio no MFE. O `vyracare-app-user-mfe` usa os controles compartilhados no cadastro e na edicao de pacientes.
+Os MFEs devem preferir os campos semanticos quando o dado corresponder a telefone, e-mail, data/hora ou CEP, deixando validacoes de negocio no formulario consumidor. Eles nao devem recriar mascaras, tipos nativos, textareas, selects, checkboxes ou buscas acionaveis quando existir equivalente compartilhado. Tambem nao devem recriar paineis ou estilos de autocomplete localmente. Empilhamento, sombra, estados interativos, truncamento de textos extensos e responsividade pertencem ao componente compartilhado. O `vyracare-app-dashboard-mfe` usa `vc-input`, `vc-select`, `vc-autocomplete` e os campos semanticos no atendimento e na notificacao, mantendo consultas e regras de dominio no MFE. O `vyracare-app-user-mfe` usa os controles compartilhados no cadastro, edicao e notas de pacientes. O `vyracare-app-profile-mfe` e o `vyracare-app-proceedings-mfe` usam os mesmos controles nos formularios e buscas de catalogo.
+
+Uma verificacao de conformidade dos templates de aplicacao deve confirmar ausencia de `input`, `select`, `textarea` e `button` nativos nos MFEs. Elementos nativos continuam permitidos dentro da implementacao encapsulada do Design System, onde acessibilidade, estados e responsividade sao centralizados. Excecoes de dominio exigem justificativa arquitetural documentada e nao podem duplicar apenas aparencia ou comportamento ja fornecido pelo pacote.
 
 Inputs e selects desabilitados recebem fundo e borda acinzentados, texto atenuado e cursor `not-allowed` diretamente pelo estilo-base do Design System. Assim, o mesmo estado visual e aplicado aos controles base e aos campos semanticos em todos os MFEs.
 
@@ -126,6 +130,8 @@ Titulos devem identificar o resultado, como `Paciente atualizado` ou `Nao foi po
 O pacote `@vyracare/design-system` deve ser compartilhado como singleton na configuracao de Module Federation. Isso evita instancias duplicadas dos componentes, elimina colisoes `NG0912` e garante um contrato visual unico entre shell e MFEs.
 
 Como o shell fornece a instancia singleton em tempo de execucao, sua versao do Design System deve ser igual ou superior a versao exigida por todos os MFEs carregados. Uma entrega de MFE que utilize uma nova exportacao somente pode ser promovida depois que o shell estiver alinhado com essa versao. Em ambiente local, depois da atualizacao do pacote, o processo do shell deve ser reiniciado para descartar a instancia anterior mantida em memoria. A ausencia desse alinhamento pode deixar um componente remoto indefinido e causar erros Angular como acesso a `ɵcmp` durante a ativacao da rota.
+
+Cada remoto local deve estar disponivel na porta configurada pelo shell antes da navegacao: Dashboard `4201`, Pacientes `4202`, Perfil `4203` e Procedimentos `4204`. Se o carregamento remoto falhar, o `loadChildren` retorna uma rota curinga para a pagina de erro, inclusive em subrotas como `/pacientes/cadastro`; assim, indisponibilidade de infraestrutura nao e apresentada incorretamente como `NG04002 Cannot match any routes`.
 
 ## Documentacao do codigo TypeScript
 

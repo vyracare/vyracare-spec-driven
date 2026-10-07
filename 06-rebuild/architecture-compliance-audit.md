@@ -7,12 +7,14 @@ Auditoria executada em 7 de outubro de 2026 sobre o shell, quatro MFEs de domini
 ## Resultado frontend
 
 - shell e MFEs preservam a separacao por dominio e carregamento por Module Federation;
-- `@vyracare/design-system` esta em `^0.10.0` e configurado como singleton no shell e em todos os MFEs;
+- `@vyracare/design-system` esta em `^0.11.0` e configurado como singleton no shell e em todos os MFEs;
 - navegacao mobile pertence ao shell; controles, modais, icones, feedback e estados visuais compartilhados permanecem no Design System;
 - adaptacoes semanticas de tabelas, formularios e barras de acoes permanecem nos MFEs consumidores;
+- os templates dos quatro MFEs nao possuem `input`, `select`, `textarea` ou `button` nativos; campos multilinha usam o novo `vc-textarea`, buscas de listagem usam `vc-search` no modo de acao e os demais casos reutilizam `vc-input`, `vc-select`, `vc-checkbox`, campos semanticos e `vc-button`;
+- o shell preserva subrotas em falhas de Module Federation por meio de fallback curinga, e os cinco servidores locais responderam com HTTP 200 nas portas `4200` a `4204`;
 - feedback de sucesso e falha usa o toast compartilhado, e gravacoes navegam somente depois da confirmacao da API;
 - build dos cinco aplicativos consumidores, build da biblioteca e build do Storybook foram aprovados;
-- 339 testes frontend foram aprovados: Dashboard 36, Procedimentos 19, Perfil 30, Shell 79, Pacientes 38 e Design System 137.
+- 349 testes frontend foram aprovados: Dashboard 37, Procedimentos 19, Perfil 30, Shell 79, Pacientes 38 e Design System 146.
 
 ## Resultado backend
 
@@ -29,6 +31,7 @@ Auditoria executada em 7 de outubro de 2026 sobre o shell, quatro MFEs de domini
 - `employee-registration.component.scss` e `patients-page.component.scss` permanecem acima do budget de aviso de `4 kB`; nao foi aumentado o limite para ocultar o alerta;
 - os testes Angular em modo zoneless ainda carregam Zone.js e emitem o aviso `NG0914`;
 - a maquina local usa uma versao impar nao LTS do Node.js; pipelines devem continuar usando a versao LTS definida pelas esteiras;
+- a instalacao local ainda reporta vulnerabilidades transitivas nas cadeias de ferramentas frontend legadas; a correcao deve ocorrer em uma atualizacao dedicada e validada, sem aplicar `npm audit fix --force` automaticamente;
 - diretorios locais `bin`, `obj` e `publish-net10`, alem de locks locais de Terraform, sao artefatos de diagnostico e nao fazem parte dos commits.
 
 Esses itens nao alteram contratos nem impedem build ou testes, mas devem ser reduzidos em entregas dedicadas. Novas mudancas nao devem ampliar budgets, duplicar componentes compartilhados ou incluir artefatos gerados para silenciar os avisos.

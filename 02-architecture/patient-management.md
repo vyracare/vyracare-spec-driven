@@ -35,6 +35,7 @@ Regras de interface:
 - condicoes medicas, alergias, medicamentos em uso, cirurgias anteriores e procedimentos esteticos anteriores sao campos multilinha;
 - genero, estado, tipo de pele e exposicao solar usam o select customizado do Design System;
 - habitos e consentimento usam o checkbox do Design System.
+- queixa, objetivos, antecedentes, observacoes e notas profissionais usam `vc-textarea`; campos curtos de notas usam `vc-input` e as listagens usam `vc-search` no modo de acao.
 
 Ao desfocar um CEP completo, o MFE consulta somente a API interna:
 
