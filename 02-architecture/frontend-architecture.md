@@ -63,6 +63,7 @@ O breakpoint de referencia para a navegacao compacta e `720px`. Abaixo dele, a a
 - o conteudo recebe espacamento inferior suficiente para nao ficar encoberto pela navegacao e usa `100%` da largura disponivel;
 - listas tabulares de Pacientes, Funcionarios, Procedimentos e Atendimentos viram cartoes rotulados, eliminando a rolagem horizontal como interacao principal;
 - formularios usam uma coluna, controles com altura minima de `44px` e fonte de `1rem`, evitando zoom automatico e melhorando o toque;
+- grupos de acoes distribuidos entre as extremidades preservam o gutter lateral da pagina, evitando botoes encostados nas bordas da viewport;
 - modais operacionais sao apresentados como bottom sheets, limitados a `88dvh` e com rolagem interna; no rodape, uma acao isolada permanece a direita, duas acoes mantêm cancelar a esquerda e confirmar ou salvar a direita, e conjuntos com tres ou mais acoes sao empilhados para evitar overflow;
 - titulos, cards, paineis e gaps sao reduzidos de forma consistente, sem remover hierarquia visual ou informacao funcional.
 
