@@ -72,7 +72,7 @@ As acoes de cada linha sao apresentadas pelos componentes `vc-icon-button` e `vc
 
 Cada botao possui `ariaLabel` equivalente ao texto do tooltip para preservar a compreensao por teclado e tecnologias assistivas.
 
-Os modais de nota e historico permanecem centralizados, limitados a largura e altura disponiveis da viewport. Seus campos usam `border-box`, o conteudo nao pode produzir rolagem horizontal e, quando a altura disponivel for insuficiente, somente o eixo vertical do modal deve rolar. Em telas estreitas, rodapes com duas acoes mantêm cancelar a esquerda e salvar a direita; rodapes com uma unica acao preservam seu alinhamento contextual.
+Os modais de nota e historico permanecem centralizados, limitados a largura e altura disponiveis da viewport. Seus campos usam `border-box`, o conteudo nao pode produzir rolagem horizontal e, quando a altura disponivel for insuficiente, somente o eixo vertical do modal deve rolar. Em telas estreitas, rodapes com duas acoes mantêm cancelar a esquerda e salvar a direita; rodapes com uma unica acao preservam seu alinhamento contextual. A acao `Fechar` do historico usa a variante secundaria azul, como `Cancelar`, tanto no desktop quanto no mobile.
 
 ## Ficha e autorizacao
 
