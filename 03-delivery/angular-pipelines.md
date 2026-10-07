@@ -72,6 +72,12 @@ Comportamento atual:
 - suporte a CodeArtifact para o design system
 - retry na instalacao do npm
 
+## Publicacao do Design System
+
+O workflow do `vyracare-design-system` consulta no CodeArtifact a versao publicada mais recentemente antes de calcular o proximo incremento semantico. Essa versao remota, e nao somente a versao registrada no checkout, deve ser usada como base para evitar a tentativa de republicar uma versao imutavel quando o pacote tiver sido publicado, mas o commit automatico de versionamento nao tiver chegado ao repositorio.
+
+Depois da publicacao, os consumidores devem atualizar o `package-lock.json` para a nova versao do `@vyracare/design-system`; manter apenas um intervalo compativel no `package.json` nao atualiza instalacoes feitas com `npm ci`.
+
 ## CD Angular
 
 Arquivo base:
