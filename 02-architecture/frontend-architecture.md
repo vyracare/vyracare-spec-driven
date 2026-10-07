@@ -52,6 +52,16 @@ Em larguras menores, o cabecalho e as barras de acao devem ser empilhados para e
 
 As buscas das listagens de Pacientes, Funcionarios e Procedimentos usam `vc-search` com o modo de acao habilitado. O componente organiza em uma unica linha o campo flexivel e o botao de busca, que usa somente o icone branco de alto contraste, nome acessivel e tokens do Design System. Enter e clique emitem o termo normalizado pelo mesmo contrato. Os MFEs fornecem apenas o rotulo, placeholder e tratamento da pesquisa, sem recriar input, botao, tooltip ou estilos locais.
 
+## Busca global e navegacao assistida
+
+A busca do navbar e uma busca global de destinos da aplicacao, coordenada pelo shell. Enquanto o usuario digita, o shell consulta um catalogo unico de rotas, rotulos, descricoes e sinonimos e entrega ao `vc-navbar` no maximo cinco sugestoes. O catalogo inclui Dashboard, agenda, novos atendimentos, pacientes, funcionarios e procedimentos, incluindo seus fluxos de cadastro.
+
+O `vc-navbar` e responsavel somente pela apresentacao e interacao generica do autocomplete. Ele implementa o contrato acessivel `combobox`/`listbox`, foco visivel, fechamento por Escape, navegacao circular com setas e emissao da sugestao selecionada. O componente nao conhece rotas nem regras de dominio. Clique ou selecao explicita por teclado em uma sugestao navega diretamente para o destino resolvido pelo shell.
+
+Enter sem uma sugestao destacada navega para `/busca?q=<termo>`. A pagina de busca apresenta todas as possibilidades encontradas e mantem os destinos como links navegaveis. Termos vazios nao disparam navegacao; consultas desconhecidas exibem um estado vazio orientando exemplos validos. A correspondencia ignora maiusculas, minusculas e acentos e tambem considera sinonimos, como `prontuario`, `equipe`, `consulta` e `tratamento`.
+
+O catalogo de destinos pertence ao shell porque agrega rotas de varios MFEs. Os MFEs continuam proprietarios das telas carregadas pelas rotas e nao devem duplicar o autocomplete global. Futuras buscas por entidades de negocio, como nomes de pacientes ou codigos de procedimentos, devem estender o contrato por provedores de dominio sem transferir chamadas de API para o Design System.
+
 ## Experiencia mobile-first
 
 O breakpoint de referencia para a navegacao compacta e `720px`. Abaixo dele, a aplicacao deve se comportar como uma experiencia de app, sem reduzir a pagina desktop dentro da viewport:
