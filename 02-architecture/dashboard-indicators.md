@@ -2,6 +2,10 @@
 
 Este documento define os contratos que substituem os valores estaticos do `vyracare-app-dashboard-mfe`.
 
+## Acoes principais
+
+No dashboard mobile, os botoes `Novo atendimento` e `Novo paciente` ocupam toda a largura disponivel e possuem altura minima de toque. Em telas maiores, permanecem compactos e lado a lado para preservar a hierarquia do hero.
+
 ## Indicadores operacionais
 
 Fonte: `vyracare-api-appointments`.
