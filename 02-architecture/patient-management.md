@@ -90,6 +90,8 @@ O MFE decide o estado editavel a partir da mesma claim `access_level` emitida no
 
 Mesmo para administradores, CPF, tipo de pele, consentimento do paciente e notas do profissional fazem parte do registro original e nao podem ser alterados por esse fluxo. Esses controles permanecem visiveis e desabilitados no formulario de edicao. O DTO `UpdatePatientRequest` nao recebe esses campos e o handler preserva os valores existentes, assim como a colecao `ProfessionalNotes`, mesmo diante de propriedades extras enviadas diretamente ao endpoint.
 
+No rodape do formulario editavel, telas estreitas mantêm `Restaurar` a esquerda e `Salvar alteracoes` a direita, na mesma linha e com rotulos compactos para evitar overflow.
+
 Ao submeter um formulario valido, o MFE ainda nao executa o `PUT`: ele remove os campos imutaveis do payload e abre um modal de confirmacao. O modal informa quais dados serao preservados e oferece `Cancelar` ou `Confirmar e salvar`. A chamada de atualizacao ocorre somente depois da confirmacao explicita; cancelar descarta o payload pendente sem modificar o prontuario.
 
 O `vyracare-api-authentication` inclui no JWT:
