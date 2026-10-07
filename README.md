@@ -47,6 +47,7 @@ O objetivo nao e substituir o codigo-fonte nem os READMEs dos repositorios. O ob
 - [Baseline de AWS e Dados](./06-rebuild/aws-baseline.md)
 - [Checklists de Validacao](./06-rebuild/validation-checklists.md)
 - [Golden Path para Novo Dominio](./06-rebuild/golden-path-new-domain.md)
+- [Auditoria de Conformidade Arquitetural](./06-rebuild/architecture-compliance-audit.md)
 
 ## Escopo atual
 

@@ -53,6 +53,8 @@ As APIs usam:
 - environment variables para override por ambiente
 - AWS Systems Manager Parameter Store para valores sensiveis
 
+As cinco APIs usam `MongoDB.Driver` `3.12.0` ou superior dentro da mesma major validada. A atualizacao coordenada remove dependencias transitivas vulneraveis presentes na linha `2.24.0`. Antes de promover uma alteracao de pacote, cada API deve executar seus testes e `dotnet list package --vulnerable --include-transitive`; vulnerabilidades altas conhecidas bloqueiam a entrega.
+
 ## Documentacao de API
 
 As APIs publicadas expõem Swagger UI e `swagger.json` por ambiente.

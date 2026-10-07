@@ -27,7 +27,8 @@ Este documento consolida as validacoes minimas para afirmar que a reconstrucao d
 - `environment.prod.ts` representa `main`
 - viewport de `320px`, `375px` e `430px` sem rolagem horizontal
 - navbar compacto, busca global e menus flutuantes contidos na viewport
-- drawer de navegacao acessivel por botao persistente, backdrop e tecla Escape
+- barra inferior com `Inicio`, `Agenda`, `Pacientes` e `Menu`, com estado ativo e areas seguras
+- `Menu` abre o sidebar como bottom sheet e permite fechamento por botao, backdrop e tecla Escape
 - tabelas operacionais convertidas em cartoes rotulados no celular
 - formularios em uma coluna e alvos de toque com no minimo `44px`
 - modais mobile limitados a viewport e com rolagem interna
