@@ -98,7 +98,7 @@ A tela pertence ao `vyracare-app-dashboard-mfe` e permite:
 - configurar antecedencia em horas ou dias por modal;
 - listar todos os agendamentos com estado de proximidade.
 
-Na pagina de cadastro, telefone usa `vc-phone-input`, com a mesma mascara nacional aplicada ao cadastro de pacientes. Inicio e termino usam `vc-date-time-input`. Ambos pertencem ao Design System e integram o formulario reativo por `ControlValueAccessor`, evitando configuracoes e estilos divergentes entre MFEs.
+Na pagina de cadastro, telefone usa `vc-phone-input`, com a mesma mascara nacional aplicada ao cadastro de pacientes. Inicio e termino usam `vc-date-time-input`. Ambos pertencem ao Design System e integram o formulario reativo por `ControlValueAccessor`, evitando configuracoes e estilos divergentes entre MFEs. No mobile, os campos do formulario adotam altura compacta de `44px`, preservando a area minima de toque e fonte de `1rem` para evitar zoom automatico.
 
 O conteudo principal segue o mesmo padrao visual das demais telas internas. A listagem apresenta breadcrumb `Dashboard / Atendimentos`, cabecalho em gradiente e tabela. O botao `Cadastrar atendimento`, localizado na barra da tabela, navega para `/dashboard/agenda/novo`. A pagina de cadastro usa breadcrumb `Dashboard / Atendimentos / Cadastrar`, hero em gradiente e formulario em card branco; ao salvar, retorna para a listagem. Somente a configuracao da antecedencia da notificacao permanece em modal. O item lateral `Atendimentos` aponta para `/dashboard/agenda`.
 
