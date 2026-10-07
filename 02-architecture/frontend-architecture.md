@@ -56,7 +56,7 @@ As buscas das listagens de Pacientes, Funcionarios e Procedimentos usam uma unic
 
 O breakpoint de referencia para a navegacao compacta e `720px`. Abaixo dele, a aplicacao deve se comportar como uma experiencia de app, sem reduzir a pagina desktop dentro da viewport:
 
-- o navbar permanece fixo no topo, mostra marca, notificacoes e acesso ao perfil na primeira linha e dedica a segunda linha a busca global;
+- o navbar permanece fixo no topo, mostra marca, notificacoes e acesso ao perfil na primeira linha e dedica a segunda linha a busca global; notificacao, avatar e menu do perfil usam dimensao `md`, com alvos circulares equivalentes de `2.5rem` para preservar equilibrio visual e area de toque;
 - o subtitulo da marca e os textos extensos do perfil sao ocultados, mas nome, papel e acoes continuam acessiveis pelo menu;
 - uma barra inferior fixa oferece acesso direto a `Inicio`, `Agenda` e `Pacientes`, mais a acao `Menu`; cada item possui icone, rotulo, area de toque adequada, foco visivel e estado ativo derivado da rota mais especifica;
 - `Menu` abre o sidebar como bottom sheet com os cadastros de Funcionarios e Procedimentos e os demais destinos disponiveis; a barra inferior fica oculta enquanto o painel estiver aberto e retorna depois do fechamento por backdrop, botao dedicado, selecao de rota ou tecla Escape;
