@@ -112,7 +112,7 @@ Os campos `Funcionario responsavel` e `Procedimento` nao aceitam texto livre com
 
 A lista de resultados usa o `vc-autocomplete` do Design System e deve abrir como uma camada flutuante sobre as linhas seguintes do formulario. O painel acompanha a largura do campo, preserva a altura do grid, possui destaque de hover/foco e mantem navegacao por teclado e atributos de acessibilidade.
 
-Na pagina de cadastro, o bloco de notificacao deve manter espacamento vertical proprio antes da barra de acoes, evitando contato visual entre o card de lembrete e os botoes `Cancelar` e `Salvar atendimento`. Em telas estreitas, essas duas acoes permanecem na mesma linha: cancelar fica alinhado a esquerda e salvar a direita, com rotulos compactos e area de toque adequada.
+Na pagina de cadastro, o bloco de notificacao deve manter espacamento vertical proprio antes da barra de acoes, evitando contato visual entre o card de lembrete e os botoes `Cancelar` e `Salvar atendimento`. No mobile, `Configurar notificacao` ocupa toda a largura interna desse bloco. Em telas estreitas, as acoes finais permanecem na mesma linha: cancelar fica alinhado a esquerda e salvar a direita, com rotulos compactos e area de toque adequada.
 
 Contratos consumidos:
 
