@@ -56,7 +56,7 @@ O breakpoint de referencia para a navegacao compacta e `720px`. Abaixo dele, a a
 
 - o navbar permanece fixo no topo, mostra marca, notificacoes e acesso ao perfil na primeira linha e dedica a segunda linha a busca global;
 - o subtitulo da marca e os textos extensos do perfil sao ocultados, mas nome, papel e acoes continuam acessiveis pelo menu;
-- o sidebar deixa de reservar largura lateral e passa a ser um drawer deslizante, aberto por um botao `Menu` fixo no canto inferior esquerdo e fechado por backdrop, botao dedicado, selecao de rota ou tecla Escape; enquanto o drawer estiver aberto, o acionador fica oculto e retorna automaticamente depois do fechamento;
+- o sidebar deixa de reservar largura lateral e passa a ser um drawer deslizante, aberto por um acionador circular somente com o icone de menu, posicionado no topo ao lado da marca VyraCare, e fechado por backdrop, botao dedicado, selecao de rota ou tecla Escape; o acionador possui nome acessivel, fica oculto enquanto o drawer estiver aberto e retorna automaticamente depois do fechamento;
 - o conteudo recebe espacamento inferior suficiente para nao ficar encoberto pela navegacao e usa `100%` da largura disponivel;
 - listas tabulares de Pacientes, Funcionarios, Procedimentos e Atendimentos viram cartoes rotulados, eliminando a rolagem horizontal como interacao principal;
 - formularios usam uma coluna, controles com altura minima de `44px` e fonte de `1rem`, evitando zoom automatico e melhorando o toque;
