@@ -40,7 +40,7 @@ A tabela apresenta somente dados operacionais retornados pela projecao segura da
 - indicacao de ativo ou inativo;
 - acoes por icones do Design System para editar e alterar rapidamente o status, com tooltip flutuante e `ariaLabel` equivalente.
 
-A edicao usa a rota `/cadastro/funcionarios/editar/{id}` e reutiliza o formulario compartilhado. O formulario e preenchido pela API e solicita confirmacao antes de salvar. Senha, hash e demais dados de credencial nao fazem parte do contrato, nao sao exibidos e sao preservados pelo backend. Alteracoes de nivel de acesso passam a valer quando o funcionario entrar novamente.
+A edicao usa a rota `/cadastro/funcionarios/editar/{id}` e reutiliza o formulario compartilhado. O formulario e preenchido pela API e solicita confirmacao antes de salvar. Em telas estreitas, a acao `Voltar para funcionarios` ocupa toda a largura disponivel. Senha, hash e demais dados de credencial nao fazem parte do contrato, nao sao exibidos e sao preservados pelo backend. Alteracoes de nivel de acesso passam a valer quando o funcionario entrar novamente.
 
 Apos a API confirmar a criacao ou a edicao de um funcionario, o MFE publica o toast global de sucesso e retorna para a grade em `/cadastro/funcionarios`. Alteracoes rapidas de status e exclusoes confirmadas tambem usam o mesmo retorno. Em caso de erro, a navegacao nao ocorre, os dados permanecem disponiveis para correcao e o MFE publica um toast de erro com mensagem segura. Falhas ao carregar a grade ou a ficha podem manter o aviso contextual na pagina, mas tambem devem usar o toast global.
 
