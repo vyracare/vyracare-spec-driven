@@ -26,11 +26,13 @@ O objetivo nao e substituir o codigo-fonte nem os READMEs dos repositorios. O ob
 - [Estrategia de Ambientes](./02-architecture/environment-strategy.md)
 - [Roadmap de Evolucao para SaaS](./02-architecture/saas-evolution-roadmap.md)
 - [Fundacao Multi-tenant](./02-architecture/multi-tenant-foundation.md)
+- [Aplicativo Mobile](./02-architecture/mobile-application.md)
 
 ### Entrega
 - [Esteiras Angular](./03-delivery/angular-pipelines.md)
 - [Esteiras .NET](./03-delivery/dotnet-pipelines.md)
 - [Templates e Scaffolding](./03-delivery/template-strategy.md)
+- [Esteiras Mobile](./03-delivery/mobile-pipelines.md)
 
 ### Seguranca
 - [Secrets e Configuracao](./04-security/secrets-and-config.md)
@@ -43,6 +45,7 @@ O objetivo nao e substituir o codigo-fonte nem os READMEs dos repositorios. O ob
 - [Matriz de Ambientes e Acessos](./05-operations/environment-access-matrix.md)
 - [Runbook de Recriacao por Ambiente](./05-operations/environment-rebuild-runbook.md)
 - [Runbook de Reconciliacao de Membership](./05-operations/tenant-membership-reconciliation.md)
+- [Runbook de Release Mobile](./05-operations/mobile-release-runbook.md)
 
 ### Reconstrucao
 - [Visao Zero to Platform](./06-rebuild/zero-to-platform.md)
@@ -61,6 +64,7 @@ Esta base reflete o que esta implementado ate o momento nos seguintes grupos:
 - `vyracare-app-profile-mfe`
 - `vyracare-app-dashboard-mfe`
 - `vyracare-app-proceedings-mfe`
+- `vyracare-app-mobile`
 - `vyracare-api-authentication`
 - `vyracare-api-client`
 - `vyracare-api-tenancy`
@@ -71,6 +75,7 @@ Esta base reflete o que esta implementado ate o momento nos seguintes grupos:
 - `template-dot-net-api`
 - `vyracare-infra-pipes-angular`
 - `vyracare-infra-pipes-dot-net`
+- `vyracare-infra-pipes-mobile`
 - `vyracare-design-system`
 - `.github`
 
@@ -93,6 +98,7 @@ Esta base reflete o que esta implementado ate o momento nos seguintes grupos:
 15. Ler [Roadmap de Evolucao para SaaS](./02-architecture/saas-evolution-roadmap.md) antes de iniciar multi-tenancy ou comercializacao
 16. Ler [Fundacao Multi-tenant](./02-architecture/multi-tenant-foundation.md) para contratos, onboarding e isolamento do primeiro incremento
 17. Consultar [Runbook de Reconciliacao de Membership](./05-operations/tenant-membership-reconciliation.md) quando uma conta existente for direcionada indevidamente ao cadastro de empresa
+18. Ler [Aplicativo Mobile](./02-architecture/mobile-application.md), [Esteiras Mobile](./03-delivery/mobile-pipelines.md) e [Runbook de Release Mobile](./05-operations/mobile-release-runbook.md) antes de ativar Android, iOS ou live updates
 
 ## Principios desta pasta
 

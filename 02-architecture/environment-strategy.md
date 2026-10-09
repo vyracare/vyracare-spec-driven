@@ -97,3 +97,12 @@ Promocao entre ambientes nao deve ignorar CI:
 - `develop` ja passou pelo fluxo de PR anterior
 - `release/*` roda CI novamente antes de publicar `hml`
 - `main` e a etapa final de publicacao em `prod`
+
+## Mobile
+
+- `develop` alimenta o canal `dev`;
+- `release/*` alimenta o canal `hml`;
+- `main` alimenta o canal `production`;
+- cada live update declara a faixa de builds nativos Android e iOS;
+- mudancas nativas sao promovidas por versao de loja, separadas do deploy web;
+- `hml` e `production` devem usar GitHub environments protegidos.

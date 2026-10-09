@@ -14,6 +14,7 @@ O objetivo e evitar reconstrucoes ou evolucoes fora de ordem.
 | `vyracare-spec-driven` | nenhum | base de especificacao e operacao |
 | `vyracare-infra-pipes-angular` | nenhum | reusable workflows Angular |
 | `vyracare-infra-pipes-dot-net` | nenhum | reusable workflows .NET |
+| `vyracare-infra-pipes-mobile` | nenhum | reusable workflows Android, iOS e live update |
 
 ### Dependencias de template
 
@@ -32,6 +33,7 @@ O objetivo e evitar reconstrucoes ou evolucoes fora de ordem.
 | `vyracare-app-profile-mfe` | `vyracare-design-system`, `templates-angular`, `vyracare-infra-pipes-angular`, `vyracare-app-shell` | MFE publicado e carregado pelo shell |
 | `vyracare-app-dashboard-mfe` | `vyracare-design-system`, `templates-angular`, `vyracare-infra-pipes-angular`, `vyracare-app-shell` | MFE publicado e carregado pelo shell |
 | `vyracare-app-proceedings-mfe` | `vyracare-design-system`, `templates-angular`, `vyracare-infra-pipes-angular`, `vyracare-app-shell` | MFE publicado e carregado pelo shell |
+| `vyracare-app-mobile` | `vyracare-app-shell`, MFEs Angular, `vyracare-infra-pipes-angular`, `vyracare-infra-pipes-mobile`, Capacitor | compoe o bundle web validado e gera Android/iOS |
 
 ### Dependencias de backend
 
@@ -66,6 +68,7 @@ O objetivo e evitar reconstrucoes ou evolucoes fora de ordem.
 - `vyracare-app-dashboard-mfe` depende das APIs de appointments e finance para compor seus indicadores
 - `vyracare-app-dashboard-mfe` depende tambem de authentication e proceedings para pesquisar e selecionar funcionarios e procedimentos no cadastro de atendimento
 - shell e MFEs Angular exigem `@vyracare/design-system` `^0.10.0`, compartilhado como singleton, para navegacao, feedback, formularios, autocomplete, modais, icones e controles responsivos
+- o app mobile nao duplica os MFEs; recebe o artefato testado do shell e injeta apenas o runtime de atualizacao Capacitor
 
 ### APIs e consumers
 
@@ -80,12 +83,14 @@ O objetivo e evitar reconstrucoes ou evolucoes fora de ordem.
 2. `vyracare-spec-driven`
 3. `vyracare-infra-pipes-angular`
 4. `vyracare-infra-pipes-dot-net`
-5. `templates-angular`
-6. `template-dot-net-api`
-7. `vyracare-design-system`
-8. `vyracare-app-shell`
-9. MFEs Angular
-10. APIs .NET
+5. `vyracare-infra-pipes-mobile`
+6. `templates-angular`
+7. `template-dot-net-api`
+8. `vyracare-design-system`
+9. `vyracare-app-shell`
+10. MFEs Angular
+11. APIs .NET
+12. `vyracare-app-mobile`
 
 ## Regra operacional
 

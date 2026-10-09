@@ -34,6 +34,9 @@ MFE orientado ao dashboard.
 ### `vyracare-app-proceedings-mfe`
 MFE orientado ao dominio de procedimentos.
 
+### `vyracare-app-mobile`
+Container Capacitor unico para Android e iOS. Incorpora o shell Angular, aplica atualizacoes web assinadas e preserva um bundle local para fallback.
+
 ## Backend
 
 ### `vyracare-api-authentication`
@@ -70,6 +73,9 @@ Pipelines reutilizaveis de CI/CD e rollback para Angular.
 ### `vyracare-infra-pipes-dot-net`
 Pipelines reutilizaveis de CI/CD para APIs .NET.
 
+### `vyracare-infra-pipes-mobile`
+Pipelines reutilizaveis de CI nativa e publicacao de bundles web assinados para o aplicativo.
+
 ## Relacao entre grupos
 
 - o shell consome MFEs por `remoteEntry.js`
@@ -77,6 +83,7 @@ Pipelines reutilizaveis de CI/CD para APIs .NET.
 - as APIs rodam em Lambda e persistem em MongoDB
 - os templates geram novos repositorios com o mesmo padrao
 - as pipes encapsulam build, deploy, promocao e sincronizacao entre repositorios
+- o app mobile reutiliza o build do shell e dos MFEs; alteracoes nativas continuam sendo publicadas nas lojas
 
 ## Ordem recomendada de criacao do ecossistema
 
@@ -86,12 +93,14 @@ Para reconstruir a plataforma do zero, a ordem mais segura e:
 2. `vyracare-spec-driven`
 3. `vyracare-infra-pipes-angular`
 4. `vyracare-infra-pipes-dot-net`
-5. `templates-angular`
-6. `template-dot-net-api`
-7. `vyracare-design-system`
-8. `vyracare-app-shell`
-9. MFEs Angular
-10. APIs .NET
+5. `vyracare-infra-pipes-mobile`
+6. `templates-angular`
+7. `template-dot-net-api`
+8. `vyracare-design-system`
+9. `vyracare-app-shell`
+10. MFEs Angular
+11. APIs .NET
+12. `vyracare-app-mobile`
 
 Motivo:
 

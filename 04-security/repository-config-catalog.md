@@ -109,6 +109,31 @@ Configuracoes publicas possiveis:
 
 - `apiUrl` da API de proceedings
 
+### `vyracare-app-mobile`
+
+Secrets GitHub:
+
+- `OTA_SIGNING_PRIVATE_KEY`;
+- `PAT_TOKEN`;
+- `AWS_ROLE_ARN`.
+
+Variables GitHub:
+
+- `MOBILE_UPDATES_BUCKET`;
+- `MOBILE_UPDATES_CDN_URL`;
+- `MOBILE_UPDATES_CLOUDFRONT_ID`;
+- `MOBILE_ANDROID_MIN_BUILD` e `MOBILE_ANDROID_MAX_BUILD`;
+- `MOBILE_IOS_MIN_BUILD` e `MOBILE_IOS_MAX_BUILD`;
+- `AWS_REGION`.
+
+Configuracao publica versionada:
+
+- chave publica RSA de OTA;
+- identificador `br.com.vyracare.app`;
+- schema do manifesto e canais.
+
+A chave privada, certificados Apple e keystore Android nunca podem ser versionados.
+
 ## Design system
 
 ### `vyracare-design-system`

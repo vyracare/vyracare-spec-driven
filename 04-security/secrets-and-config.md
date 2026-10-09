@@ -85,3 +85,11 @@ Eles podem conter:
 - URLs publicas de API
 - `remoteEntry.js`
 - identificadores publicos necessarios ao runtime
+
+## Mobile
+
+- a chave publica de verificacao OTA pode ser versionada e embarcada;
+- a chave privada OTA fica somente em GitHub Secret e assina o ZIP dentro da esteira;
+- certificados Apple, provisioning profiles, senhas e keystore Android sao secrets separados da chave OTA;
+- bundles web sao artefatos publicos do cliente e nunca recebem credenciais ou dados pessoais;
+- o acesso AWS da publicacao mobile deve preferir OIDC e permissao limitada aos prefixos do bucket e a distribuicao necessaria.

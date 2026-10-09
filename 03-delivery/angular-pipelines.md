@@ -95,6 +95,7 @@ Comportamento atual:
 - troca `OriginPath` no CloudFront
 - invalida cache
 - pode atualizar `remoteEntry` no shell orquestrador
+- pode publicar o artefato do shell e notificar o orquestrador mobile quando `publish-mobile-update` estiver habilitado
 
 ## Mapeamento branch -> build configuration
 
@@ -119,3 +120,7 @@ As automacoes que atualizam `environment` e `remoteEntry` entre repositorios pre
 - apenas uma propriedade por chave
 
 Esse ponto ja recebeu varias correcoes e precisa continuar sendo tratado como area de risco nas futuras evolucoes.
+
+## Integracao mobile
+
+O hook mobile e opcional e fica desligado por padrao. Sua ativacao exige que bucket, CDN, OIDC, chave de assinatura e environments protegidos estejam validados conforme [Esteiras Mobile](./mobile-pipelines.md). A falha de infraestrutura mobile nao deve impedir o deploy web antes dessa ativacao controlada.
