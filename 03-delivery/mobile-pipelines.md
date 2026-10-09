@@ -89,6 +89,12 @@ O repositorio usa subject OIDC imutavel do GitHub (`owner@id/repository@id`). Um
 
 ## Releases das lojas
 
-As esteiras de assinatura e envio a Google Play e App Store Connect dependem de contas, application records, keystore Android, issuer/key da App Store Connect e provisioning definitivo. Ate esses dados existirem, a CI gera artefatos nao assinados para validar os projetos sem armazenar credenciais ficticias.
+O Android usa o package name `br.com.vyracare.app`, `compileSdk 36` e `targetSdk 36`. O workflow `Build Android Internal Release` recebe o run ID de um deploy testado do shell, incorpora o canal solicitado e chama `android-store-build.yml` para gerar um AAB assinado.
 
-Quando habilitadas, as esteiras de loja devem ser manuais ou disparadas por tag, exigir environment protegido e nunca compartilhar os secrets usados para OTA.
+A chave de upload Android e suas senhas ficam exclusivamente nos secrets `ANDROID_UPLOAD_*`. O certificado publico versionado possui SHA-256 `68:34:0A:61:01:0C:64:BC:35:D0:5D:FD:B0:F1:0E:D4:F7:12:F7:A7:76:93:B3:58:E0:B1:02:87:72:47:0B:97`. O Google Play deve gerenciar a app signing key; a chave do VyraCare e somente a upload key.
+
+O primeiro AAB, `vyracare-1.0.0-1.aab`, foi produzido no run `37951987234`, com SHA-256 `11683656bec7d2a2e34eaf9a8c984a1d9f63d74e21e95db4029c0f2c28072487`. O artefato incorpora o shell do run `37950056115` e o canal `dev`.
+
+O envio inicial permanece manual porque o registro do aplicativo, a adesao ao Play App Signing e as declaracoes obrigatorias precisam existir no Play Console. Depois da primeira release interna, a API do Google Play pode ser habilitada para automatizar novos uploads com uma service account de menor privilegio.
+
+As esteiras de loja devem ser manuais ou disparadas por tag, exigir environment protegido e nunca compartilhar os secrets usados para OTA.

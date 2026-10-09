@@ -65,3 +65,15 @@ Nova release de loja e obrigatoria quando mudar plugin, permissao, entitlement, 
 - validar Android com o target API vigente;
 - testar upgrade sobre a versao publicada, nao apenas instalacao limpa;
 - confirmar que o bundle incorporado funciona sem depender do canal remoto.
+
+## Primeiro teste interno no Google Play
+
+1. Criar o aplicativo `VyraCare` no Play Console com package name `br.com.vyracare.app`.
+2. Habilitar Play App Signing, mantendo o Google como custodiante da app signing key.
+3. Preencher acesso ao app, anuncios, classificacao indicativa, publico-alvo, seguranca de dados e politica de privacidade.
+4. Baixar o artefato `vyracare-android-1.0.0-1` do run `37951987234` e conferir o arquivo `SHA256SUMS.txt`.
+5. Criar uma release em `Testing > Internal testing` e enviar `vyracare-1.0.0-1.aab`.
+6. Adicionar os e-mails dos testadores e compartilhar o opt-in link fornecido pelo Play Console.
+7. Instalar exclusivamente pelo link de teste e validar login, tenant, dashboard, navegacao, modo offline e atualizacao assinada do canal `dev`.
+
+Cada novo upload precisa usar `versionCode` maior que o anterior. A primeira release automatizada deve usar `2`, mesmo quando o `versionName` continuar na familia `1.0.x`.
