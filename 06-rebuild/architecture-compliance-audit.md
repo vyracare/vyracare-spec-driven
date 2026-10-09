@@ -54,13 +54,18 @@ O primeiro incremento SaaS foi revisado contra os mesmos criterios:
 - unicidade de CPF e e-mail passou a ser composta por tenant, preservando registros legados fora do indice parcial;
 - o shell reutiliza `vc-input` e `vc-button` no onboarding e nao calcula datas comerciais no navegador;
 - contas autenticadas sem tenant sao desviadas para um onboarding recuperavel, que preserva a identidade e emite novo JWT depois do provisionamento;
+- o cadastro administrativo de funcionario herda o tenant exclusivamente do JWT, cria membership pelo adapter `ITenancyProvisioner` e compensa identidade e membership em falhas parciais;
+- o endpoint interno de membership e idempotente, rejeita criacao de `Owner` e preserva o indice unico `tenantId + userId`;
+- o login reconcilia uma unica membership ativa quando a projecao `tenantAccess` estiver ausente, sem selecionar silenciosamente entre multiplas empresas;
+- a falha local `503` observada no onboarding foi eliminada ao mapear explicitamente `TENANCY_INTERNAL_API_KEY` para as opcoes tipadas de auth e tenancy;
+- a suite atual do incremento aprovou 20 testes de autenticacao e 5 testes de tenancy em Linux e nas pipelines do GitHub Actions;
 - builds e testes dos quatro repositorios alterados foram aprovados no fechamento do incremento.
 
 Limites ainda abertos, tratados como proximos incrementos e nao como capacidade entregue:
 
 - troca de tenant para usuarios com mais de uma membership;
 - tela de convite e aceite no shell;
-- migracao da gestao antiga de funcionarios da auth para memberships;
+- migracao em lote de outras contas legadas que ainda nao possuem membership; novas contas e reconciliacao individual ja estao cobertas;
 - propagacao do `TenantContext` para procedimentos, agenda e financeiro;
 - migracao assistida dos registros legados que ainda nao possuem `tenantId`;
 - infraestrutura AWS e pipeline do novo servico de tenancy.

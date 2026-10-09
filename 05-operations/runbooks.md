@@ -7,12 +7,13 @@ Usar os parametros de desenvolvimento, nunca os de producao:
 - `MONGO_PARAMETER_NAME=vyracare/shared/mongo-dev`
 - `JWT_PARAMETER_NAME=vyracare/shared/jwt-signing-dev`
 - `Mongo__Database=vyracare_db_dev`
+- `TENANCY_INTERNAL_API_KEY_PARAMETER_NAME=vyracare/tenancy/internal-api-key-dev` quando o parametro compartilhado estiver provisionado;
 - `AWS_REGION=us-east-1`
 
 Portas esperadas:
 
 - frontends: shell `4200`, dashboard `4201`, user `4202`, profile `4203`, proceedings `4204`;
-- backends: auth `5000`, client `5001`, proceedings `5002`, appointments `5003`, finance `5004`.
+- backends: auth `5000`, client `5001`, proceedings `5002`, appointments `5003`, finance `5004`, tenancy `5006`.
 
 Validar a subida por HTTP. Para appointments e finance, usar `GET /health`; para os demais, validar o Swagger ou uma rota conhecida. Logs locais devem ficar sob `.vyracare-runtime/<timestamp>` fora dos repositorios de produto.
 

@@ -42,6 +42,7 @@ O objetivo nao e substituir o codigo-fonte nem os READMEs dos repositorios. O ob
 - [Runbooks e Diagnostico](./05-operations/runbooks.md)
 - [Matriz de Ambientes e Acessos](./05-operations/environment-access-matrix.md)
 - [Runbook de Recriacao por Ambiente](./05-operations/environment-rebuild-runbook.md)
+- [Runbook de Reconciliacao de Membership](./05-operations/tenant-membership-reconciliation.md)
 
 ### Reconstrucao
 - [Visao Zero to Platform](./06-rebuild/zero-to-platform.md)
@@ -91,6 +92,7 @@ Esta base reflete o que esta implementado ate o momento nos seguintes grupos:
 14. Consultar [Runbooks e Diagnostico](./05-operations/runbooks.md) durante incidentes
 15. Ler [Roadmap de Evolucao para SaaS](./02-architecture/saas-evolution-roadmap.md) antes de iniciar multi-tenancy ou comercializacao
 16. Ler [Fundacao Multi-tenant](./02-architecture/multi-tenant-foundation.md) para contratos, onboarding e isolamento do primeiro incremento
+17. Consultar [Runbook de Reconciliacao de Membership](./05-operations/tenant-membership-reconciliation.md) quando uma conta existente for direcionada indevidamente ao cadastro de empresa
 
 ## Principios desta pasta
 

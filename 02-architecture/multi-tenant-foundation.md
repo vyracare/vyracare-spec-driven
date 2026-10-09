@@ -65,6 +65,28 @@ O cadastro administrativo de funcionario deve herdar o `tenant_id` do administra
 
 No login de uma conta legada sem `tenantAccess`, a autenticacao consulta as memberships ativas. Quando existir exatamente uma, a projecao e restaurada antes da emissao do JWT. Multiplas memberships exigem selecao explicita e nunca podem ser combinadas automaticamente.
 
+#### Sequencia implementada
+
+1. `POST /api/auth/employees` exige identidade com nivel `Administrador` e claim `tenant_id`.
+2. A identidade do funcionario e criada sem aceitar `organization` no payload administrativo.
+3. O auth converte o nivel `Administrador` em membership `Administrator`; os demais niveis recebem `Member`.
+4. O auth chama o endpoint interno idempotente de tenancy usando a chave backend-backend.
+5. O tenancy valida a existencia do tenant, impede criacao de `Owner` por esse fluxo e devolve tenant, membership, papel, status e datas do trial.
+6. O auth grava `tenantAccess` como projecao local para emissao eficiente do JWT.
+7. Falha depois da criacao da membership remove o vinculo e a identidade; falha antes dela remove somente a identidade.
+
+O tenant sempre vem do JWT do administrador. `tenantId` enviado no corpo ou inferido por e-mail nao e aceito como fonte de autoridade.
+
+#### Reconciliacao no login
+
+Quando `tenantAccess` estiver ausente, o login consulta `GET /api/tenancy/internal/users/{userId}/memberships`:
+
+- zero memberships: mantem o token sem tenant e direciona a conta proprietaria ao onboarding;
+- uma membership ativa: restaura a projecao e emite o token com as claims de tenant;
+- mais de uma membership: nao seleciona automaticamente; aguarda o fluxo explicito de escolha de empresa.
+
+Uma conta que deveria ser funcionaria nao deve concluir o onboarding de empresa para contornar ausencia de membership, pois isso criaria um tenant independente.
+
 ## Contrato do JWT
 
 Claims obrigatorias para acessar o plano de dados:
@@ -109,6 +131,7 @@ Repositorios do plano de dados:
 O cadastro publico passa a aceitar um objeto `organization` com `legalName`, `tradeName` e `document` opcional. A resposta de sucesso inclui o token, tenant, membership e periodo de teste. O login emite o mesmo conjunto de claims usando a membership ativa selecionada.
 
 - `POST /api/auth/organization`: conclui o onboarding de uma identidade autenticada que ainda nao possui tenant.
+- `POST /api/auth/employees`: cria identidade e membership no tenant do administrador autenticado, com compensacao em caso de falha.
 
 ## Seguranca entre servicos
 
@@ -126,11 +149,14 @@ Os bootstraps de autenticacao e tenancy devem mapear explicitamente a variavel l
 - CPF pode se repetir em tenants diferentes, mas nao dentro do mesmo tenant;
 - logs tecnicos incluem `tenant_id` sem incluir dados clinicos;
 - builds e testes unitarios permanecem verdes.
+- cadastro administrativo cria membership e projecao de tenant sem aceitar tenant informado pelo navegador;
+- login restaura automaticamente uma unica membership ativa de conta legada;
+- repeticao do provisionamento da mesma membership nao cria duplicidade.
 
 ## Proximos incrementos
 
 1. concluir convite e troca de tenant no shell;
-2. migrar funcionarios da autenticacao para membership e perfil organizacional;
+2. extrair da autenticacao os dados restantes de perfil organizacional e oferecer selecao para usuarios com multiplas memberships;
 3. aplicar `TenantContext` a procedimentos, agenda e financeiro;
 4. automatizar provisionamento de database dedicado por tenant/plano;
 5. adicionar assinatura, entitlements, cobranca e suspensao controlada;
