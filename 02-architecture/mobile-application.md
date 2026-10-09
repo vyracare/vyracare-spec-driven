@@ -16,6 +16,19 @@ Esta abordagem atende ao objetivo de publicar a mesma solucao Angular na web e n
 | `vyracare-infra-pipes-mobile` | validacao nativa e publicacao de live updates |
 | S3 + CloudFront de updates | bundles imutaveis e manifesto atual de cada canal |
 
+## Infraestrutura provisionada
+
+| Recurso | Identificador |
+| --- | --- |
+| Conta/regiao AWS | `510253726006` / `us-east-1` |
+| Bucket de updates | `vyracare-mobile-updates-510253726006` |
+| Distribuicao CloudFront | `E3OIPWV9FLA5GO` |
+| URL publica | `https://d2jn6zv1s8t2bh.cloudfront.net` |
+| Role de publicacao | `vyracare-mobile-updates-github-actions` |
+| Estado Terraform | `s3://vyracare-terraform-state-510253726006/mobile/live-updates/terraform.tfstate` |
+
+O bucket permanece privado e so pode ser lido pela distribuicao via Origin Access Control. A role aceita OIDC apenas do subject imutavel do repositorio mobile e dos environments `dev`, `hml` e `production`; nenhuma access key permanente e usada nessa publicacao.
+
 ## Fluxo de execucao
 
 1. O binario abre o bundle web local incorporado.

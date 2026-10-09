@@ -49,7 +49,7 @@ Quando habilitado no shell, depois do deploy web bem-sucedido o workflow:
 
 O workflow `publish-web-update.yml` do app mobile baixa esse artefato, localiza o `index.html`, injeta o runtime mobile e chama a reusable workflow de publicacao.
 
-O gancho permanece `false` por padrao ate concluir o provisionamento descrito abaixo.
+O gancho permanece `false` por padrao na esteira reutilizavel. O shell o habilita explicitamente por ambiente; `develop` e o primeiro ambiente ativado, enquanto `hml` e `production` continuam opt-in apos validacao e aprovacao.
 
 ## Configuracao exigida para ativacao
 
@@ -71,6 +71,19 @@ No `vyracare-app-mobile`:
 - `MOBILE_IOS_MIN_BUILD` e `MOBILE_IOS_MAX_BUILD`.
 
 Depois de validar `dev`, o shell pode definir `publish-mobile-update: true` nos chamadores de CD, promovendo separadamente para `hml` e `production`.
+
+## Validacao da infraestrutura
+
+O workflow manual `live-update-smoke.yml` cria um bundle sintetico marcado como compativel apenas com o build `999999`. Assim ele testa assinatura, OIDC, S3, manifesto e invalidacao sem poder ser ativado por um aplicativo distribuivel.
+
+Em 9 de outubro de 2026, o run `37948195870` concluiu com sucesso. Tambem foram confirmados externamente:
+
+- download do manifesto e do ZIP pela URL CloudFront;
+- igualdade entre o SHA-256 baixado e o checksum do manifesto;
+- validade da assinatura RSA com a chave publica embarcada;
+- plano Terraform sem divergencias apos o provisionamento.
+
+O repositorio usa subject OIDC imutavel do GitHub (`owner@id/repository@id`). Uma trust policy baseada somente no nome textual do repositorio nao funciona quando `use_immutable_subject` esta habilitado.
 
 ## Releases das lojas
 

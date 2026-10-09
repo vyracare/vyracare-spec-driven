@@ -11,6 +11,10 @@
 7. Executar manualmente um release `dev` e testar em aparelho fisico.
 8. Somente entao habilitar `publish-mobile-update: true` no CD do shell.
 
+Para um smoke test sem risco de instalacao, executar `Live Update Infrastructure Smoke Test` no `vyracare-app-mobile`. O manifesto produzido usa build `999999`; ele valida a infraestrutura, mas deve ser substituido por um bundle real do shell antes de testar o aplicativo.
+
+Depois do smoke test, a ativacao de `develop` deve passar pelo pull request protegido do shell. Nao contornar a exigencia de revisao da branch apenas para iniciar o deploy.
+
 ## Validacao de um update
 
 - conferir sucesso do CI Angular e do deploy web;
