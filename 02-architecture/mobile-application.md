@@ -16,6 +16,18 @@ Esta abordagem atende ao objetivo de publicar a mesma solucao Angular na web e n
 | `vyracare-infra-pipes-mobile` | validacao nativa e publicacao de live updates |
 | S3 + CloudFront de updates | bundles imutaveis e manifesto atual de cada canal |
 
+## Identidade visual nativa
+
+O arquivo-mestre da marca fica em `vyracare-app-mobile/resources/logo.png`, com
+fundo transparente e area de seguranca para as mascaras dos launchers. Android
+usa icones legacy, round e adaptive nas densidades oficiais; iOS usa o AppIcon
+opaco de `1024x1024`. As telas de abertura clara e escura reutilizam o mesmo
+simbolo sobre fundos neutros, sem depender do bundle remoto.
+
+Qualquer alteracao futura do simbolo deve regenerar conjuntamente os icones e
+splashes de Android e iOS para impedir divergencia entre plataformas. O favicon
+do bootstrap local e dos frontends deve derivar do mesmo arquivo-mestre.
+
 ## Infraestrutura provisionada
 
 | Recurso | Identificador |

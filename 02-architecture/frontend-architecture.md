@@ -33,6 +33,18 @@ Cada projeto segue o mesmo principio:
 - `environments.hml.ts` para `hml`
 - `environments.prod.ts` para `prod`
 
+## Identidade da marca
+
+O simbolo oficial do VyraCare combina a letra `V` com um coracao em espaco
+negativo. O gradiente parte do violeta, atravessa o rosa e usa azul-ciano como
+acento, preservando a paleta ja adotada pela interface. O simbolo nao recebe
+texto, borda ou sombra quando usado em areas pequenas.
+
+O shell e todos os MFEs usam o mesmo favicon WebP de `48x48`. Os titulos das
+abas seguem `VyraCare` no shell e `VyraCare | <dominio>` quando o MFE e aberto
+isoladamente. Novas aplicacoes frontend devem reutilizar esse ativo, sem
+recriar variacoes locais da marca.
+
 ## Cabecalho das telas internas
 
 As telas funcionais autenticadas, com excecao da pagina inicial do Dashboard, seguem um cabecalho visual comum:
