@@ -53,6 +53,7 @@ O primeiro incremento SaaS foi revisado contra os mesmos criterios:
 - a API client resolve contexto a partir do principal autenticado, rejeita token incompleto e inclui tenant em todos os filtros Mongo de pacientes e funcionarios;
 - unicidade de CPF e e-mail passou a ser composta por tenant, preservando registros legados fora do indice parcial;
 - o shell reutiliza `vc-input` e `vc-button` no onboarding e nao calcula datas comerciais no navegador;
+- contas autenticadas sem tenant sao desviadas para um onboarding recuperavel, que preserva a identidade e emite novo JWT depois do provisionamento;
 - builds e testes dos quatro repositorios alterados foram aprovados no fechamento do incremento.
 
 Limites ainda abertos, tratados como proximos incrementos e nao como capacidade entregue:

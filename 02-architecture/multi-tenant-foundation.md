@@ -55,6 +55,10 @@ O par `tenantId + userId` deve ser unico. Uma membership nunca e inferida pelo e
 
 O endpoint interno recebe uma `idempotencyKey`. Repetir a mesma requisicao deve devolver o mesmo tenant e a mesma membership.
 
+### Conta existente sem empresa
+
+Contas legadas ou criadas durante uma indisponibilidade anterior podem autenticar sem `tenant_id`. Nesse caso, o shell deve direcionar o usuario para `/onboarding/empresa`, nunca para o plano de dados. O endpoint autenticado `POST /api/auth/organization` provisiona o tenant, promove o usuario para `Owner` e `Administrador` e devolve um novo JWT com o contexto completo. Esse fluxo preserva a identidade e evita exclusao manual de conta.
+
 ## Contrato do JWT
 
 Claims obrigatorias para acessar o plano de dados:
@@ -95,6 +99,8 @@ Repositorios do plano de dados:
 ### Autenticacao
 
 O cadastro publico passa a aceitar um objeto `organization` com `legalName`, `tradeName` e `document` opcional. A resposta de sucesso inclui o token, tenant, membership e periodo de teste. O login emite o mesmo conjunto de claims usando a membership ativa selecionada.
+
+- `POST /api/auth/organization`: conclui o onboarding de uma identidade autenticada que ainda nao possui tenant.
 
 ## Seguranca entre servicos
 
