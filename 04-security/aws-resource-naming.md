@@ -90,6 +90,11 @@ Regra operacional:
 - hml: aponta para bucket sem sufixo em `/blue/<timestamp>`
 - prod: aponta para bucket sem sufixo em `/green/<timestamp>`
 
+As distribuicoes Angular dedicadas a um ambiente usam o comentario
+`<repo> (<ambiente>) em Angular CloudFront`. A distribuicao compartilhada de
+live updates mobile usa `vyracare-app-mobile (live-updates) em Mobile
+CloudFront`, pois os canais `dev`, `hml` e `production` convivem na mesma CDN.
+
 ## Databases Mongo
 
 Padrao:
