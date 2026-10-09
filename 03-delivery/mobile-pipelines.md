@@ -83,6 +83,8 @@ Em 9 de outubro de 2026, o run `37948195870` concluiu com sucesso. Tambem foram 
 - validade da assinatura RSA com a chave publica embarcada;
 - plano Terraform sem divergencias apos o provisionamento.
 
+Na mesma data, o PR `vyracare-app-shell#103` foi integrado em `develop`. O deploy do shell `37950056115` publicou o artefato e disparou automaticamente o workflow mobile `37950229669`. O canal `dev` passou a apontar para o bundle real `8cb8f16c4cee-37950056115`, compativel com os builds Android/iOS `1`; o ZIP servido pela CDN teve checksum e assinatura RSA validados novamente.
+
 O repositorio usa subject OIDC imutavel do GitHub (`owner@id/repository@id`). Uma trust policy baseada somente no nome textual do repositorio nao funciona quando `use_immutable_subject` esta habilitado.
 
 ## Releases das lojas
