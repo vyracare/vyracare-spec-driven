@@ -59,6 +59,12 @@ O endpoint interno recebe uma `idempotencyKey`. Repetir a mesma requisicao deve 
 
 Contas legadas ou criadas durante uma indisponibilidade anterior podem autenticar sem `tenant_id`. Nesse caso, o shell deve direcionar o usuario para `/onboarding/empresa`, nunca para o plano de dados. O endpoint autenticado `POST /api/auth/organization` provisiona o tenant, promove o usuario para `Owner` e `Administrador` e devolve um novo JWT com o contexto completo. Esse fluxo preserva a identidade e evita exclusao manual de conta.
 
+### Cadastro de funcionarios
+
+O cadastro administrativo de funcionario deve herdar o `tenant_id` do administrador autenticado. A autenticacao cria a identidade e solicita ao tenancy uma membership `Administrator` ou `Member`; somente depois persiste a projecao `tenantAccess`. Se qualquer etapa falhar, identidade e membership sao compensadas para impedir registros parciais. O payload de funcionario nao pode criar uma nova organizacao.
+
+No login de uma conta legada sem `tenantAccess`, a autenticacao consulta as memberships ativas. Quando existir exatamente uma, a projecao e restaurada antes da emissao do JWT. Multiplas memberships exigem selecao explicita e nunca podem ser combinadas automaticamente.
+
 ## Contrato do JWT
 
 Claims obrigatorias para acessar o plano de dados:
@@ -91,6 +97,8 @@ Repositorios do plano de dados:
 ### Plano de controle
 
 - `POST /api/tenancy/internal/tenants`: provisionamento interno do tenant proprietario;
+- `POST /api/tenancy/internal/tenants/{tenantId}/memberships`: vinculo idempotente de identidade criada pelo fluxo administrativo;
+- `DELETE /api/tenancy/internal/tenants/{tenantId}/memberships/{userId}`: compensacao do vinculo quando a identidade nao puder ser concluida;
 - `DELETE /api/tenancy/internal/tenants/{tenantId}`: compensacao interna restrita ao onboarding do proprietario;
 - `GET /api/tenancy/internal/users/{userId}/memberships`: memberships ativas para emissao de token;
 - `POST /api/tenancy/tenants/{tenantId}/invitations`: cria convite;
