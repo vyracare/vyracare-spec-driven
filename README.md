@@ -24,6 +24,7 @@ O objetivo nao e substituir o codigo-fonte nem os READMEs dos repositorios. O ob
 - [Gestao de Pacientes](./02-architecture/patient-management.md)
 - [Gestao de Funcionarios e Procedimentos](./02-architecture/clinical-catalog-management.md)
 - [Estrategia de Ambientes](./02-architecture/environment-strategy.md)
+- [Roadmap de Evolucao para SaaS](./02-architecture/saas-evolution-roadmap.md)
 
 ### Entrega
 - [Esteiras Angular](./03-delivery/angular-pipelines.md)
@@ -86,6 +87,7 @@ Esta base reflete o que esta implementado ate o momento nos seguintes grupos:
 12. Ler [Golden Path para Novo Dominio](./06-rebuild/golden-path-new-domain.md)
 13. Consultar [Checklists de Validacao](./06-rebuild/validation-checklists.md)
 14. Consultar [Runbooks e Diagnostico](./05-operations/runbooks.md) durante incidentes
+15. Ler [Roadmap de Evolucao para SaaS](./02-architecture/saas-evolution-roadmap.md) antes de iniciar multi-tenancy ou comercializacao
 
 ## Principios desta pasta
 

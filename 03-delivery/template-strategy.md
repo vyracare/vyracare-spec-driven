@@ -55,6 +55,9 @@ Esses scripts precisam manter coerencia com:
 - caminhos dos `.csproj`
 - referencias de testes
 - convencao de commits em portugues
+- `.gitignore` cobrindo `bin`, `obj`, `publish` e diretorios locais de publish versionado
+
+Lockfiles de ferramentas devem ser tratados como entrada reprodutivel da entrega. Em particular, `.terraform.lock.hcl` deve ser versionado para fixar versoes e hashes dos providers, enquanto `.terraform/`, binarios, pastas `bin`/`obj` e saidas `publish*` permanecem fora do Git.
 
 ## Regras que o template deve preservar
 

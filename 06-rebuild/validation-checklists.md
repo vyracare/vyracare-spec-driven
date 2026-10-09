@@ -82,3 +82,5 @@ Este documento consolida as validacoes minimas para afirmar que a reconstrucao d
 - naming dos recursos AWS consistente
 - nenhuma credencial sensivel versionada
 - READMEs dos repositorios centrais atualizados
+- `.terraform.lock.hcl` versionado nos modulos Terraform executaveis
+- nenhum diretorio `bin`, `obj`, `.terraform` ou `publish*` versionado
