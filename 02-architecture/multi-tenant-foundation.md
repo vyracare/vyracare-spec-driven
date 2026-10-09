@@ -106,6 +106,8 @@ O cadastro publico passa a aceitar um objeto `organization` com `legalName`, `tr
 
 No desenvolvimento local, a chamada interna usa chave configurada fora do codigo. Em AWS, a meta e substituir a chave por autorizacao IAM/SigV4 ou identidade de workload. A chave interna nunca deve ser exposta ao shell, aos MFEs ou aos logs.
 
+Os bootstraps de autenticacao e tenancy devem mapear explicitamente a variavel local `TENANCY_INTERNAL_API_KEY` para suas respectivas opcoes tipadas. Apenas detectar a existencia da variavel sem adiciona-la a configuracao deixa a chave efetiva vazia, causa `401` entre os servicos e deve ser coberto por teste unitario.
+
 ## Criterios de aceite do piloto
 
 - cadastro cria identidade, tenant e owner sem estado parcial;
