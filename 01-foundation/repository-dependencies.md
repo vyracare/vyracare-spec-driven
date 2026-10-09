@@ -38,6 +38,7 @@ O objetivo e evitar reconstrucoes ou evolucoes fora de ordem.
 | Repositorio | Depende de | Motivo |
 | --- | --- | --- |
 | `vyracare-api-authentication` | `template-dot-net-api`, `vyracare-infra-pipes-dot-net`, AWS, MongoDB Atlas | auth publica Lambda, Gateway e Cognito |
+| `vyracare-api-tenancy` | `template-dot-net-api`, `vyracare-infra-pipes-dot-net`, AWS, MongoDB Atlas | plano de controle de tenants, memberships, convites e trial |
 | `vyracare-api-client` | `template-dot-net-api`, `vyracare-infra-pipes-dot-net`, AWS, MongoDB Atlas, API Busca CEP dos Correios | API de clientes e fachada de consulta de CEP |
 | `vyracare-api-proceedings` | `template-dot-net-api`, `vyracare-infra-pipes-dot-net`, AWS, MongoDB Atlas | API de procedimentos |
 | `vyracare-api-appointments` | `template-dot-net-api`, `vyracare-infra-pipes-dot-net`, AWS, MongoDB Atlas | API de agenda e indicadores operacionais |
@@ -54,6 +55,7 @@ O objetivo e evitar reconstrucoes ou evolucoes fora de ordem.
 ### Shell e APIs
 
 - o shell depende da API de autenticacao
+- o cadastro publico do shell envia os dados minimos da empresa para o onboarding coordenado pela autenticacao
 - `environment.dev.ts`, `environment.hml.ts` e `environment.prod.ts` apontam para a auth por ambiente
 
 ### MFEs e APIs
@@ -68,6 +70,8 @@ O objetivo e evitar reconstrucoes ou evolucoes fora de ordem.
 ### APIs e consumers
 
 - a auth pode atualizar o shell e o `vyracare-app-user-mfe`
+- a auth depende da API de tenancy para provisionar a empresa proprietaria e inclui a projecao da membership no JWT
+- a API client recusa tokens sem contexto de tenant e filtra pacientes e funcionarios pelo `tenant_id` validado
 - APIs genericas podem atualizar MFEs consumidores configurados em `.vyracare/mfe-consumer.json`
 
 ## Ordem segura para subir do zero

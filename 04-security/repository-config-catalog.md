@@ -163,6 +163,9 @@ Configuracao adicional:
 - integra com Cognito
 - pode sincronizar `apiUrl` no shell
 - pode sincronizar `authApiUrl` no `vyracare-app-user-mfe`
+- `TenancyApi__BaseUrl`
+- `TenancyApi__InternalApiKey`
+- `TENANCY_INTERNAL_API_KEY_PARAMETER_NAME`
 
 Arquivo de metadata relevante:
 
@@ -177,6 +180,24 @@ Configuracao adicional:
 Arquivo de metadata relevante:
 
 - `.vyracare/mfe-consumer.json`
+
+Seguranca multi-tenant:
+
+- exige `tenant_id`, `membership_id` e `tenant_role` em tokens autenticados;
+- indices unicos usam `tenantId + cpf` para pacientes e `tenantId + email` para funcionarios;
+- registros legados sem tenant precisam de migracao explicita e nao entram automaticamente em nenhum tenant.
+
+### `vyracare-api-tenancy`
+
+Configuracao obrigatoria:
+
+- `Mongo__ConnectionString` e `Mongo__Database`;
+- `Jwt__Key`, `Jwt__Issuer` e `Jwt__Audience`;
+- `Tenancy__InternalApiKey`;
+- `Tenancy__TrialDays`, com padrao `30`;
+- `/vyracare/tenancy/internal-api-key-<env>` no Parameter Store.
+
+As rotas internas exigem `X-Internal-Api-Key`. O header e exclusivo para comunicacao backend-backend e nunca deve ser publicado em environment Angular.
 
 ### `vyracare-api-proceedings`
 

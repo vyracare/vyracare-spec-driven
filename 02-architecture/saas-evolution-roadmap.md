@@ -104,6 +104,8 @@ O registro no INPI aumenta a seguranca probatoria, mas nao substitui segredo ope
 4. Criar testes de isolamento cruzado e auditoria.
 5. Migrar os demais dominios somente depois da validacao do piloto.
 
+Os contratos executaveis, o onboarding de empresa e o periodo de teste de 30 dias estao detalhados em [Fundacao multi-tenant](./multi-tenant-foundation.md).
+
 ### Fase 2 - operacao comercial
 
 1. Automatizar onboarding, convite e provisionamento.

@@ -16,6 +16,7 @@ As APIs .NET seguem estes principios:
 
 - `vyracare-api-authentication`
 - `vyracare-api-client`
+- `vyracare-api-tenancy`
 - `vyracare-api-proceedings`
 - `vyracare-api-appointments`
 - `vyracare-api-finance`
@@ -53,7 +54,15 @@ As APIs usam:
 - environment variables para override por ambiente
 - AWS Systems Manager Parameter Store para valores sensiveis
 
-As cinco APIs usam `MongoDB.Driver` `3.12.0` ou superior dentro da mesma major validada. A atualizacao coordenada remove dependencias transitivas vulneraveis presentes na linha `2.24.0`. Antes de promover uma alteracao de pacote, cada API deve executar seus testes e `dotnet list package --vulnerable --include-transitive`; vulnerabilidades altas conhecidas bloqueiam a entrega.
+As seis APIs usam `MongoDB.Driver` `3.12.0` ou superior dentro da mesma major validada. A atualizacao coordenada remove dependencias transitivas vulneraveis presentes na linha `2.24.0`. Antes de promover uma alteracao de pacote, cada API deve executar seus testes e `dotnet list package --vulnerable --include-transitive`; vulnerabilidades altas conhecidas bloqueiam a entrega.
+
+## Fundacao multi-tenant
+
+- `vyracare-api-tenancy` e o plano de controle de empresas, memberships, convites e trial;
+- a autenticacao provisiona o primeiro tenant por uma porta interna e emite as claims de contexto;
+- `vyracare-api-client` e o piloto do plano de dados e rejeita JWT autenticado sem contexto de tenant;
+- procedimentos, agenda e financeiro ainda aguardam migracao e nao devem ser tratados como isolados por tenant;
+- o contrato detalhado esta em [Fundacao multi-tenant](./multi-tenant-foundation.md).
 
 ## Documentacao de API
 

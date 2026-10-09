@@ -39,3 +39,29 @@ Esses itens nao alteram contratos nem impedem build ou testes, mas devem ser red
 ## Criterio de conformidade
 
 Uma entrega permanece conforme quando respeita a responsabilidade de cada repositorio, compila, passa nos testes do dominio, nao introduz segredo ou vulnerabilidade conhecida e atualiza esta especificacao quando altera um contrato compartilhado. Alertas preexistentes devem ser reportados de forma explicita e nao ocultados por relaxamento de limites globais.
+
+## Incremento multi-tenant de 9 de outubro de 2026
+
+O primeiro incremento SaaS foi revisado contra os mesmos criterios:
+
+- o novo `vyracare-api-tenancy` preserva o padrao `Application/Domain/Infrastructure`, portas e adapters Mongo;
+- a duracao do trial esta centralizada em `TenancyOptions`, com 30 dias por padrao e teste unitario dedicado;
+- autenticacao coordena o onboarding por `ITenancyProvisioner`, sem acoplar o handler ao `HttpClient`;
+- falha de provisionamento compensa a identidade recem-criada e responde `503`;
+- segredo backend-backend vem de configuracao/Parameter Store e nao e exposto ao Angular;
+- JWT passou a emitir `tenant_id`, `membership_id`, `tenant_role` e `plan`;
+- a API client resolve contexto a partir do principal autenticado, rejeita token incompleto e inclui tenant em todos os filtros Mongo de pacientes e funcionarios;
+- unicidade de CPF e e-mail passou a ser composta por tenant, preservando registros legados fora do indice parcial;
+- o shell reutiliza `vc-input` e `vc-button` no onboarding e nao calcula datas comerciais no navegador;
+- builds e testes dos quatro repositorios alterados foram aprovados no fechamento do incremento.
+
+Limites ainda abertos, tratados como proximos incrementos e nao como capacidade entregue:
+
+- troca de tenant para usuarios com mais de uma membership;
+- tela de convite e aceite no shell;
+- migracao da gestao antiga de funcionarios da auth para memberships;
+- propagacao do `TenantContext` para procedimentos, agenda e financeiro;
+- migracao assistida dos registros legados que ainda nao possuem `tenantId`;
+- infraestrutura AWS e pipeline do novo servico de tenancy.
+
+Enquanto esses itens nao forem concluidos, o piloto multi-tenant deve ficar restrito ao onboarding de proprietario e ao dominio de clientes. Nao se deve anunciar isolamento integral da plataforma.

@@ -40,7 +40,10 @@ MFE orientado ao dominio de procedimentos.
 API de autenticacao, primeiro acesso e recuperacao de senha.
 
 ### `vyracare-api-client`
-API de clientes.
+API de clientes e primeira API do plano de dados com `TenantContext` obrigatorio.
+
+### `vyracare-api-tenancy`
+Plano de controle para empresas, memberships, convites e ciclo do trial de 30 dias.
 
 ### `vyracare-api-proceedings`
 API de procedimentos.

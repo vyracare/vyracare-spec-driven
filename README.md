@@ -25,6 +25,7 @@ O objetivo nao e substituir o codigo-fonte nem os READMEs dos repositorios. O ob
 - [Gestao de Funcionarios e Procedimentos](./02-architecture/clinical-catalog-management.md)
 - [Estrategia de Ambientes](./02-architecture/environment-strategy.md)
 - [Roadmap de Evolucao para SaaS](./02-architecture/saas-evolution-roadmap.md)
+- [Fundacao Multi-tenant](./02-architecture/multi-tenant-foundation.md)
 
 ### Entrega
 - [Esteiras Angular](./03-delivery/angular-pipelines.md)
@@ -61,6 +62,7 @@ Esta base reflete o que esta implementado ate o momento nos seguintes grupos:
 - `vyracare-app-proceedings-mfe`
 - `vyracare-api-authentication`
 - `vyracare-api-client`
+- `vyracare-api-tenancy`
 - `vyracare-api-proceedings`
 - `vyracare-api-appointments`
 - `vyracare-api-finance`
@@ -88,6 +90,7 @@ Esta base reflete o que esta implementado ate o momento nos seguintes grupos:
 13. Consultar [Checklists de Validacao](./06-rebuild/validation-checklists.md)
 14. Consultar [Runbooks e Diagnostico](./05-operations/runbooks.md) durante incidentes
 15. Ler [Roadmap de Evolucao para SaaS](./02-architecture/saas-evolution-roadmap.md) antes de iniciar multi-tenancy ou comercializacao
+16. Ler [Fundacao Multi-tenant](./02-architecture/multi-tenant-foundation.md) para contratos, onboarding e isolamento do primeiro incremento
 
 ## Principios desta pasta
 
