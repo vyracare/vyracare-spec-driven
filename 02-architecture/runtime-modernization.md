@@ -190,6 +190,8 @@ Em 12 de novembro de 2026, o MFE Finance foi migrado de Angular 20 para 22 pelas
 
 As excecoes de Webpack e extracao de licencas descritas na onda 3 tambem se aplicam ao Finance. O teste funcional integrado ao shell, permissoes e telas financeiras permanece necessario antes da promocao para dev. A instalacao do lockfile original falhava por uma dependencia ausente; o lockfile foi reconciliado nesta onda.
 
+Uma segunda instalacao limpa do lockfile final foi aprovada com Node 24.15.0. O servidor local do Finance compilou e respondeu `200` em `remoteEntry.js`, com as exposicoes `./Routes` e `./App`. A inspecao das rotas confirmou guards de leitura e de escrita, mas nao substitui o teste funcional autenticado no navegador. O repositorio local do Finance nao possui remoto configurado; o commit de migracao permanece local ate a identificacao do destino.
+
 ## Criterios de aceite
 
 - nenhum frontend usa uma versao Angular fora de suporte;
