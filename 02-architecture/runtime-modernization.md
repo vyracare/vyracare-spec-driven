@@ -184,6 +184,12 @@ Excecoes temporarias e divida controlada:
 - os builds locais registraram aviso porque a maquina estava em Node `25.2.1`; o contrato dos projetos e das esteiras permanece Node `24.15.0`, que e a linha LTS suportada;
 - o profile ainda possui alerta de budget no SCSS de cadastro de funcionario (`4,77 kB` contra aviso de `4 kB`) e arquivos SSR/environments incluidos sem uso. Esses alertas nao bloqueiam a onda, mas devem ser tratados antes da consolidacao.
 
+## Onda 4A: Finance
+
+Em 12 de novembro de 2026, o MFE Finance foi migrado de Angular 20 para 22 pelas migrations oficiais, mantendo Module Federation 22 e Design System 2.0. A execucao dos testes e zoneless. A validacao ocorreu em copia isolada fora do OneDrive com Node 24.15.0: 10 suites e 23 testes passaram, o build de producao gerou `remoteEntry.js` e a instalacao limpa pelo lockfile foi aprovada. A auditoria das dependencias de producao, apos atualizacao do lockfile, nao apresentou vulnerabilidades conhecidas.
+
+As excecoes de Webpack e extracao de licencas descritas na onda 3 tambem se aplicam ao Finance. O teste funcional integrado ao shell, permissoes e telas financeiras permanece necessario antes da promocao para dev. A instalacao do lockfile original falhava por uma dependencia ausente; o lockfile foi reconciliado nesta onda.
+
 ## Criterios de aceite
 
 - nenhum frontend usa uma versao Angular fora de suporte;
