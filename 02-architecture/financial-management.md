@@ -171,4 +171,4 @@ Operacoes de consulta exigem `Finance.Read`. Criacao e mudanca de status exigem 
 
 ### Pendencia de infraestrutura
 
-O `vyracare-app-finance-mfe` existe localmente e ainda nao possui repositorio remoto, bucket, distribuicao CloudFront ou URL de `remoteEntry` publicada. O shell habilita `/financeiro` somente quando `financeRemoteEntry` nao estiver vazio. Isso mantem `dev`, `hml` e `prod` estaveis ate o provisionamento explicito da nova aplicacao.
+O `vyracare-app-finance-mfe` possui repositorio privado em `vyracare/vyracare-app-finance-mfe`, com branches `main`, `develop` e a migracao Angular 22 em PR. As GitHub Actions estao desativadas ate configurar segredos e infraestrutura, evitando publicacao automatica prematura. Ainda nao ha bucket, distribuicao CloudFront ou URL de `remoteEntry` publicada. O shell habilita `/financeiro` somente quando `financeRemoteEntry` nao estiver vazio; a publicacao requer provisionamento e validacao explicitos.
