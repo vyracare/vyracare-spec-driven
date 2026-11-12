@@ -115,6 +115,39 @@ Validacoes da onda:
 
 O Node `25` eventualmente instalado na maquina nao define mais o baseline do produto. Desenvolvedores e CI devem selecionar a versao indicada em `.nvmrc`.
 
+## Onda 2 implementada
+
+Em 12 de novembro de 2026, o `vyracare-design-system` foi migrado, em sequencia, de Angular 20 para Angular 21 e Angular 22 por meio das migrations oficiais do Angular CLI.
+
+Baseline entregue:
+
+- Angular, Angular CLI e `ng-packagr` `22.2.6`;
+- TypeScript `6.0.3`;
+- Storybook `10.6.7`;
+- Jest e ambiente JSDOM `30.5.2`, `jest-preset-angular` `17.0.3` e `@types/jest` `30.0.0`;
+- peer dependencies publicas do pacote em Angular `^22.0.0`;
+- playground e testes configurados para execucao zoneless, sem carregar Zone.js no bootstrap da aplicacao;
+- control flow nativo aplicado pelas migrations oficiais;
+- configuracao TypeScript atualizada para `moduleResolution: Bundler` e caminhos relativos compativeis com TypeScript 6.
+
+A alteracao de peer dependency de Angular 20 para Angular 22 e breaking change. Portanto, a publicacao do Design System deve gerar a major `2.0.0`; consumidores Angular 20 permanecem na major `1.x` ate a respectiva onda de migracao.
+
+Validacoes da onda:
+
+- 43 suites e 153 testes aprovados, com cobertura global de statements em `97,52%`;
+- build da biblioteca Angular aprovado;
+- build de producao do playground aprovado;
+- build estatico do Storybook aprovado;
+- arvore de dependencias diretas valida por `npm ls`;
+- auditoria das dependencias de producao sem vulnerabilidades conhecidas.
+
+Excecoes temporarias e divida controlada:
+
+- `@angular-devkit/build-angular` e `zone.js` continuam como dependencias de desenvolvimento porque o builder Angular do Storybook ainda os declara como peers; eles nao sao carregados pelo playground nem pela configuracao zoneless dos testes;
+- `@angular/platform-browser-dynamic` permanece somente para satisfazer o peer do Storybook;
+- o `@storybook/test-runner` legado permanece enquanto os testes de stories forem migrados para a integracao Playwright/Vitest suportada pelo Storybook; `@storybook/testing-library`, que estava sem uso, foi removido;
+- os alertas de tamanho de bundle do catalogo Storybook e de arquivos de teste incluidos em sua compilacao sao internos ao catalogo e nao afetam o bundle publicado da biblioteca.
+
 ## Criterios de aceite
 
 - nenhum frontend usa uma versao Angular fora de suporte;

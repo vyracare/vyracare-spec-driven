@@ -81,6 +81,14 @@ O workflow do `vyracare-design-system` consulta no CodeArtifact a versao publica
 
 Depois da publicacao, os consumidores devem atualizar o `package-lock.json` para a nova versao do `@vyracare/design-system`; manter apenas um intervalo compativel no `package.json` nao atualiza instalacoes feitas com `npm ci`.
 
+### Compatibilidade Angular 22
+
+A major `2.x` do Design System usa Angular `22.2.6`, TypeScript `6.0.3` e peer dependencies Angular `^22.0.0`. O primeiro commit da onda deve usar prefixo `chore`, que a automacao de versionamento interpreta como incremento major, publicando `2.0.0` a partir da linha `1.x`.
+
+Enquanto shell e MFEs ainda estiverem em Angular 20, seus lockfiles devem permanecer na major `1.x`. A major `2.x` somente deve ser adotada por um consumidor junto com sua migracao para Angular 22 e com validacao integrada de Module Federation.
+
+O pipeline do Design System deve executar com Node `24.15.0`, instalar pelo lockfile, aprovar testes, build da biblioteca, playground e Storybook antes da publicacao. O commit automatico de versao gerado pela esteira deve ser sincronizado localmente antes da proxima mudanca.
+
 ## CD Angular
 
 Arquivo base:
