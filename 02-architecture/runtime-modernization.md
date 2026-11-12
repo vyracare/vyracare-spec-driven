@@ -200,6 +200,10 @@ O MFE Dashboard foi migrado de Angular 20 para Angular 22 e Design System 2 usan
 
 O MFE de Procedimentos foi migrado para Angular 22 e Design System 2 com as migrations oficiais e Module Federation 22. Em copia isolada com Node 24.15.0 passaram 19 testes em 5 suites, build de producao, instalacao limpa pelo lockfile e auditoria de dependencias de producao. O build gerou `remoteEntry.js`. As excecoes de Webpack e extracao de licencas descritas na onda 3 permanecem, assim como a necessidade de validacao funcional autenticada com o shell antes da promocao.
 
+## Onda 4D: Pacientes
+
+O MFE de Pacientes foi migrado para Angular 22 e Design System 2 com as migrations oficiais e Module Federation 22. Em copia isolada com Node 24.15.0 passaram 38 testes em 10 suites, build de producao, instalacao limpa pelo lockfile e auditoria de dependencias de producao. O build gerou `remoteEntry.js`. O SCSS da listagem atingiu 4,62 kB, acima do limite de aviso de 4 kB, e arquivos legados de funcionario e SSR foram apontados como nao utilizados; sua remocao requer avaliacao separada. As excecoes de Webpack e extracao de licencas da onda 3 e a validacao funcional autenticada com o shell permanecem pendentes antes da promocao.
+
 ## Criterios de aceite
 
 - nenhum frontend usa uma versao Angular fora de suporte;
