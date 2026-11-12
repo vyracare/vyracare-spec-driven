@@ -15,6 +15,8 @@ Este documento consolida as validacoes minimas para afirmar que a reconstrucao d
 - playground acessivel
 - Storybook acessivel
 - shell e MFEs conseguem instalar `@vyracare/design-system`
+- componentes macro reutilizaveis existem no Design System, com testes, acessibilidade e responsividade
+- shell e MFEs nao mantem copias locais de macros compartilhados
 
 ## Checklist de frontend
 
@@ -84,3 +86,7 @@ Este documento consolida as validacoes minimas para afirmar que a reconstrucao d
 - READMEs dos repositorios centrais atualizados
 - `.terraform.lock.hcl` versionado nos modulos Terraform executaveis
 - nenhum diretorio `bin`, `obj`, `.terraform` ou `publish*` versionado
+- especificacao atualizada para refletir o estado entregue e suas decisoes
+- testes e builds proporcionais ao risco aprovados
+- commits criados e enviados em todos os repositorios alterados
+- impedimentos de push registrados explicitamente quando um remoto ou permissao nao existir

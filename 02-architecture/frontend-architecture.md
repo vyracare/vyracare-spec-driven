@@ -122,6 +122,8 @@ Os MFEs devem preferir os campos semanticos quando o dado corresponder a telefon
 
 Uma verificacao de conformidade dos templates de aplicacao deve confirmar ausencia de `input`, `select`, `textarea` e `button` nativos nos MFEs. Elementos nativos continuam permitidos dentro da implementacao encapsulada do Design System, onde acessibilidade, estados e responsividade sao centralizados. Excecoes de dominio exigem justificativa arquitetural documentada e nao podem duplicar apenas aparencia ou comportamento ja fornecido pelo pacote.
 
+O mesmo ownership se aplica a componentes macro: navegacao, barras de acao, modais, cards compostos, estados vazios, filtros, paginacao e outras estruturas com potencial de reutilizacao devem nascer no Design System. MFEs podem compor esses blocos e fornecer regras de dominio, mas nao devem manter copias visuais locais. A criacao local de um macro exige justificativa explicita na especificacao da funcionalidade.
+
 Inputs e selects desabilitados recebem fundo e borda acinzentados, texto atenuado e cursor `not-allowed` diretamente pelo estilo-base do Design System. Assim, o mesmo estado visual e aplicado aos controles base e aos campos semanticos em todos os MFEs.
 
 ## Acoes por icone e tooltip

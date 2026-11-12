@@ -14,6 +14,7 @@ O objetivo nao e substituir o codigo-fonte nem os READMEs dos repositorios. O ob
 
 ### Fundacao
 - [AI-DLC](./01-foundation/ai-dlc.md)
+- [Governanca de Desenvolvimento](./01-foundation/engineering-governance.md)
 - [Panorama de Repositorios](./01-foundation/repository-landscape.md)
 - [Matriz de Dependencias entre Repositorios](./01-foundation/repository-dependencies.md)
 
@@ -28,6 +29,7 @@ O objetivo nao e substituir o codigo-fonte nem os READMEs dos repositorios. O ob
 - [Roadmap de Evolucao para SaaS](./02-architecture/saas-evolution-roadmap.md)
 - [Fundacao Multi-tenant](./02-architecture/multi-tenant-foundation.md)
 - [Aplicativo Mobile](./02-architecture/mobile-application.md)
+- [Modernizacao de Runtimes e Frameworks](./02-architecture/runtime-modernization.md)
 
 ### Entrega
 - [Esteiras Angular](./03-delivery/angular-pipelines.md)
@@ -84,23 +86,25 @@ Esta base reflete o que esta implementado ate o momento nos seguintes grupos:
 ## Leitura recomendada
 
 1. Comecar por [AI-DLC](./01-foundation/ai-dlc.md)
-2. Ler [Panorama de Repositorios](./01-foundation/repository-landscape.md)
-3. Ler [Matriz de Dependencias entre Repositorios](./01-foundation/repository-dependencies.md)
-4. Ler [Estrategia de Ambientes](./02-architecture/environment-strategy.md)
-5. Ler [Visao Zero to Platform](./06-rebuild/zero-to-platform.md)
-6. Ler [Baseline de GitHub](./06-rebuild/github-baseline.md)
-7. Ler [Baseline de AWS e Dados](./06-rebuild/aws-baseline.md)
-8. Ler [Esteiras Angular](./03-delivery/angular-pipelines.md)
-9. Ler [Esteiras .NET](./03-delivery/dotnet-pipelines.md)
-10. Ler [Matriz de Ambientes e Acessos](./05-operations/environment-access-matrix.md)
-11. Consultar [Runbook de Recriacao por Ambiente](./05-operations/environment-rebuild-runbook.md)
-12. Ler [Golden Path para Novo Dominio](./06-rebuild/golden-path-new-domain.md)
-13. Consultar [Checklists de Validacao](./06-rebuild/validation-checklists.md)
-14. Consultar [Runbooks e Diagnostico](./05-operations/runbooks.md) durante incidentes
-15. Ler [Roadmap de Evolucao para SaaS](./02-architecture/saas-evolution-roadmap.md) antes de iniciar multi-tenancy ou comercializacao
-16. Ler [Fundacao Multi-tenant](./02-architecture/multi-tenant-foundation.md) para contratos, onboarding e isolamento do primeiro incremento
-17. Consultar [Runbook de Reconciliacao de Membership](./05-operations/tenant-membership-reconciliation.md) quando uma conta existente for direcionada indevidamente ao cadastro de empresa
-18. Ler [Aplicativo Mobile](./02-architecture/mobile-application.md), [Esteiras Mobile](./03-delivery/mobile-pipelines.md) e [Runbook de Release Mobile](./05-operations/mobile-release-runbook.md) antes de ativar Android, iOS ou live updates
+2. Ler [Governanca de Desenvolvimento](./01-foundation/engineering-governance.md)
+3. Ler [Panorama de Repositorios](./01-foundation/repository-landscape.md)
+4. Ler [Matriz de Dependencias entre Repositorios](./01-foundation/repository-dependencies.md)
+5. Ler [Estrategia de Ambientes](./02-architecture/environment-strategy.md)
+6. Ler [Visao Zero to Platform](./06-rebuild/zero-to-platform.md)
+7. Ler [Baseline de GitHub](./06-rebuild/github-baseline.md)
+8. Ler [Baseline de AWS e Dados](./06-rebuild/aws-baseline.md)
+9. Ler [Esteiras Angular](./03-delivery/angular-pipelines.md)
+10. Ler [Esteiras .NET](./03-delivery/dotnet-pipelines.md)
+11. Ler [Matriz de Ambientes e Acessos](./05-operations/environment-access-matrix.md)
+12. Consultar [Runbook de Recriacao por Ambiente](./05-operations/environment-rebuild-runbook.md)
+13. Ler [Golden Path para Novo Dominio](./06-rebuild/golden-path-new-domain.md)
+14. Consultar [Checklists de Validacao](./06-rebuild/validation-checklists.md)
+15. Consultar [Runbooks e Diagnostico](./05-operations/runbooks.md) durante incidentes
+16. Ler [Roadmap de Evolucao para SaaS](./02-architecture/saas-evolution-roadmap.md) antes de iniciar multi-tenancy ou comercializacao
+17. Ler [Fundacao Multi-tenant](./02-architecture/multi-tenant-foundation.md) para contratos, onboarding e isolamento do primeiro incremento
+18. Consultar [Runbook de Reconciliacao de Membership](./05-operations/tenant-membership-reconciliation.md) quando uma conta existente for direcionada indevidamente ao cadastro de empresa
+19. Ler [Aplicativo Mobile](./02-architecture/mobile-application.md), [Esteiras Mobile](./03-delivery/mobile-pipelines.md) e [Runbook de Release Mobile](./05-operations/mobile-release-runbook.md) antes de ativar Android, iOS ou live updates
+20. Ler [Modernizacao de Runtimes e Frameworks](./02-architecture/runtime-modernization.md) antes de alterar Angular, Node, .NET ou dependencias estruturais
 
 ## Principios desta pasta
 
@@ -109,4 +113,6 @@ Esta base reflete o que esta implementado ate o momento nos seguintes grupos:
 - documentar tradeoffs quando a solucao atual nao for a mais elegante
 - separar claramente arquitetura, processo e operacao
 - manter a convencao de commits em portugues nos repositorios da organizacao
+- criar componentes macro reutilizaveis primeiro no Design System e consumi-los como pacote publicado
+- concluir cada incremento com especificacao atualizada, validacao, commits e pushes dos repositorios alterados
 - permitir que o ecossistema seja recriado do zero com o minimo possivel de inferencia externa
