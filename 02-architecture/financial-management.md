@@ -78,7 +78,7 @@ Subpaginas do modulo:
 - `/financeiro/movimentacoes/novo`: cadastro generico de entrada ou saida;
 - rotas legadas de `lancamentos`, `receitas`, `despesas` e `boletos` redirecionam para as novas subpaginas.
 
-O MFE possui um submenu lateral interno ao modulo. Em telas menores ele usa o comportamento horizontal responsivo do `VcSidebar`, sem competir com a navegacao inferior do shell.
+O shell apresenta `Financeiro` como um grupo expansivel no menu principal. As subrotas sao exibidas logo abaixo do item pai, usando o segundo nivel generico do `VcSidebar`; o MFE nao cria uma segunda coluna de navegacao. O grupo abre ao ser selecionado e permanece expandido enquanto uma rota financeira estiver ativa. Em telas menores, os destinos continuam disponiveis no menu completo do shell, sem competir com a navegacao inferior.
 
 As telas seguem breadcrumb, hero, card de conteudo, busca e barras de acao ja adotados nos outros MFEs. Formularios usam componentes do `@vyracare/design-system`; validacoes de negocio permanecem no MFE e na API. No mobile, listas viram cards e acoes preservam alvos de toque e gutters laterais.
 
@@ -129,7 +129,7 @@ Operacoes de consulta exigem `Finance.Read`. Criacao e mudanca de status exigem 
 
 - o shell carrega o MFE financeiro pela porta `4205` em ambiente local;
 - recebimentos a vista ou parcelados, compras, despesas, retiradas e pro-labore podem ser classificados e acompanhados;
-- o submenu apresenta visao geral, recebimentos, pagamentos, compras e caixa;
+- o item Financeiro do menu principal expande visao geral, recebimentos, pagamentos, compras e caixa, sem uma barra lateral adicional;
 - usuarios sem `Finance.Read` nao visualizam nem acessam o modulo e usuarios somente leitura nao recebem acoes de mutacao;
 - o resumo do dashboard reflete somente dados confirmados do tenant autenticado;
 - nenhum recurso financeiro de outro tenant pode ser consultado ou alterado;
@@ -164,7 +164,7 @@ Operacoes de consulta exigem `Finance.Read`. Criacao e mudanca de status exigem 
 - dominio: movimentacoes passaram a registrar natureza, forma de pagamento, contraparte, centro de custo e observacoes;
 - recebimentos: cadastro aceita cliente, Pix, dinheiro, cartoes, transferencia ou boleto e gera de 1 a 60 parcelas mensais;
 - operacao: compras de produtos, retiradas, pro-labore e despesas operacionais possuem classificacoes proprias;
-- navegacao: submenu responsivo e subpaginas de recebimentos, pagamentos, compras e caixa;
+- navegacao: dropdown expansivel no menu principal do shell e subpaginas de recebimentos, pagamentos, compras e caixa;
 - seguranca: policies `Finance.Read` e `Finance.Manage` na API, guards no shell/MFE e menu/busca filtrados;
 - compatibilidade: URLs antigas redirecionam para as novas subpaginas;
 - validacao: 24 testes no MFE financeiro, 113 no shell e 11 na API financeira, todos verdes; builds Angular e .NET aprovados.
