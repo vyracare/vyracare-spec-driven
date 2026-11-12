@@ -89,6 +89,8 @@ Enquanto shell e MFEs ainda estiverem em Angular 20, seus lockfiles devem perman
 
 O pipeline do Design System deve executar com Node `24.15.0`, instalar pelo lockfile, aprovar testes, build da biblioteca, playground e Storybook antes da publicacao. O commit automatico de versao gerado pela esteira deve ser sincronizado localmente antes da proxima mudanca.
 
+No Angular 22, o pacote gerado expõe os tipos em `types/vyracare-design-system.d.ts`; a validacao anterior de `index.d.ts`, usada pelo empacotamento Angular 20, nao deve ser mantida. O gate de publicacao valida manifest, bundle FESM, declaracao de tipos no caminho exportado e entrada SCSS publica.
+
 ## CD Angular
 
 Arquivo base:
