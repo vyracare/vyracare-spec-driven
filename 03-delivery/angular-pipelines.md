@@ -66,11 +66,14 @@ Arquivo base:
 
 Comportamento atual:
 
+- Node.js `24.15.0`, alinhado ao `.nvmrc` e a `engines.node` dos projetos;
 - `build` em um job
 - `test` em job separado que depende do `build`
 - upload/download de artifact do dist
 - suporte a CodeArtifact para o design system
 - retry na instalacao do npm
+
+O baseline deve permanecer na linha Node `24` LTS enquanto Angular 22 for a versao-alvo. Alteracoes de Node precisam atualizar em conjunto os projetos, templates e reusable workflows.
 
 ## Publicacao do Design System
 

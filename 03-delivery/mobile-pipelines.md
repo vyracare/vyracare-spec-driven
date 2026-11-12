@@ -8,13 +8,15 @@ As reusable workflows vivem em `vyracare-infra-pipes-mobile`.
 
 `mobile-ci.yml` executa:
 
-- Node.js 22 e `npm ci`;
+- Node.js `24.15.0` e `npm ci`;
 - testes do contrato de update;
 - validacao da configuracao Capacitor e da chave publica;
 - composicao do fallback local;
 - `cap sync` para Android e iOS;
 - APK debug com Java 21 em Linux;
 - build de simulador iOS sem code signing em runner macOS.
+
+O app mobile declara `engines.node` como `>=24.15.0 <25`, possui `.nvmrc` e valida esse contrato antes dos builds. As esteiras de CI, loja Android e publicacao de update web usam a mesma versao exata.
 
 O workflow `vyracare-app-mobile/.github/workflows/ci.yml` consome essa esteira em pushes para `main` e pull requests.
 

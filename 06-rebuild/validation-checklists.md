@@ -54,6 +54,14 @@ Este documento consolida as validacoes minimas para afirmar que a reconstrucao d
 
 ## Checklist de pipelines
 
+### Toolchains
+
+- projetos Node possuem `.nvmrc` em `24.15.0` e `engines.node` em `>=24.15.0 <25`
+- workflows Angular e mobile instalam Node `24.15.0`
+- APIs e template .NET possuem `global.json` em `10.0.404`
+- workflows .NET instalam SDK `10.0.404`
+- instalacoes limpas usam os lockfiles versionados sem divergencia
+
 ### Angular
 
 - PR para `develop` roda CI

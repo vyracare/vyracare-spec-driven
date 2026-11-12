@@ -94,6 +94,27 @@ A modernizacao do backend deve:
 | 5 | Patches .NET 10 | APIs, template e testes em dependencias compativeis atuais |
 | 6 | Consolidacao | `dev`, `hml`, mobile WebView e producao validados |
 
+## Onda 1 implementada
+
+Em 12 de novembro de 2026, o baseline de toolchains foi aplicado:
+
+- Node.js `24.15.0` foi fixado em `.nvmrc` e em `engines.node` (`>=24.15.0 <25`) no shell, nos MFEs, no Design System, no app mobile e no template Angular;
+- as esteiras Angular, mobile e os workflows locais que configuram Node passaram a usar `24.15.0` e `actions/setup-node@v4` onde aplicavel;
+- o SDK .NET `10.0.404` foi fixado por `global.json`, com `rollForward: latestPatch`, no template e em todas as APIs;
+- as esteiras .NET passaram a instalar explicitamente o SDK `10.0.404`, mantendo `net10.0` e o runtime Lambda `dotnet10`;
+- o template Angular deixou de declarar diretamente `@module-federation/enhanced` e `@module-federation/runtime-core`; esses pacotes sao internos da integracao e a declaracao duplicava o Webpack, causando incompatibilidade no build;
+- o lockfile do template foi reconciliado com npm `11.12.1` e validado por instalacao limpa.
+
+Validacoes da onda:
+
+- builds aprovados no dashboard, finance, proceedings, profile, user, shell e Design System com Node `24.15.0`;
+- testes e bootstrap mobile aprovados;
+- instalacao limpa do template Angular aprovada; o build do template bruto continua intencionalmente indisponivel ate a substituicao dos placeholders de geracao;
+- testes aprovados nas APIs authentication, client, finance, proceedings, tenancy e appointments com SDK `10.0.404`;
+- o template .NET bruto resolve o SDK correto, mas somente compila depois que seus placeholders de nome e recurso forem materializados.
+
+O Node `25` eventualmente instalado na maquina nao define mais o baseline do produto. Desenvolvedores e CI devem selecionar a versao indicada em `.nvmrc`.
+
 ## Criterios de aceite
 
 - nenhum frontend usa uma versao Angular fora de suporte;

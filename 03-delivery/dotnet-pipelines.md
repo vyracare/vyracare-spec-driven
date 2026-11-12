@@ -15,9 +15,11 @@ Workflows principais:
 
 Versao atual padrao do stack:
 
-- SDK do pipeline: `.NET 10`
+- SDK do pipeline: `.NET 10.0.404`
 - `TargetFramework` esperado nas APIs: `net10.0`
 - runtime de publicacao em Lambda: `dotnet10`
+
+Cada API e o template possuem `global.json` com `10.0.404`, `rollForward: latestPatch` e prereleases desabilitadas. O mesmo SDK e instalado nas reusable workflows para que desenvolvimento local e CI resolvam a mesma feature band.
 
 ## Especializacao
 
