@@ -196,6 +196,10 @@ Uma segunda instalacao limpa do lockfile final foi aprovada com Node 24.15.0. O 
 
 O MFE Dashboard foi migrado de Angular 20 para Angular 22 e Design System 2 usando as migrations oficiais intermediarias e Module Federation 22. Os testes usam ambiente zoneless e timers do Jest. Em copia isolada com Node 24.15.0, passaram 37 testes em 9 suites, build de producao, instalacao limpa pelo lockfile e auditoria de dependencias de producao. O build gerou `remoteEntry.js`. As excecoes de Webpack e extracao de licencas da onda 3 tambem se aplicam; a validacao funcional autenticada junto ao shell ainda e necessaria antes da promocao.
 
+## Onda 4C: Procedimentos
+
+O MFE de Procedimentos foi migrado para Angular 22 e Design System 2 com as migrations oficiais e Module Federation 22. Em copia isolada com Node 24.15.0 passaram 19 testes em 5 suites, build de producao, instalacao limpa pelo lockfile e auditoria de dependencias de producao. O build gerou `remoteEntry.js`. As excecoes de Webpack e extracao de licencas descritas na onda 3 permanecem, assim como a necessidade de validacao funcional autenticada com o shell antes da promocao.
+
 ## Criterios de aceite
 
 - nenhum frontend usa uma versao Angular fora de suporte;
