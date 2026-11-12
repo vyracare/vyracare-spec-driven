@@ -130,7 +130,7 @@ Baseline entregue:
 - control flow nativo aplicado pelas migrations oficiais;
 - configuracao TypeScript atualizada para `moduleResolution: Bundler` e caminhos relativos compativeis com TypeScript 6.
 
-A alteracao de peer dependency de Angular 20 para Angular 22 e breaking change. Portanto, a publicacao do Design System deve gerar a major `2.0.0`; consumidores Angular 20 permanecem na major `1.x` ate a respectiva onda de migracao.
+A alteracao de peer dependency de Angular 20 para Angular 22 e breaking change. A major `2.0.0` foi publicada no CodeArtifact ao concluir a onda; consumidores Angular 20 permanecem na major `1.x` ate a respectiva onda de migracao.
 
 Validacoes da onda:
 

@@ -12,7 +12,7 @@ Este documento consolida as validacoes minimas para afirmar que a reconstrucao d
 ## Checklist de design system
 
 - pacote publicado no CodeArtifact
-- major `2.x` compativel com Angular `22.2.6` e peers Angular `^22.0.0`
+- major `2.0.0` publicada, compativel com Angular `22.2.6` e peers Angular `^22.0.0`
 - playground e testes executam em modo zoneless
 - 43 suites e 153 testes aprovados na migracao Angular 22
 - build da biblioteca, playground e Storybook aprovados
