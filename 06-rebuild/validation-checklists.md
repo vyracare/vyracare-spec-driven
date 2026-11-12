@@ -23,6 +23,23 @@ Este documento consolida as validacoes minimas para afirmar que a reconstrucao d
 - componentes macro reutilizaveis existem no Design System, com testes, acessibilidade e responsividade
 - shell e MFEs nao mantem copias locais de macros compartilhados
 
+## Checklist da onda Angular 22 - shell e profile
+
+- [x] migrations oficiais executadas em sequencia Angular 20 -> 21 -> 22
+- [x] shell e profile usam Design System `2.0.0`
+- [x] Module Federation atualizado para `22.0.0`
+- [x] Zone.js removido do runtime e dos testes
+- [x] instalacao limpa pelo lockfile aprovada
+- [x] builds de desenvolvimento e producao aprovados
+- [x] 143 testes aprovados entre shell e profile
+- [x] `remoteEntry.js` responde e expoe `./Routes` e `./App`
+- [x] auditoria de dependencias de producao sem vulnerabilidades conhecidas
+- [x] pipeline do shell usa reusable workflow e instalacao deterministica
+- [ ] migrar Webpack Module Federation para Application Builder/Native Federation apos prova em MFE piloto
+- [ ] restaurar extracao agregada de licencas na migracao do builder
+- [ ] corrigir fallback local de URLs profundas na migracao do dev-server
+- [ ] reduzir o SCSS do cadastro de funcionario abaixo do warning budget
+
 ## Checklist de frontend
 
 - shell acessivel em `dev`, `hml` e `prod`

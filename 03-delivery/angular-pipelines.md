@@ -73,6 +73,10 @@ Comportamento atual:
 - suporte a CodeArtifact para o design system
 - retry na instalacao do npm
 
+Quando existe `package-lock.json`, CI e CD instalam de forma deterministica com `npm ci`. Consumidores do CodeArtifact usam `npm ci --legacy-peer-deps` para respeitar o lockfile e a matriz de peers ja validada; o fallback `npm install --legacy-peer-deps --package-lock=false` fica restrito a repositorios legados que ainda nao possuem lockfile. Uma esteira nao deve ignorar um lockfile apenas porque consome o Design System privado.
+
+O registry padrao dos projetos deve ser `https://registry.npmjs.org/`, e somente o escopo `@vyracare` deve apontar para o CodeArtifact. Isso impede que configuracoes globais do AWS CLI tentem resolver pacotes publicos no repositorio privado.
+
 O baseline deve permanecer na linha Node `24` LTS enquanto Angular 22 for a versao-alvo. Alteracoes de Node precisam atualizar em conjunto os projetos, templates e reusable workflows.
 
 ## Publicacao do Design System
@@ -86,6 +90,8 @@ Depois da publicacao, os consumidores devem atualizar o `package-lock.json` para
 A major `2.x` do Design System usa Angular `22.2.6`, TypeScript `6.0.3` e peer dependencies Angular `^22.0.0`. O primeiro commit da onda deve usar prefixo `chore`, que a automacao de versionamento interpreta como incremento major, publicando `2.0.0` a partir da linha `1.x`.
 
 Enquanto shell e MFEs ainda estiverem em Angular 20, seus lockfiles devem permanecer na major `1.x`. A major `2.x` somente deve ser adotada por um consumidor junto com sua migracao para Angular 22 e com validacao integrada de Module Federation.
+
+O shell e o profile foram os primeiros consumidores promovidos para Angular 22 e Design System `2.0.0`. Os demais MFEs continuam na major compativel com seu Angular ate a respectiva onda; misturar Angular 20 e a major `2.x` do pacote nao e suportado.
 
 O pipeline do Design System deve executar com Node `24.15.0`, instalar pelo lockfile, aprovar testes, build da biblioteca, playground e Storybook antes da publicacao. O commit automatico de versao gerado pela esteira deve ser sincronizado localmente antes da proxima mudanca.
 

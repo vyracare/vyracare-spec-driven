@@ -149,6 +149,41 @@ Excecoes temporarias e divida controlada:
 - o `@storybook/test-runner` legado permanece enquanto os testes de stories forem migrados para a integracao Playwright/Vitest suportada pelo Storybook; `@storybook/testing-library`, que estava sem uso, foi removido;
 - os alertas de tamanho de bundle do catalogo Storybook e de arquivos de teste incluidos em sua compilacao sao internos ao catalogo e nao afetam o bundle publicado da biblioteca.
 
+## Onda 3 implementada
+
+Em 12 de novembro de 2026, o `vyracare-app-shell` e o `vyracare-app-profile-mfe` foram migrados, em sequencia, de Angular 20 para Angular 21 e Angular 22 pelas migrations oficiais do Angular CLI. O profile foi escolhido como MFE piloto por exercitar formularios, rotas protegidas, consumo do Design System e carregamento remoto.
+
+Baseline entregue nos dois consumidores:
+
+- Angular e Angular CLI `22.2.6`, Angular Material/CDK `22.2.7` no shell e TypeScript `6.0.3`;
+- `@angular-architects/module-federation` `22.0.0` e `@angular-builders/custom-webpack` `22.0.1`;
+- `@vyracare/design-system` `2.0.0`, compartilhado pelo shell como singleton;
+- Jest e JSDOM `30.5.2` com `jest-preset-angular` `17.0.3`;
+- execucao zoneless, sem Zone.js na aplicacao ou nos testes;
+- control flow nativo e configuracoes de compilador aplicadas pelas migrations oficiais;
+- remocao de dependencias redundantes de Module Federation, Karma, Jasmine, `ngx-build-plus` e `platform-browser-dynamic` sem uso;
+- reload da pagina encapsulado por token injetavel, permitindo teste em JSDOM 30 e mantendo seguranca para SSR;
+- testes de polling convertidos de `fakeAsync` baseado em Zone.js para timers controlados pelo Jest.
+
+Validacoes da onda:
+
+- instalacao limpa por `npm ci --legacy-peer-deps` aprovada nos dois repositorios;
+- build de desenvolvimento e build de producao aprovados no shell e no profile;
+- 16 suites e 113 testes aprovados no shell, com `97,44%` de statements e `90,96%` de branches;
+- 6 suites e 30 testes aprovados no profile, com `99,49%` de statements e `90,19%` de branches;
+- `remoteEntry.js` do profile gerado em producao com `7,82 kB`, expondo `./Routes` e `./App`;
+- prova HTTP local aprovada: shell em `4200` e remote em `4203` responderam `200` e o contrato do remote foi encontrado;
+- arvore direta aprovada por `npm ls` e auditoria de dependencias de producao sem vulnerabilidades conhecidas nos dois projetos;
+- pipeline de feature do shell alinhado ao reusable workflow Angular.
+
+Excecoes temporarias e divida controlada:
+
+- o Module Federation tradicional permanece sobre Webpack e `@angular-builders/custom-webpack`; Angular 22 marca esse builder como depreciado. A migracao para Application Builder deve ser feita junto com uma avaliacao de Native Federation, sem misturar essa troca estrutural com a atualizacao de framework;
+- `extractLicenses` permanece desabilitado no shell e no profile porque o plugin de licencas do builder Webpack falha durante o build Angular 22. Dependencias e licencas continuam rastreaveis pelos manifests e lockfiles, mas a geracao de arquivo agregado precisa ser restaurada na migracao para o builder moderno;
+- o dev-server Webpack responde a raiz e aos assets, mas nao aplica fallback para uma URL profunda requisitada diretamente, como `/login`. CloudFront deve continuar configurado para fallback SPA; a validacao local de navegacao direta deve ser refeita ao migrar o builder;
+- os builds locais registraram aviso porque a maquina estava em Node `25.2.1`; o contrato dos projetos e das esteiras permanece Node `24.15.0`, que e a linha LTS suportada;
+- o profile ainda possui alerta de budget no SCSS de cadastro de funcionario (`4,77 kB` contra aviso de `4 kB`) e arquivos SSR/environments incluidos sem uso. Esses alertas nao bloqueiam a onda, mas devem ser tratados antes da consolidacao.
+
 ## Criterios de aceite
 
 - nenhum frontend usa uma versao Angular fora de suporte;
