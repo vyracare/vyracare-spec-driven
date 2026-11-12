@@ -27,6 +27,18 @@ Esta matriz consolida os principais acessos, identificadores e recursos por ambi
 
 ## Remote entries do shell
 
+### Local
+
+| MFE | Remote Entry |
+| --- | --- |
+| Dashboard | `http://localhost:4201/remoteEntry.js` |
+| User | `http://localhost:4202/remoteEntry.js` |
+| Profile | `http://localhost:4203/remoteEntry.js` |
+| Proceedings | `http://localhost:4204/remoteEntry.js` |
+| Finance | `http://localhost:4205/remoteEntry.js` |
+
+O remoto financeiro ainda nao possui CloudFront provisionado. Por isso, sua rota permanece desabilitada em `dev`, `hml` e `prod` ate a criacao dos recursos e a configuracao do `financeRemoteEntry` no shell.
+
 ### Dev
 
 | MFE | Remote Entry |

@@ -153,7 +153,7 @@ O pacote `@vyracare/design-system` deve ser compartilhado como singleton na conf
 
 Como o shell fornece a instancia singleton em tempo de execucao, sua versao do Design System deve ser igual ou superior a versao exigida por todos os MFEs carregados. Uma entrega de MFE que utilize uma nova exportacao somente pode ser promovida depois que o shell estiver alinhado com essa versao. Em ambiente local, depois da atualizacao do pacote, o processo do shell deve ser reiniciado para descartar a instancia anterior mantida em memoria. A ausencia desse alinhamento pode deixar um componente remoto indefinido e causar erros Angular como acesso a `ɵcmp` durante a ativacao da rota.
 
-Cada remoto local deve estar disponivel na porta configurada pelo shell antes da navegacao: Dashboard `4201`, Pacientes `4202`, Perfil `4203` e Procedimentos `4204`. Se o carregamento remoto falhar, o `loadChildren` retorna uma rota curinga para a pagina de erro, inclusive em subrotas como `/pacientes/cadastro`; assim, indisponibilidade de infraestrutura nao e apresentada incorretamente como `NG04002 Cannot match any routes`.
+Cada remoto local deve estar disponivel na porta configurada pelo shell antes da navegacao: Dashboard `4201`, Pacientes `4202`, Perfil `4203`, Procedimentos `4204` e Financeiro `4205`. Se o carregamento remoto falhar, o `loadChildren` retorna uma rota curinga para a pagina de erro, inclusive em subrotas como `/pacientes/cadastro`; assim, indisponibilidade de infraestrutura nao e apresentada incorretamente como `NG04002 Cannot match any routes`.
 
 ## Documentacao do codigo TypeScript
 

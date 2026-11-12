@@ -21,6 +21,7 @@ O objetivo nao e substituir o codigo-fonte nem os READMEs dos repositorios. O ob
 - [Arquitetura Frontend](./02-architecture/frontend-architecture.md)
 - [Arquitetura Backend](./02-architecture/backend-architecture.md)
 - [Indicadores do Dashboard](./02-architecture/dashboard-indicators.md)
+- [Gestao Financeira e Notificacoes Operacionais](./02-architecture/financial-management.md)
 - [Gestao de Pacientes](./02-architecture/patient-management.md)
 - [Gestao de Funcionarios e Procedimentos](./02-architecture/clinical-catalog-management.md)
 - [Estrategia de Ambientes](./02-architecture/environment-strategy.md)
@@ -64,6 +65,7 @@ Esta base reflete o que esta implementado ate o momento nos seguintes grupos:
 - `vyracare-app-profile-mfe`
 - `vyracare-app-dashboard-mfe`
 - `vyracare-app-proceedings-mfe`
+- `vyracare-app-finance-mfe`
 - `vyracare-app-mobile`
 - `vyracare-api-authentication`
 - `vyracare-api-client`

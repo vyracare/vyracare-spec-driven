@@ -33,6 +33,7 @@ O objetivo e evitar reconstrucoes ou evolucoes fora de ordem.
 | `vyracare-app-profile-mfe` | `vyracare-design-system`, `templates-angular`, `vyracare-infra-pipes-angular`, `vyracare-app-shell` | MFE publicado e carregado pelo shell |
 | `vyracare-app-dashboard-mfe` | `vyracare-design-system`, `templates-angular`, `vyracare-infra-pipes-angular`, `vyracare-app-shell` | MFE publicado e carregado pelo shell |
 | `vyracare-app-proceedings-mfe` | `vyracare-design-system`, `templates-angular`, `vyracare-infra-pipes-angular`, `vyracare-app-shell` | MFE publicado e carregado pelo shell |
+| `vyracare-app-finance-mfe` | `vyracare-design-system`, `templates-angular`, `vyracare-infra-pipes-angular`, `vyracare-app-shell`, `vyracare-api-finance` | MFE financeiro carregado pelo shell e isolado por tenant na API |
 | `vyracare-app-mobile` | `vyracare-app-shell`, MFEs Angular, `vyracare-infra-pipes-angular`, `vyracare-infra-pipes-mobile`, Capacitor | compoe o bundle web validado e gera Android/iOS |
 
 ### Dependencias de backend
@@ -66,6 +67,7 @@ O objetivo e evitar reconstrucoes ou evolucoes fora de ordem.
 - `vyracare-app-profile-mfe` pode depender de auth e de backend proprio conforme evolucao
 - `vyracare-app-proceedings-mfe` depende da API de proceedings quando o fluxo remoto esta ativo
 - `vyracare-app-dashboard-mfe` depende das APIs de appointments e finance para compor seus indicadores
+- `vyracare-app-finance-mfe` depende da API finance para lancamentos, boletos, status e resumo mensal
 - `vyracare-app-dashboard-mfe` depende tambem de authentication e proceedings para pesquisar e selecionar funcionarios e procedimentos no cadastro de atendimento
 - shell e MFEs Angular exigem `@vyracare/design-system` `^0.10.0`, compartilhado como singleton, para navegacao, feedback, formularios, autocomplete, modais, icones e controles responsivos
 - o app mobile nao duplica os MFEs; recebe o artefato testado do shell e injeta apenas o runtime de atualizacao Capacitor

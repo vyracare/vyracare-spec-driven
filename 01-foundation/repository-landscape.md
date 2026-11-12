@@ -34,6 +34,9 @@ MFE orientado ao dashboard.
 ### `vyracare-app-proceedings-mfe`
 MFE orientado ao dominio de procedimentos.
 
+### `vyracare-app-finance-mfe`
+MFE orientado a lancamentos, receitas, despesas, boletos e visao financeira mensal.
+
 ### `vyracare-app-mobile`
 Container Capacitor unico para Android e iOS. Incorpora o shell Angular, aplica atualizacoes web assinadas e preserva um bundle local para fallback.
 
