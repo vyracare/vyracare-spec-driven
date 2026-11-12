@@ -145,7 +145,7 @@ Excecoes temporarias e divida controlada:
 
 - `@angular-devkit/build-angular` e `zone.js` continuam como dependencias de desenvolvimento porque o builder Angular do Storybook ainda os declara como peers; eles nao sao carregados pelo playground nem pela configuracao zoneless dos testes;
 - `@angular/platform-browser-dynamic` permanece somente para satisfazer o peer do Storybook;
-- o binding `@rolldown/binding-linux-x64-gnu` esta declarado como dependencia opcional explicita para contornar a falha conhecida do npm ao materializar bindings nativos transitivos em lockfiles gerados em outro sistema operacional; isso garante o build no runner Ubuntu sem instalar o binding no Windows;
+- a esteira nao pode instalar com `--omit=optional`: Angular 22 e `ng-packagr` dependem dos bindings nativos opcionais do Rolldown para a plataforma do runner;
 - o `@storybook/test-runner` legado permanece enquanto os testes de stories forem migrados para a integracao Playwright/Vitest suportada pelo Storybook; `@storybook/testing-library`, que estava sem uso, foi removido;
 - os alertas de tamanho de bundle do catalogo Storybook e de arquivos de teste incluidos em sua compilacao sao internos ao catalogo e nao afetam o bundle publicado da biblioteca.
 
