@@ -224,6 +224,10 @@ A API de clientes permanece em .NET 10 e atualizou `Microsoft.AspNetCore.Authent
 
 A API de autenticacao permanece em .NET 10 e atualizou `Microsoft.AspNetCore.Authentication.JwtBearer` para 10.0.15, `MongoDB.Driver` para 3.14.1 e `System.IdentityModel.Tokens.Jwt` para 8.19.2. Com SDK 10.0.404, os 20 testes passaram antes e depois da atualizacao; a auditoria NuGet incluindo transitivos nao encontrou vulnerabilidades conhecidas. Login, emissao e validacao de tokens, integracao real com MongoDB e execucao Lambda devem ser validados em ambiente controlado antes da promocao.
 
+## Onda 5E: API de procedimentos
+
+A API de procedimentos permanece em .NET 10 e atualizou `Microsoft.AspNetCore.Authentication.JwtBearer` para 10.0.15, `MongoDB.Driver` para 3.14.1 e `System.IdentityModel.Tokens.Jwt` para 8.19.2. Com SDK 10.0.404, os cinco testes passaram antes e depois da atualizacao; a auditoria NuGet incluindo transitivos nao encontrou vulnerabilidades conhecidas. A branch de feature parte da release local existente, que ja continha commits ainda ausentes de `develop`; o PR deve ser revisado nesse contexto. A integracao real com MongoDB e a execucao em Lambda permanecem para validacao em ambiente controlado.
+
 ## Criterios de aceite
 
 - nenhum frontend usa uma versao Angular fora de suporte;
