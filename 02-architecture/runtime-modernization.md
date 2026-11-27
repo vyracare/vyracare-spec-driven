@@ -212,6 +212,10 @@ O template Angular foi atualizado para Angular 22, Design System 2 e Module Fede
 
 Em 26 de novembro de 2026, a API Finance permaneceu em .NET 10 e atualizou `Microsoft.AspNetCore.Authentication.JwtBearer` de 10.0.9 para 10.0.15 e `MongoDB.Driver` de 3.12.0 para 3.14.1. Com o SDK 10.0.404 instalado isoladamente, os 11 testes passaram antes e depois da alteracao; a auditoria NuGet, incluindo dependencias transitivas, nao encontrou vulnerabilidades conhecidas. A execucao real em Lambda e a integracao com MongoDB permanecem para validacao em ambiente controlado. Atualizacoes de major de AWS SDK, Lambda e Swagger serao tratadas separadamente.
 
+## Onda 5B: API de agendamentos
+
+A API de agendamentos permanece em .NET 10 e atualizou `Microsoft.AspNetCore.Authentication.JwtBearer` de 10.0.9 para 10.0.15 e `MongoDB.Driver` de 3.12.0 para 3.14.1. Com SDK 10.0.404, os sete testes passaram antes e depois da atualizacao; a auditoria NuGet incluindo dependencias transitivas nao encontrou vulnerabilidades conhecidas. A integracao real com MongoDB e a execucao em Lambda devem ser validadas em ambiente controlado antes da promocao.
+
 ## Criterios de aceite
 
 - nenhum frontend usa uma versao Angular fora de suporte;
