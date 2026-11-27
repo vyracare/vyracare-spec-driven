@@ -220,6 +220,10 @@ A API de agendamentos permanece em .NET 10 e atualizou `Microsoft.AspNetCore.Aut
 
 A API de clientes permanece em .NET 10 e atualizou `Microsoft.AspNetCore.Authentication.JwtBearer` para 10.0.15, `MongoDB.Driver` para 3.14.1 e `System.IdentityModel.Tokens.Jwt` para 8.19.2, minimo exigido pelo JwtBearer atualizado. Com SDK 10.0.404, os 16 testes passaram antes e depois da atualizacao; a auditoria NuGet incluindo transitivos nao encontrou vulnerabilidades conhecidas. A integracao real com MongoDB e a execucao em Lambda permanecem para validacao em ambiente controlado antes da promocao.
 
+## Onda 5D: API de autenticacao
+
+A API de autenticacao permanece em .NET 10 e atualizou `Microsoft.AspNetCore.Authentication.JwtBearer` para 10.0.15, `MongoDB.Driver` para 3.14.1 e `System.IdentityModel.Tokens.Jwt` para 8.19.2. Com SDK 10.0.404, os 20 testes passaram antes e depois da atualizacao; a auditoria NuGet incluindo transitivos nao encontrou vulnerabilidades conhecidas. Login, emissao e validacao de tokens, integracao real com MongoDB e execucao Lambda devem ser validados em ambiente controlado antes da promocao.
+
 ## Criterios de aceite
 
 - nenhum frontend usa uma versao Angular fora de suporte;
