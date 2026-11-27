@@ -11,3 +11,5 @@ O repositorio `vyracare-api-proceedings` disponibiliza `scripts/inventory-legacy
 5. Revise o resultado, inclusive IDs e campos malformados, e prepare separadamente backup, migracao por registro, verificacao posterior e rollback. O inventario nao aplica nem gera uma operacao de escrita. Nao promova a mudanca de isolamento ate que essa etapa esteja concluida e validada no ambiente de destino.
 
 Os dados de exemplo usam identificadores ficticios. Nenhuma consulta a base real foi realizada na criacao deste procedimento.
+
+Na tentativa posterior de execucao em desenvolvimento, a configuracao da Lambda confirmou o banco `vyracare_db_dev` e o parametro de Mongo do ambiente dev. A conexao foi validada, mas a credencial da aplicacao possui permissoes de escrita administrativas; nenhum inventario ou leitura de documentos foi executado com ela. Para continuar, disponibilizar uma identidade Mongo limitada a leitura da colecao de desenvolvimento e executar os passos acima com essa identidade.
