@@ -208,6 +208,10 @@ O MFE de Pacientes foi migrado para Angular 22 e Design System 2 com as migratio
 
 O template Angular foi atualizado para Angular 22, Design System 2 e Module Federation 22. O remoto gerado expoe `./App` e `./Routes` como modulos e compartilha Angular e Design System como singletons. A substituicao de placeholders exclui `.git`, dependencias e artefatos. Uma copia gerada pelo proprio script passou em `npm ci`, build de producao e dois testes com Node 24.15.0; a auditoria de dependencias de producao nao apontou vulnerabilidades conhecidas. O CI do template gera um projeto antes de compilar e testar. Permanecem as excecoes de Webpack e licencas da onda 3 e a validacao integrada antes da promocao.
 
+## Onda 5A: API Finance
+
+Em 26 de novembro de 2026, a API Finance permaneceu em .NET 10 e atualizou `Microsoft.AspNetCore.Authentication.JwtBearer` de 10.0.9 para 10.0.15 e `MongoDB.Driver` de 3.12.0 para 3.14.1. Com o SDK 10.0.404 instalado isoladamente, os 11 testes passaram antes e depois da alteracao; a auditoria NuGet, incluindo dependencias transitivas, nao encontrou vulnerabilidades conhecidas. A execucao real em Lambda e a integracao com MongoDB permanecem para validacao em ambiente controlado. Atualizacoes de major de AWS SDK, Lambda e Swagger serao tratadas separadamente.
+
 ## Criterios de aceite
 
 - nenhum frontend usa uma versao Angular fora de suporte;
