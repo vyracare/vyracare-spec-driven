@@ -248,7 +248,7 @@ Em 27 de novembro de 2026, copias isoladas dos commits locais do shell e dos cin
 
 Sem configuracao adicional, os dev-servers dos remotos nao enviaram `Access-Control-Allow-Origin`, impedindo o navegador de importar `remoteEntry.js`. A verificacao acima utilizou `--headers 'Access-Control-Allow-Origin=*'` somente nesses servidores locais isolados. A configuracao dos ambientes publicados deve permitir explicitamente as origens apropriadas e ser verificada separadamente; esse teste nao valida o CORS da AWS.
 
-O navegador tambem registrou `Cannot use 'import.meta' outside a module`: o HTML de desenvolvimento do shell carrega `styles.js` como script classico, embora o arquivo gerado contenha `import.meta`. As paginas renderizaram, mas esse erro e seu impacto visual permanecem pendentes de correcao e regressao. A promocao coordenada continua condicionada a revisao dos PRs e a validacao funcional real, incluida a experiencia mobile.
+O navegador tambem registrou `Cannot use 'import.meta' outside a module`: o HTML de desenvolvimento do shell carregava `styles.js` como script classico, embora o arquivo gerado contivesse `import.meta`. A correcao na branch de migracao define o caminho dos assets do shell como `/` no servidor local e preserva `publicPath: auto` nas configuracoes de build publicado. Em nova verificacao com os cinco remotos, as cinco paginas renderizaram sem erros de console; passaram tambem 113 testes do shell e o build de producao. O teste continua usando CORS configurado apenas nos remotos locais, token sintetico e APIs simuladas. A promocao coordenada continua condicionada a revisao dos PRs e a validacao funcional real, incluida a experiencia mobile.
 
 ## Criterios de aceite
 
