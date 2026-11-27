@@ -242,6 +242,14 @@ Em 27 de novembro de 2026, os `package.json` das branches `develop` do shell e d
 
 Os PRs de shell e Dashboard apresentavam CI aprovado, mas exigiam revisao no GitHub. Existem PRs de release anteriores com conflitos e historicos diferentes; devem ser revisados individualmente, sem sobrescrever branches nem ignorar protecoes. A API de procedimentos possui uma branch de feature baseada em release com commits anteriores adicionais. O repositorio privado do MFE Finance continua com Actions desativadas, sem infraestrutura de publicacao configurada e `financeRemoteEntry` vazio em dev. Antes de ativar sua esteira, configurar segredos e infraestrutura e validar as permissoes e o fluxo financeiro em ambiente controlado.
 
+### Verificacao integrada local Angular 22
+
+Em 27 de novembro de 2026, copias isoladas dos commits locais do shell e dos cinco MFEs foram instaladas com seus lockfiles e Node 24, sem utilizar a base existente. Os seis servidores compilaram; com o shell na porta 4300 e os remotos nas portas 4301 a 4305, as paginas Dashboard, Pacientes, Funcionarios, Procedimentos e Financeiro renderizaram no Chrome headless. O teste usou token sintetico e respostas HTTP simuladas: verifica carregamento e renderizacao inicial, nao login real, autorizacao do backend, operacoes financeiras ou integracao com MongoDB.
+
+Sem configuracao adicional, os dev-servers dos remotos nao enviaram `Access-Control-Allow-Origin`, impedindo o navegador de importar `remoteEntry.js`. A verificacao acima utilizou `--headers 'Access-Control-Allow-Origin=*'` somente nesses servidores locais isolados. A configuracao dos ambientes publicados deve permitir explicitamente as origens apropriadas e ser verificada separadamente; esse teste nao valida o CORS da AWS.
+
+O navegador tambem registrou `Cannot use 'import.meta' outside a module`: o HTML de desenvolvimento do shell carrega `styles.js` como script classico, embora o arquivo gerado contenha `import.meta`. As paginas renderizaram, mas esse erro e seu impacto visual permanecem pendentes de correcao e regressao. A promocao coordenada continua condicionada a revisao dos PRs e a validacao funcional real, incluida a experiencia mobile.
+
 ## Criterios de aceite
 
 - nenhum frontend usa uma versao Angular fora de suporte;
