@@ -216,6 +216,10 @@ Em 26 de novembro de 2026, a API Finance permaneceu em .NET 10 e atualizou `Micr
 
 A API de agendamentos permanece em .NET 10 e atualizou `Microsoft.AspNetCore.Authentication.JwtBearer` de 10.0.9 para 10.0.15 e `MongoDB.Driver` de 3.12.0 para 3.14.1. Com SDK 10.0.404, os sete testes passaram antes e depois da atualizacao; a auditoria NuGet incluindo dependencias transitivas nao encontrou vulnerabilidades conhecidas. A integracao real com MongoDB e a execucao em Lambda devem ser validadas em ambiente controlado antes da promocao.
 
+## Onda 5C: API de clientes
+
+A API de clientes permanece em .NET 10 e atualizou `Microsoft.AspNetCore.Authentication.JwtBearer` para 10.0.15, `MongoDB.Driver` para 3.14.1 e `System.IdentityModel.Tokens.Jwt` para 8.19.2, minimo exigido pelo JwtBearer atualizado. Com SDK 10.0.404, os 16 testes passaram antes e depois da atualizacao; a auditoria NuGet incluindo transitivos nao encontrou vulnerabilidades conhecidas. A integracao real com MongoDB e a execucao em Lambda permanecem para validacao em ambiente controlado antes da promocao.
+
 ## Criterios de aceite
 
 - nenhum frontend usa uma versao Angular fora de suporte;
