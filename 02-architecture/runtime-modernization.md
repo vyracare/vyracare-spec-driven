@@ -238,7 +238,7 @@ Em uma segunda rodada isolada com MongoDB 7, as APIs de agendamentos, pacientes 
 
 **Bloqueio de promocao de procedimentos:** documentos antigos sem `tenantId` nao sao associados automaticamente a qualquer empresa e deixam de aparecer nas consultas protegidas. Antes de implantar, inventariar os documentos no ambiente alvo, identificar o proprietario de cada registro por fonte confiavel, preparar e validar uma migracao auditavel por empresa, backup e rollback; nao atribuir registros em lote sem evidencia. A alteracao esta em branch e nao foi implantada. A API de procedimentos tem historico adicional na branch de migracao que requer revisao.
 
-O procedimento de inventario somente de leitura esta em [procedimentos-inventario-legado.md](../03-delivery/procedimentos-inventario-legado.md). O script foi validado em MongoDB 7 isolado com registros sinteticos: identificou tenants ausentes e malformados, aceitou proposta parcial, rejeitou IDs duplicados e registros ja associados e deixou os documentos inalterados. Nao foi executado em ambiente real e nao executa a migracao.
+O procedimento de inventario somente de leitura esta em [procedimentos-inventario-legado.md](../03-delivery/procedimentos-inventario-legado.md). O script foi validado em MongoDB 7 isolado com registros sinteticos: identificou tenants ausentes e malformados, aceitou proposta parcial, rejeitou IDs duplicados e registros ja associados e deixou os documentos inalterados. A execucao posterior em desenvolvimento encontrou zero documentos em `proceedings`; a consulta deve ser repetida antes da promocao. O inventario nao executa a migracao e nao foi executado em homologacao ou producao.
 
 ## Onda 5G: template .NET
 
