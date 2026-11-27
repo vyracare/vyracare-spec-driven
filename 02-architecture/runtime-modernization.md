@@ -232,6 +232,10 @@ A API de procedimentos permanece em .NET 10 e atualizou `Microsoft.AspNetCore.Au
 
 A API de tenancy permanece em .NET 10 e atualizou `Microsoft.AspNetCore.Authentication.JwtBearer` para 10.0.15, `MongoDB.Driver` para 3.14.1 e `System.IdentityModel.Tokens.Jwt` para 8.19.2. Em copia limpa da branch, com SDK 10.0.404, os cinco testes passaram e a auditoria NuGet incluindo transitivos nao encontrou vulnerabilidades conhecidas. Uma alteracao local preexistente em `MongoIndexInitializer.cs` foi preservada e nao faz parte do commit nem da validacao isolada. Integracao real com MongoDB, isolamento entre tenants e Lambda requerem validacao controlada antes da promocao.
 
+## Onda 5G: template .NET
+
+O template .NET permanece em `net10.0` e atualizou JwtBearer para 10.0.15, System.IdentityModel.Tokens.Jwt para 8.19.2 e MongoDB.Driver de 2.24.0 para 3.14.1. A validacao identificou que arquivos de feature, persistencia e testes tinham sido sobrescritos por definicoes duplicadas em alteracoes historicas; as implementacoes foram recuperadas do historico e adaptadas para evitar conflito entre o nome do recurso e o namespace. O projeto de testes foi excluido da compilacao da API principal. Uma API gerada pelo script compilou, passou em quatro testes e nao apresentou vulnerabilidades conhecidas na auditoria NuGet incluindo transitivos. O CI gera um projeto antes de testar e publicar o artefato de validacao. O teste com MongoDB real e Lambda permanece pendente antes de usar a atualizacao como baseline de producao.
+
 ## Criterios de aceite
 
 - nenhum frontend usa uma versao Angular fora de suporte;
