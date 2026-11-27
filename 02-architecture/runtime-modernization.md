@@ -236,6 +236,12 @@ A API de tenancy permanece em .NET 10 e atualizou `Microsoft.AspNetCore.Authenti
 
 O template .NET permanece em `net10.0` e atualizou JwtBearer para 10.0.15, System.IdentityModel.Tokens.Jwt para 8.19.2 e MongoDB.Driver de 2.24.0 para 3.14.1. A validacao identificou que arquivos de feature, persistencia e testes tinham sido sobrescritos por definicoes duplicadas em alteracoes historicas; as implementacoes foram recuperadas do historico e adaptadas para evitar conflito entre o nome do recurso e o namespace. O projeto de testes foi excluido da compilacao da API principal. Uma API gerada pelo script compilou, passou em quatro testes e nao apresentou vulnerabilidades conhecidas na auditoria NuGet incluindo transitivos. O CI gera um projeto antes de testar e publicar o artefato de validacao. O teste com MongoDB real e Lambda permanece pendente antes de usar a atualizacao como baseline de producao.
 
+## Auditoria de promocao das migracoes
+
+Em 27 de novembro de 2026, os `package.json` das branches `develop` do shell e dos MFEs Dashboard, Profile, Procedimentos e Pacientes ainda declaravam Angular `^20.3.0`; suas migracoes Angular 22 permanecem em PRs de feature. A configuracao do Module Federation compartilha Angular como singleton com `strictVersion`, portanto a publicacao isolada de um shell Angular 22 com remotos Angular 20, ou vice-versa, pode impedir o carregamento. Push ou merge em `develop` aciona publicacao automatica em dev; a promocao deve ser coordenada, com ambiente isolado ou janela controlada, validacao dos cinco remotos, rollback por artefato e verificacao da experiencia mobile. Nao se deve considerar um `remoteEntry.js` acessivel por HTTP como prova de navegacao autenticada.
+
+Os PRs de shell e Dashboard apresentavam CI aprovado, mas exigiam revisao no GitHub. Existem PRs de release anteriores com conflitos e historicos diferentes; devem ser revisados individualmente, sem sobrescrever branches nem ignorar protecoes. A API de procedimentos possui uma branch de feature baseada em release com commits anteriores adicionais. O repositorio privado do MFE Finance continua com Actions desativadas, sem infraestrutura de publicacao configurada e `financeRemoteEntry` vazio em dev. Antes de ativar sua esteira, configurar segredos e infraestrutura e validar as permissoes e o fluxo financeiro em ambiente controlado.
+
 ## Criterios de aceite
 
 - nenhum frontend usa uma versao Angular fora de suporte;
